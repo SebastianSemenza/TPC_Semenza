@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Dominio.CasoPrueba" Collapsed="true">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAUAAAAAAAAAAAAAAAAAAAFAAAAAAAAAAIEAAAYAAA=</HashCode>
+      <FileName>CasoPrueba.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dominio.Compañia" Collapsed="true">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAgAAEAAAAgACACAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Compañia.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dominio.Estadistica" Collapsed="true">
+    <Position X="8.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Estadistica.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dominio.EstadoTest" Collapsed="true">
+    <Position X="10.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>EstadoTest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dominio.Perfil" Collapsed="true">
+    <Position X="5.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Perfil.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dominio.Persona" Collapsed="true">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAEAAAAgAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Persona.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dominio.Prioridad" Collapsed="true">
+    <Position X="7" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAEAAAAAAAAAAAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>Prioridad.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dominio.SiniestroPrueba" Collapsed="true">
+    <Position X="8.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAgCAAAA=</HashCode>
+      <FileName>SiniestroPrueba.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dominio.Sistema" Collapsed="true">
+    <Position X="10.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAgAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Sistema.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dominio.Test" Collapsed="true">
+    <Position X="5.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAUAAgIgCIAAAAAAAAEABABAAAEAAAAAAAAg=</HashCode>
+      <FileName>Test.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dominio.Ticket" Collapsed="true">
+    <Position X="7" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAEgAAABAAABAACAIAAAABAECAAAAAg=</HashCode>
+      <FileName>Ticket.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dominio.UsuarioPrueba" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAQAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>UsuarioPrueba.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dominio.UsuarioTester" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAQAAAAAAAAAAAAAAAAAAAQCAAAA=</HashCode>
+      <FileName>UsuarioTester.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

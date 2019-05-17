@@ -1,0 +1,22 @@
+C:\Users\sebastian\Desktop\TPC_Semenza - SQL\Negocio\bin\Debug\Negocio.dll
+C:\Users\sebastian\Desktop\TPC_Semenza - SQL\Negocio\bin\Debug\Negocio.pdb
+C:\Users\sebastian\Desktop\TPC_Semenza - SQL\Negocio\bin\Debug\AccesoDatos.dll
+C:\Users\sebastian\Desktop\TPC_Semenza - SQL\Negocio\bin\Debug\ClassLibrary1.dll
+C:\Users\sebastian\Desktop\TPC_Semenza - SQL\Negocio\bin\Debug\AccesoDatos.pdb
+C:\Users\sebastian\Desktop\TPC_Semenza - SQL\Negocio\bin\Debug\ClassLibrary1.pdb
+C:\Users\sebastian\Desktop\TPC_Semenza - SQL\Negocio\obj\Debug\Negocio.csprojAssemblyReference.cache
+C:\Users\sebastian\Desktop\TPC_Semenza - SQL\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
+C:\Users\sebastian\Desktop\TPC_Semenza - SQL\Negocio\obj\Debug\Negocio.csproj.CopyComplete
+C:\Users\sebastian\Desktop\TPC_Semenza - SQL\Negocio\obj\Debug\Negocio.dll
+C:\Users\sebastian\Desktop\TPC_Semenza - SQL\Negocio\obj\Debug\Negocio.pdb
+C:\Users\sebastian\Desktop\TPC_Semenza\Negocio\bin\Debug\Negocio.dll
+C:\Users\sebastian\Desktop\TPC_Semenza\Negocio\bin\Debug\Negocio.pdb
+C:\Users\sebastian\Desktop\TPC_Semenza\Negocio\bin\Debug\AccesoDatos.dll
+C:\Users\sebastian\Desktop\TPC_Semenza\Negocio\bin\Debug\ClassLibrary1.dll
+C:\Users\sebastian\Desktop\TPC_Semenza\Negocio\bin\Debug\AccesoDatos.pdb
+C:\Users\sebastian\Desktop\TPC_Semenza\Negocio\bin\Debug\ClassLibrary1.pdb
+C:\Users\sebastian\Desktop\TPC_Semenza\Negocio\obj\Debug\Negocio.csprojAssemblyReference.cache
+C:\Users\sebastian\Desktop\TPC_Semenza\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
+C:\Users\sebastian\Desktop\TPC_Semenza\Negocio\obj\Debug\Negocio.csproj.CopyComplete
+C:\Users\sebastian\Desktop\TPC_Semenza\Negocio\obj\Debug\Negocio.dll
+C:\Users\sebastian\Desktop\TPC_Semenza\Negocio\obj\Debug\Negocio.pdb

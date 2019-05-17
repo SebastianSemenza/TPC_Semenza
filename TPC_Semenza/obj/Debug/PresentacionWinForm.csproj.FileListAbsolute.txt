@@ -1,0 +1,54 @@
+C:\Users\sebastian\source\repos\TPC_Semenza\TPC_Semenza\bin\Debug\TPC_Semenza.exe.config
+C:\Users\sebastian\source\repos\TPC_Semenza\TPC_Semenza\bin\Debug\TPC_Semenza.exe
+C:\Users\sebastian\source\repos\TPC_Semenza\TPC_Semenza\bin\Debug\TPC_Semenza.pdb
+C:\Users\sebastian\source\repos\TPC_Semenza\TPC_Semenza\obj\Debug\PresentacionWinForm.csprojAssemblyReference.cache
+C:\Users\sebastian\source\repos\TPC_Semenza\TPC_Semenza\obj\Debug\TPC_Semenza.Menu_Principal.resources
+C:\Users\sebastian\source\repos\TPC_Semenza\TPC_Semenza\obj\Debug\TPC_Semenza.Nuevo_Test.resources
+C:\Users\sebastian\source\repos\TPC_Semenza\TPC_Semenza\obj\Debug\TPC_Semenza.Properties.Resources.resources
+C:\Users\sebastian\source\repos\TPC_Semenza\TPC_Semenza\obj\Debug\PresentacionWinForm.csproj.GenerateResource.cache
+C:\Users\sebastian\source\repos\TPC_Semenza\TPC_Semenza\obj\Debug\PresentacionWinForm.csproj.CoreCompileInputs.cache
+C:\Users\sebastian\source\repos\TPC_Semenza\TPC_Semenza\obj\Debug\TPC_Semenza.exe
+C:\Users\sebastian\source\repos\TPC_Semenza\TPC_Semenza\obj\Debug\TPC_Semenza.pdb
+C:\Users\sebastian\Desktop\TPC_Semenza\TPC_Semenza\bin\Debug\TPC_Semenza.exe.config
+C:\Users\sebastian\Desktop\TPC_Semenza\TPC_Semenza\bin\Debug\TPC_Semenza.exe
+C:\Users\sebastian\Desktop\TPC_Semenza\TPC_Semenza\bin\Debug\TPC_Semenza.pdb
+C:\Users\sebastian\Desktop\TPC_Semenza\TPC_Semenza\obj\Debug\PresentacionWinForm.csprojAssemblyReference.cache
+C:\Users\sebastian\Desktop\TPC_Semenza\TPC_Semenza\obj\Debug\TPC_Semenza.Buscar_Testing.resources
+C:\Users\sebastian\Desktop\TPC_Semenza\TPC_Semenza\obj\Debug\TPC_Semenza.Buscar_Ticket.resources
+C:\Users\sebastian\Desktop\TPC_Semenza\TPC_Semenza\obj\Debug\TPC_Semenza.Menu_Principal.resources
+C:\Users\sebastian\Desktop\TPC_Semenza\TPC_Semenza\obj\Debug\TPC_Semenza.Nuevo_Test.resources
+C:\Users\sebastian\Desktop\TPC_Semenza\TPC_Semenza\obj\Debug\TPC_Semenza.Properties.Resources.resources
+C:\Users\sebastian\Desktop\TPC_Semenza\TPC_Semenza\obj\Debug\PresentacionWinForm.csproj.GenerateResource.cache
+C:\Users\sebastian\Desktop\TPC_Semenza\TPC_Semenza\obj\Debug\PresentacionWinForm.csproj.CoreCompileInputs.cache
+C:\Users\sebastian\Desktop\TPC_Semenza\TPC_Semenza\obj\Debug\TPC_Semenza.exe
+C:\Users\sebastian\Desktop\TPC_Semenza\TPC_Semenza\obj\Debug\TPC_Semenza.pdb
+C:\Users\sebastian\Desktop\TPC_Semenza - SQL\TPC_Semenza\bin\Debug\TPC_Semenza.exe.config
+C:\Users\sebastian\Desktop\TPC_Semenza - SQL\TPC_Semenza\bin\Debug\TPC_Semenza.exe
+C:\Users\sebastian\Desktop\TPC_Semenza - SQL\TPC_Semenza\bin\Debug\TPC_Semenza.pdb
+C:\Users\sebastian\Desktop\TPC_Semenza - SQL\TPC_Semenza\obj\Debug\PresentacionWinForm.csprojAssemblyReference.cache
+C:\Users\sebastian\Desktop\TPC_Semenza - SQL\TPC_Semenza\obj\Debug\TPC_Semenza.Buscar_Testing.resources
+C:\Users\sebastian\Desktop\TPC_Semenza - SQL\TPC_Semenza\obj\Debug\TPC_Semenza.Buscar_Ticket.resources
+C:\Users\sebastian\Desktop\TPC_Semenza - SQL\TPC_Semenza\obj\Debug\TPC_Semenza.Menu_Principal.resources
+C:\Users\sebastian\Desktop\TPC_Semenza - SQL\TPC_Semenza\obj\Debug\TPC_Semenza.Nuevo_Test.resources
+C:\Users\sebastian\Desktop\TPC_Semenza - SQL\TPC_Semenza\obj\Debug\TPC_Semenza.Properties.Resources.resources
+C:\Users\sebastian\Desktop\TPC_Semenza - SQL\TPC_Semenza\obj\Debug\PresentacionWinForm.csproj.GenerateResource.cache
+C:\Users\sebastian\Desktop\TPC_Semenza - SQL\TPC_Semenza\obj\Debug\PresentacionWinForm.csproj.CoreCompileInputs.cache
+C:\Users\sebastian\Desktop\TPC_Semenza - SQL\TPC_Semenza\obj\Debug\TPC_Semenza.exe
+C:\Users\sebastian\Desktop\TPC_Semenza - SQL\TPC_Semenza\obj\Debug\TPC_Semenza.pdb
+C:\Users\sebastian\Desktop\TPC_Semenza - SQL\TPC_Semenza\bin\Debug\ClassLibrary1.dll
+C:\Users\sebastian\Desktop\TPC_Semenza - SQL\TPC_Semenza\bin\Debug\Negocio.dll
+C:\Users\sebastian\Desktop\TPC_Semenza - SQL\TPC_Semenza\bin\Debug\AccesoDatos.dll
+C:\Users\sebastian\Desktop\TPC_Semenza - SQL\TPC_Semenza\bin\Debug\ClassLibrary1.pdb
+C:\Users\sebastian\Desktop\TPC_Semenza - SQL\TPC_Semenza\bin\Debug\Negocio.pdb
+C:\Users\sebastian\Desktop\TPC_Semenza - SQL\TPC_Semenza\bin\Debug\AccesoDatos.pdb
+C:\Users\sebastian\Desktop\TPC_Semenza - SQL\TPC_Semenza\obj\Debug\PresentacionWinForm.csproj.CopyComplete
+C:\Users\sebastian\Desktop\TPC_Semenza\TPC_Semenza\bin\Debug\ClassLibrary1.dll
+C:\Users\sebastian\Desktop\TPC_Semenza\TPC_Semenza\bin\Debug\Negocio.dll
+C:\Users\sebastian\Desktop\TPC_Semenza\TPC_Semenza\bin\Debug\AccesoDatos.dll
+C:\Users\sebastian\Desktop\TPC_Semenza\TPC_Semenza\bin\Debug\ClassLibrary1.pdb
+C:\Users\sebastian\Desktop\TPC_Semenza\TPC_Semenza\bin\Debug\Negocio.pdb
+C:\Users\sebastian\Desktop\TPC_Semenza\TPC_Semenza\bin\Debug\AccesoDatos.pdb
+C:\Users\sebastian\Desktop\TPC_Semenza\TPC_Semenza\obj\Debug\PresentacionWinForm.csproj.CopyComplete
+C:\Users\sebastian\Desktop\TPC_Semenza\TPC_Semenza\obj\Debug\TPC_Semenza.AgregarUsuarioPrueba.resources
+C:\Users\sebastian\Desktop\TPC_Semenza\TPC_Semenza\obj\Debug\TPC_Semenza.frmAgregarDatoPrueba.resources
+C:\Users\sebastian\Desktop\TPC_Semenza\TPC_Semenza\obj\Debug\TPC_Semenza.frmAgregarCasoPrueba.resources

@@ -1,0 +1,11 @@
+C:\Users\sebastian\source\repos\TPC_Semenza\TPC_Semenza\bin\Debug\TPC_Semenza.exe.config
+C:\Users\sebastian\source\repos\TPC_Semenza\TPC_Semenza\bin\Debug\TPC_Semenza.exe
+C:\Users\sebastian\source\repos\TPC_Semenza\TPC_Semenza\bin\Debug\TPC_Semenza.pdb
+C:\Users\sebastian\source\repos\TPC_Semenza\TPC_Semenza\obj\Debug\TPC_Semenza.csprojAssemblyReference.cache
+C:\Users\sebastian\source\repos\TPC_Semenza\TPC_Semenza\obj\Debug\TPC_Semenza.Menu_Principal.resources
+C:\Users\sebastian\source\repos\TPC_Semenza\TPC_Semenza\obj\Debug\TPC_Semenza.Nuevo_Test.resources
+C:\Users\sebastian\source\repos\TPC_Semenza\TPC_Semenza\obj\Debug\TPC_Semenza.Properties.Resources.resources
+C:\Users\sebastian\source\repos\TPC_Semenza\TPC_Semenza\obj\Debug\TPC_Semenza.csproj.GenerateResource.cache
+C:\Users\sebastian\source\repos\TPC_Semenza\TPC_Semenza\obj\Debug\TPC_Semenza.csproj.CoreCompileInputs.cache
+C:\Users\sebastian\source\repos\TPC_Semenza\TPC_Semenza\obj\Debug\TPC_Semenza.exe
+C:\Users\sebastian\source\repos\TPC_Semenza\TPC_Semenza\obj\Debug\TPC_Semenza.pdb

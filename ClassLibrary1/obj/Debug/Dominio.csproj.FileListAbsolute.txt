@@ -1,0 +1,12 @@
+C:\Users\sebastian\Desktop\TPC_Semenza - SQL\ClassLibrary1\bin\Debug\ClassLibrary1.dll
+C:\Users\sebastian\Desktop\TPC_Semenza - SQL\ClassLibrary1\bin\Debug\ClassLibrary1.pdb
+C:\Users\sebastian\Desktop\TPC_Semenza - SQL\ClassLibrary1\obj\Debug\Dominio.csprojAssemblyReference.cache
+C:\Users\sebastian\Desktop\TPC_Semenza - SQL\ClassLibrary1\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+C:\Users\sebastian\Desktop\TPC_Semenza - SQL\ClassLibrary1\obj\Debug\ClassLibrary1.dll
+C:\Users\sebastian\Desktop\TPC_Semenza - SQL\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
+C:\Users\sebastian\Desktop\TPC_Semenza\ClassLibrary1\bin\Debug\ClassLibrary1.dll
+C:\Users\sebastian\Desktop\TPC_Semenza\ClassLibrary1\bin\Debug\ClassLibrary1.pdb
+C:\Users\sebastian\Desktop\TPC_Semenza\ClassLibrary1\obj\Debug\Dominio.csprojAssemblyReference.cache
+C:\Users\sebastian\Desktop\TPC_Semenza\ClassLibrary1\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+C:\Users\sebastian\Desktop\TPC_Semenza\ClassLibrary1\obj\Debug\ClassLibrary1.dll
+C:\Users\sebastian\Desktop\TPC_Semenza\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
