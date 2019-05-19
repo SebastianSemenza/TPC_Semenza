@@ -13,7 +13,7 @@ namespace Dominio
         public short NTicket{ get; set; }
         public string Asunto { get; set; }
         public string Descripcion { get; set; }
-        public string Prioridad { get; set; }
+        public Prioridad Prioridad { get; set; }
 
         //atributos iniciales
         public short ID { get; set; }

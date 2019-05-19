@@ -30,11 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu_Principal));
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.btnVolver = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnBuscarTicket = new System.Windows.Forms.Button();
             this.btnBuscarTest = new System.Windows.Forms.Button();
             this.btnNuevoTest = new System.Windows.Forms.Button();
             this.panelVentanas = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnAgregarDatos = new System.Windows.Forms.Button();
+            this.btnAgregarCasoPrueba = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -42,6 +45,9 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.panelMenu.Controls.Add(this.btnAgregarCasoPrueba);
+            this.panelMenu.Controls.Add(this.btnAgregarDatos);
+            this.panelMenu.Controls.Add(this.btnVolver);
             this.panelMenu.Controls.Add(this.pictureBox1);
             this.panelMenu.Controls.Add(this.btnBuscarTicket);
             this.panelMenu.Controls.Add(this.btnBuscarTest);
@@ -49,8 +55,33 @@
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(250, 561);
+            this.panelMenu.Size = new System.Drawing.Size(250, 661);
             this.panelMenu.TabIndex = 2;
+            // 
+            // btnVolver
+            // 
+            this.btnVolver.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnVolver.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(90)))), ((int)(((byte)(120)))));
+            this.btnVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVolver.Font = new System.Drawing.Font("Palatino Linotype", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVolver.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnVolver.Location = new System.Drawing.Point(12, 610);
+            this.btnVolver.Name = "btnVolver";
+            this.btnVolver.Size = new System.Drawing.Size(232, 39);
+            this.btnVolver.TabIndex = 4;
+            this.btnVolver.Text = "Volver";
+            this.btnVolver.UseVisualStyleBackColor = false;
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(232, 84);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
             // 
             // btnBuscarTicket
             // 
@@ -100,30 +131,47 @@
             this.panelVentanas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelVentanas.Location = new System.Drawing.Point(250, 0);
             this.panelVentanas.Name = "panelVentanas";
-            this.panelVentanas.Size = new System.Drawing.Size(734, 561);
+            this.panelVentanas.Size = new System.Drawing.Size(934, 661);
             this.panelVentanas.TabIndex = 3;
             // 
-            // pictureBox1
+            // btnAgregarDatos
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(232, 84);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
+            this.btnAgregarDatos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(90)))), ((int)(((byte)(120)))));
+            this.btnAgregarDatos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregarDatos.Font = new System.Drawing.Font("Palatino Linotype", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregarDatos.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnAgregarDatos.Location = new System.Drawing.Point(12, 158);
+            this.btnAgregarDatos.Name = "btnAgregarDatos";
+            this.btnAgregarDatos.Size = new System.Drawing.Size(232, 39);
+            this.btnAgregarDatos.TabIndex = 5;
+            this.btnAgregarDatos.Text = "Usuarios / Datos";
+            this.btnAgregarDatos.UseVisualStyleBackColor = false;
+            // 
+            // btnAgregarCasoPrueba
+            // 
+            this.btnAgregarCasoPrueba.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(90)))), ((int)(((byte)(120)))));
+            this.btnAgregarCasoPrueba.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregarCasoPrueba.Font = new System.Drawing.Font("Palatino Linotype", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregarCasoPrueba.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnAgregarCasoPrueba.Location = new System.Drawing.Point(12, 203);
+            this.btnAgregarCasoPrueba.Name = "btnAgregarCasoPrueba";
+            this.btnAgregarCasoPrueba.Size = new System.Drawing.Size(232, 39);
+            this.btnAgregarCasoPrueba.TabIndex = 6;
+            this.btnAgregarCasoPrueba.Text = "Casos de Prueba";
+            this.btnAgregarCasoPrueba.UseVisualStyleBackColor = false;
             // 
             // Menu_Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.ClientSize = new System.Drawing.Size(984, 561);
+            this.ClientSize = new System.Drawing.Size(1184, 661);
             this.Controls.Add(this.panelVentanas);
             this.Controls.Add(this.panelMenu);
             this.Name = "Menu_Principal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tester CESVI";
+            this.Load += new System.EventHandler(this.Menu_Principal_Load);
             this.panelMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -138,6 +186,9 @@
         private System.Windows.Forms.Button btnNuevoTest;
         private System.Windows.Forms.Panel panelVentanas;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnVolver;
+        private System.Windows.Forms.Button btnAgregarCasoPrueba;
+        private System.Windows.Forms.Button btnAgregarDatos;
     }
 }
 

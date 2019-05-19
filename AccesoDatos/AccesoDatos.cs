@@ -13,7 +13,6 @@ namespace AccesoDatos
         private SqlCommand comando;
         private SqlConnection conexion;
         private SqlDataReader lector;
-	private SqlDataReader lector1;
 
         public SqlDataReader Lector
         {

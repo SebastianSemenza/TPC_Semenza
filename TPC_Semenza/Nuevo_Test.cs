@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Dominio;
+﻿using Dominio;
 using Negocio;
-using AccesoDatos;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace TPC_Semenza
 {
@@ -30,16 +23,11 @@ namespace TPC_Semenza
             InitializeComponent();
             testLocal = test;
         }
-        
-        //no va
-        private void label10_Click(object sender, EventArgs e)
-        {
-            
-        }
 
         private void Nuevo_Test_Load(object sender, EventArgs e)
         {
-            short IDTest = 0;
+            
+
             PrioridadNegocio prioridadNegocio = new PrioridadNegocio();
             SistemaNegocio sistemaNegocio = new SistemaNegocio();
             UsuarioTesterNegocio testerNegocio = new UsuarioTesterNegocio();
@@ -75,17 +63,17 @@ namespace TPC_Semenza
             }
         }
 
-        private void btnAgregarUP_Click(object sender, EventArgs e)
-        {
-            AgregarUsuarioPrueba formUsuarioP = new AgregarUsuarioPrueba();
-            formUsuarioP.ShowDialog();
-        }
+        //private void btnAgregarUP_Click(object sender, EventArgs e)
+        //{
+        //    AgregarUsuarioPrueba formUsuarioP = new AgregarUsuarioPrueba();
+        //    formUsuarioP.ShowDialog();
+        //}
 
-        private void btnAgregarDato_Click(object sender, EventArgs e)
-        {
-            frmAgregarDatoPrueba formDato = new frmAgregarDatoPrueba();
-            formDato.ShowDialog();
-        }
+        //private void btnAgregarDato_Click(object sender, EventArgs e)
+        //{
+        //    frmAgregarDatoPrueba formDato = new frmAgregarDatoPrueba();
+        //    formDato.ShowDialog();
+        //}
 
         private void cargarGrillaUsuariosP()
         {
@@ -94,14 +82,14 @@ namespace TPC_Semenza
             {
                 //DATAGRIDVIEW USUARIO PRUEBA
                 listadoUP = UPnegocio.listarUsuariosP();
-                dgvUsuariosPrueba.DataSource = listadoUP;
-                dgvUsuariosPrueba.Columns["ID"].Visible = false;
-                dgvUsuariosPrueba.Columns["Test"].Visible = false;
-                dgvUsuariosPrueba.Columns["Grabado"].Visible = false;
-                dgvUsuariosPrueba.Columns["Nombre"].DisplayIndex = 0;
-                dgvUsuariosPrueba.Columns["Apellido"].DisplayIndex = 1;
-                dgvUsuariosPrueba.Columns["Documento"].DisplayIndex = 2;
-                dgvUsuariosPrueba.Columns["Documento"].Width = 80;
+                //dgvUsuariosPrueba.DataSource = listadoUP;
+                //dgvUsuariosPrueba.Columns["ID"].Visible = false;
+                //dgvUsuariosPrueba.Columns["Test"].Visible = false;
+                //dgvUsuariosPrueba.Columns["Grabado"].Visible = false;
+                //dgvUsuariosPrueba.Columns["Nombre"].DisplayIndex = 0;
+                //dgvUsuariosPrueba.Columns["Apellido"].DisplayIndex = 1;
+                //dgvUsuariosPrueba.Columns["Documento"].DisplayIndex = 2;
+                //dgvUsuariosPrueba.Columns["Documento"].Width = 80;
             }
             catch (Exception ex)
             {
@@ -116,9 +104,9 @@ namespace TPC_Semenza
             {
                 //DATAGRIDVIEW SINIESTROS PRUEBA
                 listadoSP = SPnegocio.listarSiniestroP();
-                dgvDatosPrueba.DataSource = listadoSP;
-                dgvDatosPrueba.Columns["ID"].Visible = false;
-                dgvDatosPrueba.Columns["Test"].Visible = false;
+                //dgvDatosPrueba.DataSource = listadoSP;
+                //dgvDatosPrueba.Columns["ID"].Visible = false;
+                //dgvDatosPrueba.Columns["Test"].Visible = false;
             }
             catch (Exception ex)
             {
@@ -126,5 +114,31 @@ namespace TPC_Semenza
             }
         }
 
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            TestNegocio testNegocio = new TestNegocio();
+            try
+            {
+                Test test = new Test();
+
+                test.NTicket = Convert.ToInt16(txtTicket.Text);
+                test.Version = Convert.ToInt16(txtVersion.Text);
+                test.Sistema = (Sistema)cmbSistema.SelectedItem;
+                test.UsuarioT = (UsuarioTester)cmbUsuarioTester.SelectedItem;
+                test.Prioridad = (Prioridad)cmbPrioridad.SelectedItem;
+                test.CiaSolicitante = (Compañia)cmbSolicitante.SelectedItem;
+                test.GrupoCia = (GrupoCompañias)cmbAplica.SelectedItem;
+                test.Asunto = txtAsunto.Text;
+                test.Descripcion = txtDescripcion.Text;
+
+                testNegocio.agregarTest(test);
+
+                MessageBox.Show("Se Guardo Correctamente.");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

@@ -31,11 +31,22 @@ namespace TPC_Semenza
             fh.Show();
         }
 
+        private void Menu_Principal_Load(object sender, EventArgs e)
+        {
+            btnVolver.Visible = false;
+            btnAgregarDatos.Visible = false;
+            btnAgregarCasoPrueba.Visible = false;
+        }
 
-        //NUEVOS BOTONES
+        //BOTONES
         private void button1_Click(object sender, EventArgs e)
         {
             AddFormInPanel(new Nuevo_Test());
+            btnBuscarTest.Visible = false;
+            btnBuscarTicket.Visible = false;
+            btnAgregarDatos.Visible = true;
+            btnAgregarCasoPrueba.Visible = true;
+            btnVolver.Visible = true;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -47,5 +58,18 @@ namespace TPC_Semenza
         {
             AddFormInPanel(new Buscar_Ticket());
         }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            if (this.panelVentanas.Controls.Count > 0)
+                this.panelVentanas.Controls.RemoveAt(0);
+            btnBuscarTest.Visible = true;
+            btnBuscarTicket.Visible = true;
+            btnAgregarDatos.Visible = false;
+            btnAgregarCasoPrueba.Visible = false;
+            btnVolver.Visible = false;
+        }
+
+        
     }
 }

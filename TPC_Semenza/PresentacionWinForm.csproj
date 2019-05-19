@@ -76,6 +76,12 @@
     <Compile Include="frmAgregarDatoPrueba.Designer.cs">
       <DependentUpon>frmAgregarDatoPrueba.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAgregarDatos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAgregarDatos.Designer.cs">
+      <DependentUpon>frmAgregarDatos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Menu_Principal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +110,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmAgregarDatoPrueba.resx">
       <DependentUpon>frmAgregarDatoPrueba.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAgregarDatos.resx">
+      <DependentUpon>frmAgregarDatos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menu_Principal.resx">
       <DependentUpon>Menu_Principal.cs</DependentUpon>

@@ -52,3 +52,4 @@ C:\Users\sebastian\Desktop\TPC_Semenza\TPC_Semenza\obj\Debug\PresentacionWinForm
 C:\Users\sebastian\Desktop\TPC_Semenza\TPC_Semenza\obj\Debug\TPC_Semenza.AgregarUsuarioPrueba.resources
 C:\Users\sebastian\Desktop\TPC_Semenza\TPC_Semenza\obj\Debug\TPC_Semenza.frmAgregarDatoPrueba.resources
 C:\Users\sebastian\Desktop\TPC_Semenza\TPC_Semenza\obj\Debug\TPC_Semenza.frmAgregarCasoPrueba.resources
+C:\Users\sebastian\Desktop\TPC_Semenza\TPC_Semenza\obj\Debug\TPC_Semenza.frmAgregarDatos.resources
