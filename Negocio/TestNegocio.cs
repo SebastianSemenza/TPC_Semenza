@@ -74,6 +74,34 @@ namespace Negocio
             }
         }
 
+        public void verificarTest(Test test)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            try
+            {
+                accesoDatos.setearConsulta("Select * from TESTS where ID="+ test.ID.ToString() +"and IDVersion="+ test.Version.ToString());
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarConsulta();
+                if(accesoDatos.Lector.Read())
+                {
+                    modificarTest(test);
+                }
+                else
+                {
+                    agregarTest(test);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+
+        }
+
 
         public void agregarTest(Test test)
         {
@@ -94,5 +122,32 @@ namespace Negocio
             }
         }
 
+        public void modificarTest(Test test)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            try
+            {
+                accesoDatos.setearConsulta("update TESTS set NTicket=@Nticket ,IDSistema=@IDSistema ,IDUsuario=@IDUsuario ,IDPrioridad=@IDPrioridad, IDCompañia=@IDCompañia, IDGrupoCompañias=@IDGrupoCompañias, Asunto=@Asunto, Descripcion=@Descripcion where ID=" + test.ID.ToString() + " AND IDVersion=" + test.Version.ToString());
+                accesoDatos.Comando.Parameters.Clear();
+                accesoDatos.Comando.Parameters.AddWithValue("@NTicket", test.NTicket);
+                accesoDatos.Comando.Parameters.AddWithValue("@IDSistema", test.Sistema.id);
+                accesoDatos.Comando.Parameters.AddWithValue("@IDUsuario", test.UsuarioT.ID);
+                accesoDatos.Comando.Parameters.AddWithValue("@IDPrioridad", test.Prioridad.ID);
+                accesoDatos.Comando.Parameters.AddWithValue("@IDCompañia", test.CiaSolicitante.ID);
+                accesoDatos.Comando.Parameters.AddWithValue("@IDGrupoCompañias", test.GrupoCia.id);
+                accesoDatos.Comando.Parameters.AddWithValue("@Asunto", test.Asunto);
+                accesoDatos.Comando.Parameters.AddWithValue("@Descripcion", test.Descripcion);
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarConsulta();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
     }
 }

@@ -111,5 +111,12 @@ namespace TPC_Semenza
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        private void dgvResultadoBusqueda_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Nuevo_Test frmTest = new Nuevo_Test((Test)dgvResultadoBusqueda.CurrentRow.DataBoundItem);
+            this.Close();
+            frmTest.Show();
+        }
     }
 }

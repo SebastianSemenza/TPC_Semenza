@@ -243,6 +243,7 @@
             this.dgvResultadoBusqueda.Name = "dgvResultadoBusqueda";
             this.dgvResultadoBusqueda.Size = new System.Drawing.Size(614, 223);
             this.dgvResultadoBusqueda.TabIndex = 20;
+            this.dgvResultadoBusqueda.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvResultadoBusqueda_CellContentDoubleClick);
             // 
             // lblVersion
             // 

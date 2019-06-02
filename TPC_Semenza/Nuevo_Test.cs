@@ -8,9 +8,6 @@ namespace TPC_Semenza
 {
     public partial class Nuevo_Test : Form
     {
-        private List<UsuarioPrueba> listadoUP= new List<UsuarioPrueba>();
-        private List<SiniestroPrueba> listadoSP = new List<SiniestroPrueba>();
-
         private Test testLocal = null;
 
         public Nuevo_Test()
@@ -42,71 +39,21 @@ namespace TPC_Semenza
                 cmbUsuarioTester.DataSource = testerNegocio.listarUsuariosT();
                 cmbSolicitante.DataSource = compañiaNegocio.listarCompañias();
                 cmbAplica.DataSource = grupoCompañiasNegocio.listarGrupoCompañias();
-                //DATAGRIDVIEW USUARIOS PRUEBA
-                cargarGrillaUsuariosP();
-                //DATAGRIDVIEW STRO PRUEBA
-                cargarGrillaSiniestrosP();
 
-                //VER PARA QUE SIRVE EL SELECTEDINDEX
-                if (testLocal!=null)
+                //RELLENAR LOS CAMPOS QUE VIENEN DE LA BUSQUEDA
+                if (testLocal != null)
                 {
-                    cmbSistema.SelectedIndex = cmbSistema.FindString(testLocal.Ticket.Sistema.Nombre);
-                    cmbPrioridad.SelectedIndex = cmbPrioridad.FindString(testLocal.Ticket.Prioridad.TipoPrioridad);
-                    cmbUsuarioTester.SelectedIndex = cmbUsuarioTester.FindString(testLocal.UsuarioT.Nombre+" "+testLocal.UsuarioT.Apellido);
+                    txtTicket.Text = testLocal.NTicket.ToString();
+                    txtIDTest.Text = testLocal.ID.ToString();
+                    txtVersion.Text = testLocal.Version.ToString();
+                    txtAsunto.Text = testLocal.Asunto;
+                    txtDescripcion.Text = testLocal.Descripcion;
+                    cmbSistema.SelectedIndex = cmbSistema.FindString(testLocal.Sistema.Nombre);
+                    cmbPrioridad.SelectedIndex = cmbPrioridad.FindString(testLocal.Prioridad.TipoPrioridad);
+                    cmbUsuarioTester.SelectedIndex = cmbUsuarioTester.FindString(testLocal.UsuarioT.Nombre + " " + testLocal.UsuarioT.Apellido);
                     cmbSolicitante.SelectedIndex = cmbSolicitante.FindString(testLocal.CiaSolicitante.Nombre);
                     cmbAplica.SelectedIndex = cmbAplica.FindString(testLocal.GrupoCia.Nombre);
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-        }
-
-        //private void btnAgregarUP_Click(object sender, EventArgs e)
-        //{
-        //    AgregarUsuarioPrueba formUsuarioP = new AgregarUsuarioPrueba();
-        //    formUsuarioP.ShowDialog();
-        //}
-
-        //private void btnAgregarDato_Click(object sender, EventArgs e)
-        //{
-        //    frmAgregarDatoPrueba formDato = new frmAgregarDatoPrueba();
-        //    formDato.ShowDialog();
-        //}
-
-        private void cargarGrillaUsuariosP()
-        {
-            UsuarioPruebaNegocio UPnegocio = new UsuarioPruebaNegocio();
-            try
-            {
-                //DATAGRIDVIEW USUARIO PRUEBA
-                listadoUP = UPnegocio.listarUsuariosP();
-                //dgvUsuariosPrueba.DataSource = listadoUP;
-                //dgvUsuariosPrueba.Columns["ID"].Visible = false;
-                //dgvUsuariosPrueba.Columns["Test"].Visible = false;
-                //dgvUsuariosPrueba.Columns["Grabado"].Visible = false;
-                //dgvUsuariosPrueba.Columns["Nombre"].DisplayIndex = 0;
-                //dgvUsuariosPrueba.Columns["Apellido"].DisplayIndex = 1;
-                //dgvUsuariosPrueba.Columns["Documento"].DisplayIndex = 2;
-                //dgvUsuariosPrueba.Columns["Documento"].Width = 80;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-        }
-
-        private void cargarGrillaSiniestrosP()
-        {
-            SiniestroPruebaNegocio SPnegocio = new SiniestroPruebaNegocio();
-            try
-            {
-                //DATAGRIDVIEW SINIESTROS PRUEBA
-                listadoSP = SPnegocio.listarSiniestroP();
-                //dgvDatosPrueba.DataSource = listadoSP;
-                //dgvDatosPrueba.Columns["ID"].Visible = false;
-                //dgvDatosPrueba.Columns["Test"].Visible = false;
             }
             catch (Exception ex)
             {
@@ -119,19 +66,20 @@ namespace TPC_Semenza
             TestNegocio testNegocio = new TestNegocio();
             try
             {
-                Test test = new Test();
+                testLocal = new Test();
+                testLocal.ID = Convert.ToInt16(txtIDTest.Text);//provisoriamente luego se generarà automaticamente
+                testLocal.NTicket = Convert.ToInt16(txtTicket.Text);
+                testLocal.Version = Convert.ToInt16(txtVersion.Text);
+                testLocal.Sistema = (Sistema)cmbSistema.SelectedItem;
+                testLocal.UsuarioT = (UsuarioTester)cmbUsuarioTester.SelectedItem;
+                testLocal.Prioridad = (Prioridad)cmbPrioridad.SelectedItem;
+                testLocal.CiaSolicitante = (Compañia)cmbSolicitante.SelectedItem;
+                testLocal.GrupoCia = (GrupoCompañias)cmbAplica.SelectedItem;
+                testLocal.Asunto = txtAsunto.Text;
+                testLocal.Descripcion = txtDescripcion.Text;
 
-                test.NTicket = Convert.ToInt16(txtTicket.Text);
-                test.Version = Convert.ToInt16(txtVersion.Text);
-                test.Sistema = (Sistema)cmbSistema.SelectedItem;
-                test.UsuarioT = (UsuarioTester)cmbUsuarioTester.SelectedItem;
-                test.Prioridad = (Prioridad)cmbPrioridad.SelectedItem;
-                test.CiaSolicitante = (Compañia)cmbSolicitante.SelectedItem;
-                test.GrupoCia = (GrupoCompañias)cmbAplica.SelectedItem;
-                test.Asunto = txtAsunto.Text;
-                test.Descripcion = txtDescripcion.Text;
-
-                testNegocio.agregarTest(test);
+                //testNegocio.agregarTest(test);
+                testNegocio.verificarTest(testLocal);
 
                 MessageBox.Show("Se Guardo Correctamente.");
             }
@@ -140,5 +88,29 @@ namespace TPC_Semenza
                 throw ex;
             }
         }
+
+        private void btnAgregarDatos_Click(object sender, EventArgs e)
+        {
+            testLocal = new Test();
+            testLocal.ID = Convert.ToInt16(txtIDTest.Text);//provisoriamente luego se generarà automaticamente
+            testLocal.NTicket = Convert.ToInt16(txtTicket.Text);
+            testLocal.Version = Convert.ToInt16(txtVersion.Text);
+            testLocal.Sistema = (Sistema)cmbSistema.SelectedItem;
+            testLocal.UsuarioT = (UsuarioTester)cmbUsuarioTester.SelectedItem;
+            testLocal.Prioridad = (Prioridad)cmbPrioridad.SelectedItem;
+            testLocal.CiaSolicitante = (Compañia)cmbSolicitante.SelectedItem;
+            testLocal.GrupoCia = (GrupoCompañias)cmbAplica.SelectedItem;
+            testLocal.Asunto = txtAsunto.Text;
+            testLocal.Descripcion = txtDescripcion.Text;
+            frmAgregarDatos frmAD = new frmAgregarDatos(testLocal);
+            frmAD.Show();
+        }
+
+        private void btnAgregarCasosPrueba_Click(object sender, EventArgs e)
+        {
+            frmAgregarCasoPrueba frmACP = new frmAgregarCasoPrueba();
+            frmACP.Show();
+        }
+
     }
 }

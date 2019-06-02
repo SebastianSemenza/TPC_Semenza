@@ -15,9 +15,17 @@ namespace TPC_Semenza
 {
     public partial class AgregarUsuarioPrueba : Form
     {
+        private Test testLocal =null;
+
         public AgregarUsuarioPrueba()
         {
             InitializeComponent();
+        }
+
+        public AgregarUsuarioPrueba(Test test)
+        {
+            InitializeComponent();
+            testLocal = test;
         }
 
         private void AgregarUsuarioPrueba_Load(object sender, EventArgs e)
@@ -37,24 +45,24 @@ namespace TPC_Semenza
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            //UsuarioPruebaNegocio UPNegocio = new UsuarioPruebaNegocio();
-            //try
-            //{
-            //    UsuarioPrueba usuarioP = new UsuarioPrueba();
-            //    usuarioP.Nombre = txbNombre.Text;
-            //    usuarioP.Apellido = txbApellido.Text;
-            //    usuarioP.Documento = txbDocumento.Text;
-            //    usuarioP.Contraseña = txbContraseña.Text;
-            //    usuarioP.Compañia = (Compañia)cmbCompañia.SelectedItem;
-            //    usuarioP.Perfil = (Perfil)cmbPerfil.SelectedItem;
-            //    UPNegocio.AgregarUsuarioP(usuarioP);
-            //}
-            //catch (Exception ex)
-            //{
-            //    throw ex;
-            //}
-            
+            UsuarioPruebaNegocio UPNegocio = new UsuarioPruebaNegocio();
+            try
+            {
+                UsuarioPrueba UPLocal = new UsuarioPrueba();
+                UPLocal.Nombre = txbNombre.Text;
+                UPLocal.Apellido = txbApellido.Text;
+                UPLocal.Documento = txbDocumento.Text;
+                UPLocal.Contraseña = txbContraseña.Text;
+                UPLocal.Perfil = (Perfil)cmbPerfil.SelectedItem;
+                UPLocal.Compañia = (Compañia)cmbCompañia.SelectedItem;
+                UPNegocio.agregarUsuarioP(testLocal,UPLocal);
 
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

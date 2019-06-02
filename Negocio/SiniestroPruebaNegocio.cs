@@ -10,14 +10,14 @@ namespace Negocio
 {
     public class SiniestroPruebaNegocio
     {
-        public List<SiniestroPrueba> listarSiniestroP()
+        public List<SiniestroPrueba> listarSiniestroP(Test test)
         {
             List<SiniestroPrueba> listado = new List<SiniestroPrueba>();
             AccesoDatosManager accesoDatos = new AccesoDatosManager();
             SiniestroPrueba siniestroP;
             try
             {
-                accesoDatos.setearConsulta("SELECT dp.ID,dp.IDTest,dp.IDVersionTest,dp.Dato,dp.Patente,c.Nombre,s.Nombre from DATOSPRUEBA dp inner join COMPAÑIAS c on c.ID=dp.IDCompañia inner join SISTEMAS s on s.ID=dp.IDSistema");
+                accesoDatos.setearConsulta("SELECT dp.ID,dp.IDTest,dp.IDVersionTest,dp.Dato,dp.Patente,c.Nombre,s.Nombre from DATOSPRUEBA dp inner join COMPAÑIAS c on c.ID=dp.IDCompañia inner join SISTEMAS s on s.ID=dp.IDSistema where dp.IDTest =" + test.ID.ToString() + " and dp.IDVersionTest = " + test.Version.ToString());
                 accesoDatos.abrirConexion();
                 accesoDatos.ejecutarConsulta();
                 while (accesoDatos.Lector.Read())
@@ -37,6 +37,25 @@ namespace Negocio
                     listado.Add(siniestroP);
                 }
                 return listado;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
+        public void agregarSiniestroPrueba(Test test,SiniestroPrueba SP)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            try
+            {
+                accesoDatos.setearConsulta("insert into DATOSPRUEBA(IDTest,IDVersionTest,Dato,Patente,IDCompañia,IDSistema) values("+test.ID.ToString()+","+test.Version.ToString()+", '"+SP.NroSiniestro.ToString()+"', '"+SP.Patente.ToString()+"',"+(Int16)SP.Compañia.ID+", "+(Int16)SP.Sistema.id+")");
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarConsulta();
             }
             catch (Exception ex)
             {

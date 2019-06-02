@@ -7,17 +7,41 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Dominio;
 namespace TPC_Semenza
 {
     public partial class Menu_Principal : Form
     {
+        private Test test;
+
         public Menu_Principal()
         {
             InitializeComponent();
         }
 
-        //FUNCION PARA AGREGAR VENTANA A UN PANEL
+        //FUNCION PARA AGREGAR VENTANA A UN PANEL SIN CERRAR LAS ANTERIORES
+        private void abrirForm<MiForm>(Test mTest) where MiForm : Form, new()
+        {
+            Form formulario;
+            formulario = panelVentanas.Controls.OfType<MiForm>().FirstOrDefault();
+            if(formulario==null)
+            {
+                formulario = new MiForm();
+                formulario.TopLevel = false;
+                formulario.FormBorderStyle = FormBorderStyle.None;
+                formulario.Dock = DockStyle.Fill;
+                panelVentanas.Controls.Add(formulario);
+                panelVentanas.Tag = formulario;
+                formulario.Show();
+                formulario.BringToFront();
+            }
+            else
+            {
+                formulario.BringToFront();
+            }
+        }
+
+        //FUNCION PARA AGREGAR VENTANA A UN PANEL CERRANDO LA ANTERIOR
         private void AddFormInPanel(object formHijo)
         {
             if (this.panelVentanas.Controls.Count > 0)
@@ -37,11 +61,14 @@ namespace TPC_Semenza
             btnAgregarDatos.Visible = false;
             btnAgregarCasoPrueba.Visible = false;
         }
-
+        
         //BOTONES
         private void button1_Click(object sender, EventArgs e)
         {
-            AddFormInPanel(new Nuevo_Test());
+            //AddFormInPanel(new Nuevo_Test());
+            test = new Test();
+            abrirForm<Nuevo_Test>(test);
+
             btnBuscarTest.Visible = false;
             btnBuscarTicket.Visible = false;
             btnAgregarDatos.Visible = true;
@@ -62,7 +89,11 @@ namespace TPC_Semenza
         private void btnVolver_Click(object sender, EventArgs e)
         {
             if (this.panelVentanas.Controls.Count > 0)
-                this.panelVentanas.Controls.RemoveAt(0);
+            {
+                //this.panelVentanas.Controls.RemoveAt(0);
+                this.panelVentanas.Controls.Clear();
+            }
+            
             btnBuscarTest.Visible = true;
             btnBuscarTicket.Visible = true;
             btnAgregarDatos.Visible = false;
@@ -70,6 +101,58 @@ namespace TPC_Semenza
             btnVolver.Visible = false;
         }
 
+        private void btnAgregarDatos_Click(object sender, EventArgs e)
+        {
+            //AddFormInPanel(new frmAgregarDatos());
+            abrirForm<frmAgregarDatos>(test);
+        }
+
+        private void btnAgregarCasoPrueba_Click(object sender, EventArgs e)
+        {
+            //AddFormInPanel(new frmAgregarCasoPrueba());
+            abrirForm<frmAgregarCasoPrueba>(test);
+        }
         
+        ////BOTONES viejos
+        //private void button1_Click(object sender, EventArgs e)
+        //{
+        //    AddFormInPanel(new Nuevo_Test());
+        //    btnBuscarTest.Visible = false;
+        //    btnBuscarTicket.Visible = false;
+        //    btnAgregarDatos.Visible = true;
+        //    btnAgregarCasoPrueba.Visible = true;
+        //    btnVolver.Visible = true;
+        //}
+
+        //private void button2_Click(object sender, EventArgs e)
+        //{
+        //    AddFormInPanel(new Buscar_Testing());
+        //}
+
+        //private void button3_Click(object sender, EventArgs e)
+        //{
+        //    AddFormInPanel(new Buscar_Ticket());
+        //}
+
+        //private void btnVolver_Click(object sender, EventArgs e)
+        //{
+        //    if (this.panelVentanas.Controls.Count > 0)
+        //        this.panelVentanas.Controls.RemoveAt(0);
+        //    btnBuscarTest.Visible = true;
+        //    btnBuscarTicket.Visible = true;
+        //    btnAgregarDatos.Visible = false;
+        //    btnAgregarCasoPrueba.Visible = false;
+        //    btnVolver.Visible = false;
+        //}
+
+        //private void btnAgregarDatos_Click(object sender, EventArgs e)
+        //{
+        //    AddFormInPanel(new frmAgregarDatos());
+        //}
+
+        //private void btnAgregarCasoPrueba_Click(object sender, EventArgs e)
+        //{
+        //    AddFormInPanel(new frmAgregarCasoPrueba());
+        //}
     }
 }

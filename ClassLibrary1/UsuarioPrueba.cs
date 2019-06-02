@@ -12,6 +12,5 @@ namespace Dominio
         public Compañia Compañia { get; set; }
         public Perfil Perfil { get; set; }
         public Test Test { get; set; }
-        public bool Grabado { get; set; }
     }
 }

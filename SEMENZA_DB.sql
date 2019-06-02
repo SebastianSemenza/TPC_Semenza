@@ -52,6 +52,7 @@ create table TESTS(
 	IDGrupoCompañias smallint not null foreign key references GRUPOSCOMPAÑIAS(ID),
 	Asunto varchar(50) null,
 	Descripcion varchar (1000) null,
+	Borrado bit not null,
 	--primary key (ID,IDVersion)
 	CONSTRAINT [PK_TESTS]PRIMARY KEY CLUSTERED
 	(
@@ -82,9 +83,17 @@ create table USUARIOSPRUEBA(
 	Contraseña varchar (50) not null,
 	IDPerfil smallint foreign key references PERFILES(ID),
 	Compañia smallint foreign key references COMPAÑIAS(ID),
-	Grabado bit not null,
 	foreign key (IDTest,IDVersionTest)references TESTS(ID,IDVersion)
 )
+
+Select * from USUARIOSPRUEBA
+select * from TESTS
+select * from DATOSPRUEBA
+
+
+select up.ID,up.IDTest,up.IDVersionTest,up.Nombre,up.Apellido,up.Documento,up.Contraseña,p.Descripcion as pdesc,c.Nombre 
+from USUARIOSPRUEBA up inner join PERFILES p on p.ID=up.IDPerfil inner join COMPAÑIAS c on c.ID=up.Compañia where up.IDTest = 1 and up.IDVersionTest = 2
+
 
 /*create table CASOSPRUEBA(
 	ID smallint not null identity(1,1),
@@ -214,20 +223,21 @@ insert into TESTS(NTicket,IDVersion,IDSistema,IDUsuario,IDPrioridad,IDCompañia,I
 values('25604',3,3,4,4,3,2,'Agregar Campos en pantalla General','Se solocita modificar el campo de patente para las compañias del exterior para que permita ingresar valores alfanumericos')
 
 
-insert into USUARIOSPRUEBA(IDTest,IDVersionTest,Nombre,Apellido,Documento,Contraseña,IDPerfil,Compañia,Grabado)
-values (1,2,'Jose','Sanchez','34235654','cesvi123',2,3,1)
-insert into USUARIOSPRUEBA(IDTest,IDVersionTest,Nombre,Apellido,Documento,Contraseña,IDPerfil,Compañia,Grabado)
-values (1,2,'Ramon','Olivera','27899654','cesvi345',1,2,1)
-insert into USUARIOSPRUEBA(IDTest,IDVersionTest,Nombre,Apellido,Documento,Contraseña,IDPerfil,Compañia,Grabado)
-values (1,2,'Carlos','tevez','28293244','cesvi111',1,2,1)
-insert into USUARIOSPRUEBA(IDTest,IDVersionTest,Nombre,Apellido,Documento,Contraseña,IDPerfil,Compañia,Grabado)
-values (1,2,'Ramon','Diaz','34235654','cesvi345',1,2,1)
-insert into USUARIOSPRUEBA(IDTest,IDVersionTest,Nombre,Apellido,Documento,Contraseña,IDPerfil,Compañia,Grabado)
-values (6,3,'Ramon','Diaz','32938422','cesvi345',1,2,1)
-insert into USUARIOSPRUEBA(IDTest,IDVersionTest,Nombre,Apellido,Documento,Contraseña,IDPerfil,Compañia,Grabado)
-values (6,3,'Hugo','Moyano','18983232','cesvi345',1,2,1)
-insert into USUARIOSPRUEBA(IDTest,IDVersionTest,Nombre,Apellido,Documento,Contraseña,IDPerfil,Compañia,Grabado)
-values (6,3,'Mauro','Zarate','43234354','cesvi345',1,2,1)
+
+insert into USUARIOSPRUEBA(IDTest,IDVersionTest,Nombre,Apellido,Documento,Contraseña,IDPerfil,Compañia)
+values (1,2,'Jose','Sanchez','34235654','cesvi123',2,3)
+insert into USUARIOSPRUEBA(IDTest,IDVersionTest,Nombre,Apellido,Documento,Contraseña,IDPerfil,Compañia)
+values (1,2,'Ramon','Olivera','27899654','cesvi345',1,2)
+insert into USUARIOSPRUEBA(IDTest,IDVersionTest,Nombre,Apellido,Documento,Contraseña,IDPerfil,Compañia)
+values (1,2,'Carlos','tevez','28293244','cesvi111',1,2)
+insert into USUARIOSPRUEBA(IDTest,IDVersionTest,Nombre,Apellido,Documento,Contraseña,IDPerfil,Compañia)
+values (1,2,'Ramon','Diaz','34235654','cesvi345',1,2)
+insert into USUARIOSPRUEBA(IDTest,IDVersionTest,Nombre,Apellido,Documento,Contraseña,IDPerfil,Compañia)
+values (6,3,'Ramon','Diaz','32938422','cesvi345',1,2)
+insert into USUARIOSPRUEBA(IDTest,IDVersionTest,Nombre,Apellido,Documento,Contraseña,IDPerfil,Compañia)
+values (6,3,'Hugo','Moyano','18983232','cesvi345',1,2)
+insert into USUARIOSPRUEBA(IDTest,IDVersionTest,Nombre,Apellido,Documento,Contraseña,IDPerfil,Compañia)
+values (6,3,'Mauro','Zarate','43234354','cesvi345',1,2)
 
 
 insert into DATOSPRUEBA(IDTest,IDVersionTest,Dato,Patente,IDCompañia,IDSistema)
@@ -276,4 +286,5 @@ Select * from USUARIOSPRUEBA
 
 
 
-
+--consulta para modificar:
+Select * from TESTS where NTicket=25604 and IDVersion=5

@@ -14,9 +14,17 @@ namespace TPC_Semenza
 {
     public partial class frmAgregarDatoPrueba : Form
     {
+        Test testLocal;
+
         public frmAgregarDatoPrueba()
         {
             InitializeComponent();
+        }
+
+        public frmAgregarDatoPrueba(Test test)
+        {
+            InitializeComponent();
+            testLocal = test;
         }
 
         private void frmAgregarDatoPrueba_Load(object sender, EventArgs e)
@@ -32,6 +40,26 @@ namespace TPC_Semenza
             {
 
                 throw;
+            }
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            SiniestroPruebaNegocio SPNegocio = new SiniestroPruebaNegocio();
+            try
+            {
+                SiniestroPrueba siniestroPrueba = new SiniestroPrueba();
+                siniestroPrueba.NroSiniestro = txbNroSiniestro.Text;
+                siniestroPrueba.Patente = txbPatente.Text;
+                siniestroPrueba.Compañia = (Compañia)cmbCompañia.SelectedItem;
+                siniestroPrueba.Sistema = (Sistema)cmbSistema.SelectedItem;
+                SPNegocio.agregarSiniestroPrueba(testLocal,siniestroPrueba);
+
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
     }

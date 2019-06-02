@@ -112,6 +112,7 @@
             this.btnAgregarUP.TabIndex = 35;
             this.btnAgregarUP.Text = "Agregar";
             this.btnAgregarUP.UseVisualStyleBackColor = false;
+            this.btnAgregarUP.Click += new System.EventHandler(this.btnAgregarUP_Click);
             // 
             // btnEliminarDato
             // 
@@ -145,6 +146,7 @@
             this.btnAgregarDato.TabIndex = 38;
             this.btnAgregarDato.Text = "Agregar";
             this.btnAgregarDato.UseVisualStyleBackColor = false;
+            this.btnAgregarDato.Click += new System.EventHandler(this.btnAgregarDato_Click);
             // 
             // frmAgregarDatos
             // 
@@ -164,6 +166,7 @@
             this.Controls.Add(this.dgvUsuariosPrueba);
             this.Name = "frmAgregarDatos";
             this.Text = "frmAgregarDatos";
+            this.Load += new System.EventHandler(this.frmAgregarDatos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatosPrueba)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuariosPrueba)).EndInit();
             this.ResumeLayout(false);

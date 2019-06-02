@@ -30,14 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu_Principal));
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.btnAgregarCasoPrueba = new System.Windows.Forms.Button();
+            this.btnAgregarDatos = new System.Windows.Forms.Button();
             this.btnVolver = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnBuscarTicket = new System.Windows.Forms.Button();
             this.btnBuscarTest = new System.Windows.Forms.Button();
             this.btnNuevoTest = new System.Windows.Forms.Button();
             this.panelVentanas = new System.Windows.Forms.Panel();
-            this.btnAgregarDatos = new System.Windows.Forms.Button();
-            this.btnAgregarCasoPrueba = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -57,6 +57,34 @@
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(250, 661);
             this.panelMenu.TabIndex = 2;
+            // 
+            // btnAgregarCasoPrueba
+            // 
+            this.btnAgregarCasoPrueba.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(90)))), ((int)(((byte)(120)))));
+            this.btnAgregarCasoPrueba.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregarCasoPrueba.Font = new System.Drawing.Font("Palatino Linotype", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregarCasoPrueba.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnAgregarCasoPrueba.Location = new System.Drawing.Point(12, 203);
+            this.btnAgregarCasoPrueba.Name = "btnAgregarCasoPrueba";
+            this.btnAgregarCasoPrueba.Size = new System.Drawing.Size(232, 39);
+            this.btnAgregarCasoPrueba.TabIndex = 6;
+            this.btnAgregarCasoPrueba.Text = "Casos de Prueba";
+            this.btnAgregarCasoPrueba.UseVisualStyleBackColor = false;
+            this.btnAgregarCasoPrueba.Click += new System.EventHandler(this.btnAgregarCasoPrueba_Click);
+            // 
+            // btnAgregarDatos
+            // 
+            this.btnAgregarDatos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(90)))), ((int)(((byte)(120)))));
+            this.btnAgregarDatos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregarDatos.Font = new System.Drawing.Font("Palatino Linotype", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregarDatos.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnAgregarDatos.Location = new System.Drawing.Point(12, 158);
+            this.btnAgregarDatos.Name = "btnAgregarDatos";
+            this.btnAgregarDatos.Size = new System.Drawing.Size(232, 39);
+            this.btnAgregarDatos.TabIndex = 5;
+            this.btnAgregarDatos.Text = "Usuarios / Datos";
+            this.btnAgregarDatos.UseVisualStyleBackColor = false;
+            this.btnAgregarDatos.Click += new System.EventHandler(this.btnAgregarDatos_Click);
             // 
             // btnVolver
             // 
@@ -133,32 +161,6 @@
             this.panelVentanas.Name = "panelVentanas";
             this.panelVentanas.Size = new System.Drawing.Size(934, 661);
             this.panelVentanas.TabIndex = 3;
-            // 
-            // btnAgregarDatos
-            // 
-            this.btnAgregarDatos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(90)))), ((int)(((byte)(120)))));
-            this.btnAgregarDatos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregarDatos.Font = new System.Drawing.Font("Palatino Linotype", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregarDatos.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnAgregarDatos.Location = new System.Drawing.Point(12, 158);
-            this.btnAgregarDatos.Name = "btnAgregarDatos";
-            this.btnAgregarDatos.Size = new System.Drawing.Size(232, 39);
-            this.btnAgregarDatos.TabIndex = 5;
-            this.btnAgregarDatos.Text = "Usuarios / Datos";
-            this.btnAgregarDatos.UseVisualStyleBackColor = false;
-            // 
-            // btnAgregarCasoPrueba
-            // 
-            this.btnAgregarCasoPrueba.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(90)))), ((int)(((byte)(120)))));
-            this.btnAgregarCasoPrueba.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregarCasoPrueba.Font = new System.Drawing.Font("Palatino Linotype", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregarCasoPrueba.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnAgregarCasoPrueba.Location = new System.Drawing.Point(12, 203);
-            this.btnAgregarCasoPrueba.Name = "btnAgregarCasoPrueba";
-            this.btnAgregarCasoPrueba.Size = new System.Drawing.Size(232, 39);
-            this.btnAgregarCasoPrueba.TabIndex = 6;
-            this.btnAgregarCasoPrueba.Text = "Casos de Prueba";
-            this.btnAgregarCasoPrueba.UseVisualStyleBackColor = false;
             // 
             // Menu_Principal
             // 

@@ -53,6 +53,8 @@
             this.label10 = new System.Windows.Forms.Label();
             this.cmbSolicitante = new System.Windows.Forms.ComboBox();
             this.cmbAplica = new System.Windows.Forms.ComboBox();
+            this.btnAgregarDatos = new System.Windows.Forms.Button();
+            this.btnAgregarCasosPrueba = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblTicket
@@ -297,6 +299,26 @@
             this.cmbAplica.Size = new System.Drawing.Size(221, 21);
             this.cmbAplica.TabIndex = 31;
             // 
+            // btnAgregarDatos
+            // 
+            this.btnAgregarDatos.Location = new System.Drawing.Point(164, 408);
+            this.btnAgregarDatos.Name = "btnAgregarDatos";
+            this.btnAgregarDatos.Size = new System.Drawing.Size(188, 65);
+            this.btnAgregarDatos.TabIndex = 32;
+            this.btnAgregarDatos.Text = "Agregar Datos";
+            this.btnAgregarDatos.UseVisualStyleBackColor = true;
+            this.btnAgregarDatos.Click += new System.EventHandler(this.btnAgregarDatos_Click);
+            // 
+            // btnAgregarCasosPrueba
+            // 
+            this.btnAgregarCasosPrueba.Location = new System.Drawing.Point(531, 408);
+            this.btnAgregarCasosPrueba.Name = "btnAgregarCasosPrueba";
+            this.btnAgregarCasosPrueba.Size = new System.Drawing.Size(188, 65);
+            this.btnAgregarCasosPrueba.TabIndex = 33;
+            this.btnAgregarCasosPrueba.Text = "Agregar Casos de Prueba";
+            this.btnAgregarCasosPrueba.UseVisualStyleBackColor = true;
+            this.btnAgregarCasosPrueba.Click += new System.EventHandler(this.btnAgregarCasosPrueba_Click);
+            // 
             // Nuevo_Test
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -304,6 +326,8 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(42)))), ((int)(((byte)(55)))));
             this.ClientSize = new System.Drawing.Size(984, 561);
+            this.Controls.Add(this.btnAgregarCasosPrueba);
+            this.Controls.Add(this.btnAgregarDatos);
             this.Controls.Add(this.cmbAplica);
             this.Controls.Add(this.cmbSolicitante);
             this.Controls.Add(this.label10);
@@ -364,5 +388,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox cmbSolicitante;
         private System.Windows.Forms.ComboBox cmbAplica;
+        private System.Windows.Forms.Button btnAgregarDatos;
+        private System.Windows.Forms.Button btnAgregarCasosPrueba;
     }
 }
