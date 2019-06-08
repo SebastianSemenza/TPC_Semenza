@@ -8,7 +8,7 @@ namespace Dominio
 {
     public class Sistema
     {
-        public short id { get; set; }
+        public int id { get; set; }
         public string Nombre { get; set; }
         public override string ToString()
         {

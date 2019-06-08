@@ -55,6 +55,7 @@
             this.cmbAplica = new System.Windows.Forms.ComboBox();
             this.btnAgregarDatos = new System.Windows.Forms.Button();
             this.btnAgregarCasosPrueba = new System.Windows.Forms.Button();
+            this.btnFinalizarVersion = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblTicket
@@ -226,12 +227,13 @@
             this.btnGenerarVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnGenerarVersion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(90)))), ((int)(((byte)(120)))));
             this.btnGenerarVersion.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnGenerarVersion.Location = new System.Drawing.Point(602, 513);
+            this.btnGenerarVersion.Location = new System.Drawing.Point(12, 513);
             this.btnGenerarVersion.Name = "btnGenerarVersion";
             this.btnGenerarVersion.Size = new System.Drawing.Size(177, 36);
             this.btnGenerarVersion.TabIndex = 17;
-            this.btnGenerarVersion.Text = "GENERAR VERSION";
+            this.btnGenerarVersion.Text = "GENERAR NUEVA VERSION";
             this.btnGenerarVersion.UseVisualStyleBackColor = false;
+            this.btnGenerarVersion.Click += new System.EventHandler(this.btnGenerarVersion_Click);
             // 
             // btnTestingOK
             // 
@@ -244,6 +246,7 @@
             this.btnTestingOK.TabIndex = 18;
             this.btnTestingOK.Text = "TESTING OK";
             this.btnTestingOK.UseVisualStyleBackColor = false;
+            this.btnTestingOK.Click += new System.EventHandler(this.btnTestingOK_Click);
             // 
             // txtDescripcion
             // 
@@ -319,6 +322,19 @@
             this.btnAgregarCasosPrueba.UseVisualStyleBackColor = true;
             this.btnAgregarCasosPrueba.Click += new System.EventHandler(this.btnAgregarCasosPrueba_Click);
             // 
+            // btnFinalizarVersion
+            // 
+            this.btnFinalizarVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFinalizarVersion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(90)))), ((int)(((byte)(120)))));
+            this.btnFinalizarVersion.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnFinalizarVersion.Location = new System.Drawing.Point(601, 513);
+            this.btnFinalizarVersion.Name = "btnFinalizarVersion";
+            this.btnFinalizarVersion.Size = new System.Drawing.Size(177, 36);
+            this.btnFinalizarVersion.TabIndex = 34;
+            this.btnFinalizarVersion.Text = "FINALIZAR VERSION";
+            this.btnFinalizarVersion.UseVisualStyleBackColor = false;
+            this.btnFinalizarVersion.Click += new System.EventHandler(this.btnFinalizarVersion_Click);
+            // 
             // Nuevo_Test
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -326,6 +342,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(42)))), ((int)(((byte)(55)))));
             this.ClientSize = new System.Drawing.Size(984, 561);
+            this.Controls.Add(this.btnFinalizarVersion);
             this.Controls.Add(this.btnAgregarCasosPrueba);
             this.Controls.Add(this.btnAgregarDatos);
             this.Controls.Add(this.cmbAplica);
@@ -390,5 +407,6 @@
         private System.Windows.Forms.ComboBox cmbAplica;
         private System.Windows.Forms.Button btnAgregarDatos;
         private System.Windows.Forms.Button btnAgregarCasosPrueba;
+        private System.Windows.Forms.Button btnFinalizarVersion;
     }
 }

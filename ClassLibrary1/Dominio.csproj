@@ -46,6 +46,7 @@
     <Compile Include="Estadistica.cs" />
     <Compile Include="EstadoPlanillaP.cs" />
     <Compile Include="EstadoTest.cs" />
+    <Compile Include="EstadoTicket.cs" />
     <Compile Include="GrupoCompañias.cs" />
     <Compile Include="Perfil.cs" />
     <Compile Include="Persona.cs" />

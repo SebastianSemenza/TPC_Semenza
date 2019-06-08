@@ -8,8 +8,12 @@ namespace Dominio
 {
     public class SiniestroPrueba
     {
-        public short ID { get; set; }
+        public int ID { get; set; }
         public string NroSiniestro { get; set; }
+        public override string ToString()
+        {
+            return NroSiniestro;
+        }
         public string Patente { get; set; }
         public Test Test { get; set; }
         public Compañia Compañia { get; set; }

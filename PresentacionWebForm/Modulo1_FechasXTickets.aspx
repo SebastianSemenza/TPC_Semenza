@@ -1,14 +1,10 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Modulo1_Tiempo_Analisis.aspx.cs" Inherits="PresentacionWebForm.Modulo1_Tiempos" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Modulo1_FechasXTickets.aspx.cs" Inherits="PresentacionWebForm.FechasXTickets" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolderTITULO" runat="server">
     <link href="../../bootstrap/css/styleTester.css" rel="stylesheet" type="text/css" />
-    
     <h2>MODULO 1</h2>
 </asp:Content>
-
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
-    <h3>Tiempos</h3>
+     <h3>Tiempos</h3>
     <h4>Busqueda:</h4>
 
     <table style="width: 100%">
@@ -84,7 +80,7 @@
         </tr>
         <tr>
             <td colspan="4">
-                <asp:GridView ID="dgvResultadoBusqueda" runat="server" class="table table-striped" OnRowDataBound="dgvResultadoBusqueda_RowDataBound"></asp:GridView>
+                <asp:GridView ID="dgvResultadoBusqueda" runat="server" class="table table-striped"></asp:GridView>
             </td>
         </tr>
     </table>

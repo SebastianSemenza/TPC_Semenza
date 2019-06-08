@@ -10,7 +10,7 @@
 namespace PresentacionWebForm {
     
     
-    public partial class Modulo1_Tiempos {
+    public partial class FechasXTickets {
         
         /// <summary>
         /// Control lblTicket.

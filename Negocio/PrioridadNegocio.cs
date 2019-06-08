@@ -23,7 +23,7 @@ namespace Negocio
                 while (accesoDatos.Lector.Read())
                 {
                     prioridad = new Prioridad();
-                    prioridad.ID = (short)accesoDatos.Lector["ID"];
+                    prioridad.ID = (int)accesoDatos.Lector["ID"];
                     prioridad.TipoPrioridad = accesoDatos.Lector["Nombre"].ToString();
                     listado.Add(prioridad);
                 }

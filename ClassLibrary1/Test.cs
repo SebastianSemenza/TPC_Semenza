@@ -9,14 +9,17 @@ namespace Dominio
     public class Test
     {
         //atributos creados para mostrarlos en el dgv
-        public short Version { get; set; }
-        public short NTicket{ get; set; }
+        public int Version { get; set; }
+        public int NTicket{ get; set; }
         public string Asunto { get; set; }
         public string Descripcion { get; set; }
         public Prioridad Prioridad { get; set; }
+        public bool Finalizado { get; set; }
+        public bool VersionFinal { get; set; }
+        public bool Ultimo { get; set; }
 
         //atributos iniciales
-        public short ID { get; set; }
+        public int ID { get; set; }
         public int Duracion { get; set; }
         public EstadoTest Estado { get; set; }
         public UsuarioPrueba UsuarioP { get; set; }
@@ -30,5 +33,7 @@ namespace Dominio
         public GrupoCompañias GrupoCia { get; set; }
         public Ticket Ticket { get; set; }
         public Sistema Sistema { get; set; }
+        public DateTime FechaCarga { get; set; }
+        public DateTime FechaFinalizacion { get; set; }
     }
 }

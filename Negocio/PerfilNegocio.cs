@@ -23,7 +23,7 @@ namespace Negocio
                 while(accesoDatos.Lector.Read())
                 {
                     perfil = new Perfil();
-                    perfil.id = (short)accesoDatos.Lector["ID"];
+                    perfil.id = (int)accesoDatos.Lector["ID"];
                     perfil.Nombre = accesoDatos.Lector["Descripcion"].ToString();
                     listado.Add(perfil);
                 }

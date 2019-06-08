@@ -38,6 +38,8 @@ namespace TPC_Semenza
             }
         }
 
+        
+
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             string sFiltro = "";
@@ -87,7 +89,7 @@ namespace TPC_Semenza
             TestNegocio testNegocio = new TestNegocio();
             try
             {
-                //DATAGRIDVIEW USUARIO PRUEBA
+                //DATAGRIDVIEW RESULTADO BUSQUEDA
                 listadoTests = testNegocio.listarTests(sFiltro);
                 dgvResultadoBusqueda.DataSource = listadoTests;
                 dgvResultadoBusqueda.Columns["Duracion"].Visible = false;
@@ -102,9 +104,12 @@ namespace TPC_Semenza
                 dgvResultadoBusqueda.Columns["Descripcion"].Visible = false;
                 dgvResultadoBusqueda.Columns["ID"].Width = 30;
                 dgvResultadoBusqueda.Columns["ID"].DisplayIndex = 0;
-                dgvResultadoBusqueda.Columns["Version"].Width = 30;
+                dgvResultadoBusqueda.Columns["Version"].Width = 40;
                 dgvResultadoBusqueda.Columns["Ticket"].Width = 70;
                 dgvResultadoBusqueda.Columns["Asunto"].Width = 150;
+                dgvResultadoBusqueda.Columns["Finalizado"].Width = 50;
+                dgvResultadoBusqueda.Columns["VersionFinal"].Width = 50;
+                dgvResultadoBusqueda.Columns["Ultimo"].Width = 50;
             }
             catch (Exception ex)
             {

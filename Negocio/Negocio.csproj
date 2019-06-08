@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CasoPruebaNegocio.cs" />
     <Compile Include="CompañiaNegocio.cs" />
     <Compile Include="GrupoCompañiasNegocio.cs" />
     <Compile Include="PerfilNegocio.cs" />
@@ -49,6 +50,7 @@
     <Compile Include="SiniestroPruebaNegocio.cs" />
     <Compile Include="SistemaNegocio.cs" />
     <Compile Include="TestNegocio.cs" />
+    <Compile Include="TicketNegocio.cs" />
     <Compile Include="UsuarioPruebaNegocio.cs" />
     <Compile Include="UsuarioTesterNegocio.cs" />
   </ItemGroup>

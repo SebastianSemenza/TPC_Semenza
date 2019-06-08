@@ -9,7 +9,7 @@ namespace Dominio
     public class Prioridad
     {
         public string TipoPrioridad{ get; set; }
-        public short ID { get; set; }
+        public int ID { get; set; }
 
         public override string ToString()
         {

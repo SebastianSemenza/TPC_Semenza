@@ -8,7 +8,7 @@ namespace Dominio
 {
     public class TipoGrabado
     {
-        public short id { get; set; }
+        public int id { get; set; }
         public string Descripcion { get; set; }
     }
 }

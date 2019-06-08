@@ -23,7 +23,7 @@ namespace Negocio
                 while (accesoDatos.Lector.Read())
                 {
                     usuario = new UsuarioTester();
-                    usuario.ID = (short)accesoDatos.Lector["ID"];
+                    usuario.ID = (int)accesoDatos.Lector["ID"];
                     usuario.Nombre = accesoDatos.Lector["Nombre"].ToString();
                     usuario.Apellido = accesoDatos.Lector["Apellido"].ToString();
                     usuario.Documento = accesoDatos.Lector["Documento"].ToString();

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    public class EstadoPlanillaP
+    public class EstadoTicket
     {
-        public int id { get; set; }
-        public string descripcion { get; set; }
+        int ID { get; set; }
+        DateTime FechaEstado { get; set; }
     }
 }

@@ -23,13 +23,13 @@ namespace Negocio
                 while (accesoDatos.Lector.Read())
                 {
                     siniestroP = new SiniestroPrueba();
-                    siniestroP.ID = accesoDatos.Lector.GetInt16(0);
+                    siniestroP.ID = accesoDatos.Lector.GetInt32(0);
                     siniestroP.NroSiniestro = accesoDatos.Lector.GetString(3);
                     siniestroP.Patente = accesoDatos.Lector.GetString(4);
                     siniestroP.Test = new Test();
-                    siniestroP.Test.ID = accesoDatos.Lector.GetInt16(1);
+                    siniestroP.Test.ID = accesoDatos.Lector.GetInt32(1);
                     siniestroP.Test.Estado = new EstadoTest();
-                    siniestroP.Test.Estado.Version = accesoDatos.Lector.GetInt16(2);
+                    siniestroP.Test.Estado.Version = accesoDatos.Lector.GetInt32(2);
                     siniestroP.Compañia = new Compañia();
                     siniestroP.Compañia.Nombre = accesoDatos.Lector.GetString(5);
                     siniestroP.Sistema = new Sistema();

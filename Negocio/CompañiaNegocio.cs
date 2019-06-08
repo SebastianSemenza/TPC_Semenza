@@ -23,7 +23,7 @@ namespace Negocio
                 while (accesoDatos.Lector.Read())
                 {
                     Compañia = new Compañia();
-                    Compañia.ID = (short)accesoDatos.Lector["ID"];
+                    Compañia.ID = (int)accesoDatos.Lector["ID"];
                     Compañia.Nombre = accesoDatos.Lector["Nombre"].ToString();
                     Compañia.Pais = accesoDatos.Lector["Pais"].ToString();
                     Compañia.Provincia = accesoDatos.Lector["Provincia"].ToString();

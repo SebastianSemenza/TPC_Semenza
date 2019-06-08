@@ -114,6 +114,7 @@
     <Content Include=".gitignore" />
     <Content Include="bootstrap\css\bootstrap.css" />
     <Content Include="bootstrap\css\bootstrap.min.css" />
+    <Content Include="bootstrap\css\styleTester.css" />
     <Content Include="bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="bootstrap\js\bootstrap.js" />
     <Content Include="bootstrap\js\bootstrap.min.js" />
@@ -167,6 +168,7 @@
     <Content Include="dist\js\demo.js" />
     <Content Include="dist\js\pages\dashboard.js" />
     <Content Include="dist\js\pages\dashboard2.js" />
+    <Content Include="Modulo1_FechasXTickets.aspx" />
     <Content Include="Gruntfile.js" />
     <Content Include="index.html" />
     <Content Include="index2.html" />
@@ -698,6 +700,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Modulo1_FechasXTickets.aspx.cs">
+      <DependentUpon>Modulo1_FechasXTickets.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulo1_FechasXTickets.aspx.designer.cs">
+      <DependentUpon>Modulo1_FechasXTickets.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Modulo1_Tiempo_Analisis.aspx.cs">
       <DependentUpon>Modulo1_Tiempo_Analisis.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -721,7 +730,16 @@
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ClassLibrary1\Dominio.csproj">
+      <Project>{567adfc4-f4b7-4a60-a84f-fb4eab5c1505}</Project>
+      <Name>Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Negocio\Negocio.csproj">
+      <Project>{434a791f-0dc1-44f4-b544-efdd7087e8ec}</Project>
+      <Name>Negocio</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="bootstrap\css\bootstrap.css.map" />
     <Content Include="bootstrap\fonts\glyphicons-halflings-regular.eot" />

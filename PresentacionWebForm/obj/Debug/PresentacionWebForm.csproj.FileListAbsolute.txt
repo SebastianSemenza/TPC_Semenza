@@ -75,3 +75,9 @@ C:\Users\sebastian\Desktop\TPC_Semenza\PresentacionWebForm\obj\Debug\Presentacio
 C:\Users\sebastian\Desktop\TPC_Semenza\PresentacionWebForm\obj\Debug\PresentacionWebForm.csproj.CopyComplete
 C:\Users\sebastian\Desktop\TPC_Semenza\PresentacionWebForm\obj\Debug\PresentacionWebForm.dll
 C:\Users\sebastian\Desktop\TPC_Semenza\PresentacionWebForm\obj\Debug\PresentacionWebForm.pdb
+C:\Users\sebastian\Desktop\TPC_Semenza\PresentacionWebForm\bin\ClassLibrary1.dll
+C:\Users\sebastian\Desktop\TPC_Semenza\PresentacionWebForm\bin\Negocio.dll
+C:\Users\sebastian\Desktop\TPC_Semenza\PresentacionWebForm\bin\AccesoDatos.dll
+C:\Users\sebastian\Desktop\TPC_Semenza\PresentacionWebForm\bin\ClassLibrary1.pdb
+C:\Users\sebastian\Desktop\TPC_Semenza\PresentacionWebForm\bin\Negocio.pdb
+C:\Users\sebastian\Desktop\TPC_Semenza\PresentacionWebForm\bin\AccesoDatos.pdb

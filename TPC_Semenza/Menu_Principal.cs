@@ -12,7 +12,7 @@ namespace TPC_Semenza
 {
     public partial class Menu_Principal : Form
     {
-        private Test test;
+        //private Test test;
 
         public Menu_Principal()
         {
@@ -20,11 +20,11 @@ namespace TPC_Semenza
         }
 
         //FUNCION PARA AGREGAR VENTANA A UN PANEL SIN CERRAR LAS ANTERIORES
-        private void abrirForm<MiForm>(Test mTest) where MiForm : Form, new()
+        private void abrirForm<MiForm>() where MiForm : Form, new()
         {
             Form formulario;
             formulario = panelVentanas.Controls.OfType<MiForm>().FirstOrDefault();
-            if(formulario==null)
+            if (formulario == null)
             {
                 formulario = new MiForm();
                 formulario.TopLevel = false;
@@ -61,20 +61,18 @@ namespace TPC_Semenza
             btnAgregarDatos.Visible = false;
             btnAgregarCasoPrueba.Visible = false;
         }
-        
+
         //BOTONES
         private void button1_Click(object sender, EventArgs e)
         {
-            //AddFormInPanel(new Nuevo_Test());
-            test = new Test();
-            abrirForm<Nuevo_Test>(test);
-
+            abrirForm<Nuevo_Test>();
             btnBuscarTest.Visible = false;
             btnBuscarTicket.Visible = false;
             btnAgregarDatos.Visible = true;
             btnAgregarCasoPrueba.Visible = true;
             btnVolver.Visible = true;
         }
+
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -90,7 +88,6 @@ namespace TPC_Semenza
         {
             if (this.panelVentanas.Controls.Count > 0)
             {
-                //this.panelVentanas.Controls.RemoveAt(0);
                 this.panelVentanas.Controls.Clear();
             }
             
@@ -103,56 +100,13 @@ namespace TPC_Semenza
 
         private void btnAgregarDatos_Click(object sender, EventArgs e)
         {
-            //AddFormInPanel(new frmAgregarDatos());
-            abrirForm<frmAgregarDatos>(test);
+            abrirForm<frmAgregarDatos>();
         }
 
         private void btnAgregarCasoPrueba_Click(object sender, EventArgs e)
         {
-            //AddFormInPanel(new frmAgregarCasoPrueba());
-            abrirForm<frmAgregarCasoPrueba>(test);
+            abrirForm<frmAgregarCasoPrueba>();
         }
         
-        ////BOTONES viejos
-        //private void button1_Click(object sender, EventArgs e)
-        //{
-        //    AddFormInPanel(new Nuevo_Test());
-        //    btnBuscarTest.Visible = false;
-        //    btnBuscarTicket.Visible = false;
-        //    btnAgregarDatos.Visible = true;
-        //    btnAgregarCasoPrueba.Visible = true;
-        //    btnVolver.Visible = true;
-        //}
-
-        //private void button2_Click(object sender, EventArgs e)
-        //{
-        //    AddFormInPanel(new Buscar_Testing());
-        //}
-
-        //private void button3_Click(object sender, EventArgs e)
-        //{
-        //    AddFormInPanel(new Buscar_Ticket());
-        //}
-
-        //private void btnVolver_Click(object sender, EventArgs e)
-        //{
-        //    if (this.panelVentanas.Controls.Count > 0)
-        //        this.panelVentanas.Controls.RemoveAt(0);
-        //    btnBuscarTest.Visible = true;
-        //    btnBuscarTicket.Visible = true;
-        //    btnAgregarDatos.Visible = false;
-        //    btnAgregarCasoPrueba.Visible = false;
-        //    btnVolver.Visible = false;
-        //}
-
-        //private void btnAgregarDatos_Click(object sender, EventArgs e)
-        //{
-        //    AddFormInPanel(new frmAgregarDatos());
-        //}
-
-        //private void btnAgregarCasoPrueba_Click(object sender, EventArgs e)
-        //{
-        //    AddFormInPanel(new frmAgregarCasoPrueba());
-        //}
     }
 }

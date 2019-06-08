@@ -15,6 +15,6 @@ namespace Dominio
         }
         public string Apellido { get; set; }
         public string Documento { get; set; }
-        public short ID { get; set; }
+        public int ID { get; set; }
     }
 }

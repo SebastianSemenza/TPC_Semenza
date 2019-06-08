@@ -9,6 +9,6 @@ namespace Dominio
     public class EstadoTest
     {
         public TipoGrabado TipoGrabado { get; set; }
-        public short Version { get; set; }
+        public int Version { get; set; }
     }
 }

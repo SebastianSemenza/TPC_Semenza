@@ -23,7 +23,7 @@ namespace Negocio
                 while (accesoDatos.Lector.Read())
                 {
                     Sistema = new Sistema();
-                    Sistema.id = (short)accesoDatos.Lector["ID"];
+                    Sistema.id = (int)accesoDatos.Lector["ID"];
                     Sistema.Nombre = accesoDatos.Lector["Nombre"].ToString();
                     listado.Add(Sistema);
                 }

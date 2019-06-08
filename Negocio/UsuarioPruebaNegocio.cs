@@ -23,15 +23,15 @@ namespace Negocio
                 while (accesoDatos.Lector.Read())
                 {
                     usuario = new UsuarioPrueba();
-                    usuario.ID = (short)accesoDatos.Lector["ID"];
+                    usuario.ID = (int)accesoDatos.Lector["ID"];
                     usuario.Nombre = accesoDatos.Lector["Nombre"].ToString();
                     usuario.Apellido = accesoDatos.Lector["Apellido"].ToString();
                     usuario.Documento = accesoDatos.Lector["Documento"].ToString();
                     usuario.Contraseña = accesoDatos.Lector["Contraseña"].ToString();
                     usuario.Test = new Test();
-                    usuario.Test.ID = (short)accesoDatos.Lector["IDTest"];
+                    usuario.Test.ID = (int)accesoDatos.Lector["IDTest"];
                     usuario.Test.Estado = new EstadoTest();
-                    usuario.Test.Estado.Version = (short)accesoDatos.Lector["IDVersionTest"];
+                    usuario.Test.Estado.Version = (int)accesoDatos.Lector["IDVersionTest"];
                     usuario.Perfil = new Perfil();
                     usuario.Perfil.Nombre = accesoDatos.Lector.GetString(7);
                     usuario.Compañia = new Compañia();

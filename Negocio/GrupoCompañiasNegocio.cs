@@ -23,7 +23,7 @@ namespace Negocio
                 while(accesoDatos.Lector.Read())
                 {
                     grupoCompañias = new GrupoCompañias();
-                    grupoCompañias.id = (short)accesoDatos.Lector["ID"];
+                    grupoCompañias.id = (int)accesoDatos.Lector["ID"];
                     grupoCompañias.Nombre = accesoDatos.Lector["Descripcion"].ToString();
                     listado.Add(grupoCompañias);
                 }
