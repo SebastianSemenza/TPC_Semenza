@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolderTITULO" runat="server">
     <link href="../../bootstrap/css/styleTester.css" rel="stylesheet" type="text/css" />
-    
+
     <h2>MODULO 1</h2>
 </asp:Content>
 
@@ -63,7 +63,7 @@
         <tr>
             <td colspan="2"></td>
             <td colspan="2">
-                <asp:Button ID="Button1" runat="server" Text="BUSCAR" class="btn btn-info" style="width:250px" OnClick="Button1_Click"/>
+                <asp:Button ID="Button1" runat="server" Text="BUSCAR" class="btn btn-info" Style="width: 250px" OnClick="Button1_Click" />
             </td>
         </tr>
 
@@ -72,19 +72,29 @@
                 <p></p>
             </td>
         </tr>
-                <tr>
-            <td colspan="4">
-                <p></p>
-            </td>
-        </tr>
-                <tr>
+        <tr>
             <td colspan="4">
                 <p></p>
             </td>
         </tr>
         <tr>
             <td colspan="4">
-                <asp:GridView ID="dgvResultadoBusqueda" runat="server" class="table table-striped" OnRowDataBound="dgvResultadoBusqueda_RowDataBound"></asp:GridView>
+                <p></p>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <asp:GridView ID="dgvResultadoBusqueda" runat="server" class="table table-striped" AutoGenerateColumns="false">
+                    <columns>
+                        <asp:BoundField HeaderText="Ticket" DataField="Nticket" />
+                        <asp:BoundField HeaderText="Asunto" DataField="Asunto" />
+                        <asp:BoundField HeaderText="Fecha de Carga" DataField="FechaCarga" />
+                        <asp:BoundField HeaderText="Tiempo de Análisis" DataField="TiempoAnalisis" />
+                        <asp:BoundField HeaderText="Tiempo de Desarrollo" DataField="TiempoDesarrollo" />
+                        <asp:BoundField HeaderText="Tiempo de Testeo" DataField="TiempoTesteo" />
+                        <asp:BoundField HeaderText="Tiempo de Producción" DataField="TiempoPuestaProduccion" />
+                    </columns>
+                </asp:GridView>
             </td>
         </tr>
     </table>

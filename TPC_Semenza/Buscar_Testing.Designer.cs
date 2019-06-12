@@ -49,8 +49,6 @@
             this.cmbTipoGrabado = new System.Windows.Forms.ComboBox();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.dgvResultadoBusqueda = new System.Windows.Forms.DataGridView();
-            this.lblVersion = new System.Windows.Forms.Label();
-            this.cmbVersion = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResultadoBusqueda)).BeginInit();
             this.SuspendLayout();
             // 
@@ -243,25 +241,7 @@
             this.dgvResultadoBusqueda.Name = "dgvResultadoBusqueda";
             this.dgvResultadoBusqueda.Size = new System.Drawing.Size(614, 223);
             this.dgvResultadoBusqueda.TabIndex = 20;
-            this.dgvResultadoBusqueda.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvResultadoBusqueda_CellContentDoubleClick);
-            // 
-            // lblVersion
-            // 
-            this.lblVersion.AutoSize = true;
-            this.lblVersion.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblVersion.Location = new System.Drawing.Point(344, 157);
-            this.lblVersion.Name = "lblVersion";
-            this.lblVersion.Size = new System.Drawing.Size(45, 13);
-            this.lblVersion.TabIndex = 21;
-            this.lblVersion.Text = "Version:";
-            // 
-            // cmbVersion
-            // 
-            this.cmbVersion.FormattingEnabled = true;
-            this.cmbVersion.Location = new System.Drawing.Point(429, 154);
-            this.cmbVersion.Name = "cmbVersion";
-            this.cmbVersion.Size = new System.Drawing.Size(200, 21);
-            this.cmbVersion.TabIndex = 22;
+            this.dgvResultadoBusqueda.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvResultadoBusqueda_CellClick);
             // 
             // Buscar_Testing
             // 
@@ -269,8 +249,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(42)))), ((int)(((byte)(55)))));
             this.ClientSize = new System.Drawing.Size(655, 483);
-            this.Controls.Add(this.cmbVersion);
-            this.Controls.Add(this.lblVersion);
             this.Controls.Add(this.dgvResultadoBusqueda);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.cmbTipoGrabado);
@@ -324,7 +302,5 @@
         private System.Windows.Forms.ComboBox cmbTipoGrabado;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.DataGridView dgvResultadoBusqueda;
-        private System.Windows.Forms.Label lblVersion;
-        private System.Windows.Forms.ComboBox cmbVersion;
     }
 }

@@ -37,6 +37,13 @@ namespace TPC_Semenza
                 cmbUsuario.DataSource = UPNegocio.listarUsuariosP(testLocal);
                 cmbDatoPrueba.DataSource = SPNegocio.listarSiniestroP(testLocal);
                 cargarGrillaCasosP();
+                //VERIFICA SI ESTA FINALIZADO PARA ESCONDER BOTONES Y FRIZAR CAMPOS
+                if (testLocal.Finalizado == true)
+                {
+                    btnAgregarCaso.Visible = false;
+                    btnEliminarCaso.Visible = false;
+                    btnModificarCaso.Visible = false;
+                }
             }
             catch (Exception ex)
             {
@@ -49,16 +56,23 @@ namespace TPC_Semenza
             CasoPruebaNegocio CPNegocio = new CasoPruebaNegocio();
             try
             {
-                CasoPrueba casoPrueba = new CasoPrueba();
-                casoPrueba.Descripcion = txbDescripcion.Text;
-                casoPrueba.Resultado = ckbResultado.Checked;
-                casoPrueba.Observaciones = txbDetalle.Text;
-                casoPrueba.TextoFalla = txbDetalleFalla.Text;
-                casoPrueba.Usuario = (UsuarioPrueba)cmbUsuario.SelectedItem;
-                casoPrueba.Siniestro = (SiniestroPrueba)cmbDatoPrueba.SelectedItem;
-                casoPrueba.Automatico = false;
-                CPNegocio.agregarDatoPrueba(testLocal, casoPrueba);
-                cargarGrillaCasosP();
+                if (txbDetalle.Text == "" || txbDescripcion.Text == "" || cmbDatoPrueba.SelectedIndex == 0 || cmbUsuario.SelectedIndex == 0 || (ckbResultado.Checked == false && txbDetalleFalla.Text == ""))
+                {
+                    MessageBox.Show("Debe completar todos los campos");
+                }
+                else
+                {
+                    CasoPrueba casoPrueba = new CasoPrueba();
+                    casoPrueba.Descripcion = txbDescripcion.Text;
+                    casoPrueba.Resultado = ckbResultado.Checked;
+                    casoPrueba.Observaciones = txbDetalle.Text;
+                    casoPrueba.TextoFalla = txbDetalleFalla.Text;
+                    casoPrueba.Usuario = (UsuarioPrueba)cmbUsuario.SelectedItem;
+                    casoPrueba.Siniestro = (SiniestroPrueba)cmbDatoPrueba.SelectedItem;
+                    casoPrueba.Automatico = false;
+                    CPNegocio.agregarDatoPrueba(testLocal, casoPrueba);
+                    cargarGrillaCasosP();
+                }
             }
             catch (Exception ex)
             {
@@ -81,7 +95,6 @@ namespace TPC_Semenza
                 dgvCasosPrueba.Columns["Adjunto"].Width = 50;
                 dgvCasosPrueba.Columns["Automatico"].Width = 50;
                 dgvCasosPrueba.Columns["Resultado"].Width = 50;
-                //dgvCasosPrueba.Columns["Nombre"].DisplayIndex = 0;
 
             }
             catch (Exception ex)

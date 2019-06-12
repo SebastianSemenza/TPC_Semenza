@@ -49,6 +49,16 @@ namespace TPC_Semenza
             cargarGrillaUsuariosP();
             //DATAGRIDVIEW STRO PRUEBA
             cargarGrillaSiniestrosP();
+            //VERIFICA SI ESTA FINALIZADO PARA ESCONDER BOTONES Y FRIZAR CAMPOS
+            if (testLocal.Finalizado == true)
+            {
+                btnAgregarDato.Visible = false;
+                btnEliminarDato.Visible = false;
+                btnModificarDato.Visible = false;
+                btnAgregarUP.Visible = false;
+                btnEliminarUP.Visible = false;
+                btnModificarUP.Visible = false;
+            }
         }
 
         private void cargarGrillaUsuariosP()

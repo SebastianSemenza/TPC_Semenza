@@ -104,17 +104,18 @@ create table CASOSPRUEBA(
 
 create table ESTADOSTICKET(
 	ID int not null primary key identity(1,1),
-	Descricion varchar(30)
+	Descripcion varchar(30)
 )
+select * from ESTADOSTICKET
 
 create table ESTADOSPLANILLA(
 	ID int not null primary key identity(1,1),
-	Descricion varchar(30)
+	Descripcion varchar(30)
 )
 
 create table CATEGORIAS(
 	ID int not null primary key identity(1,1),
-	Descricion varchar(30)
+	Descripcion varchar(30)
 )
 
 create table TICKETS(
@@ -125,7 +126,7 @@ create table TICKETS(
 	IDPrioridad int not null foreign key references PRIORIDADES(ID),
 	IDSistema int not null foreign key references SISTEMAS(ID),
 	IDEstadoPlanilla int null foreign key references ESTADOSPLANILLA(ID),
-	IDEstado int not null foreign key references ESTADOSTICKET(ID),
+	FechaCarga datetime not null,
 	ER varchar(100) null,
 	Categoria int not null foreign key references CATEGORIAS(ID),
 	PosicionPlanilla int null
@@ -135,6 +136,7 @@ create table ESTADOS_X_TICKETS(
 	IDEstado int not null foreign key references ESTADOSTICKET(ID),
 	IDTicket int not null foreign key references TICKETS(NTicket),
 	FechaEstado datetime not null
+	--ver si generar primary
 )
 
 
@@ -200,27 +202,31 @@ insert into PERFILES(Descripcion,IDSistema) values ('Jefe de Tramitadores',1)
 insert into PERFILES(Descripcion,IDSistema) values ('Consultas',1)
 
 insert into TESTS(NTicket,IDVersion,IDSistema,IDUsuario,IDPrioridad,IDCompañia,IDGrupoCompañias,Asunto,Descripcion,Borrado,Finalizado,VersionFinal,Ultimo,FechaCarga,FechaFinalizacion)
-values('23434',2,2,2,3,2,1,'Agregar Campos en pantalla INFO','Se solocita modificar el campo INFO para las compañias del exterior para que permita ingresar valores alfanumericos',0,0,0,1,GETDATE(),null)
+values('23434',2,2,2,3,2,1,'Agregar Campos en pantalla INFO','Se solocita modificar el campo INFO para las compañias del exterior para que permita ingresar valores alfanumericos',0,0,0,1,convert(datetime, '2016-10-23 20:44:11.500', 121),null)
 insert into TESTS(NTicket,IDVersion,IDSistema,IDUsuario,IDPrioridad,IDCompañia,IDGrupoCompañias,Asunto,Descripcion,Borrado,Finalizado,VersionFinal,Ultimo,FechaCarga,FechaFinalizacion)
-values('23267',1,2,2,3,2,1,'Agregar imagenes de autos','Se solocita Agregar imagenes de autos a las compañias del exterior',0,0,0,1,2019-03-26,null)
+values('23267',1,2,2,3,2,1,'Agregar imagenes de autos','Se solocita Agregar imagenes de autos a las compañias del exterior',0,0,0,1,convert(datetime, '2016-10-23 20:44:11.500', 121),null)
 insert into TESTS(NTicket,IDVersion,IDSistema,IDUsuario,IDPrioridad,IDCompañia,IDGrupoCompañias,Asunto,Descripcion,Borrado,Finalizado,VersionFinal,Ultimo,FechaCarga,FechaFinalizacion)
-values('21124',1,2,2,3,2,1,'Agregar Campos en pantalla General','Se solocita modificar el campo de patente para las compañias del exterior para que permita ingresar valores alfanumericos',0,0,0,1,2018-12-15,null)
+values('21124',1,2,2,3,2,1,'Agregar Campos en pantalla General','Se solocita modificar el campo de patente para las compañias del exterior para que permita ingresar valores alfanumericos',0,0,0,1,convert(datetime, '2016-10-23 20:44:11.500', 121),null)
 insert into TESTS(NTicket,IDVersion,IDSistema,IDUsuario,IDPrioridad,IDCompañia,IDGrupoCompañias,Asunto,Descripcion,Borrado,Finalizado,VersionFinal,Ultimo,FechaCarga,FechaFinalizacion)
-values('25604',1,2,2,3,2,1,'Agregar Campos en pantalla General','Se solocita modificar el campo de patente para las compañias del exterior para que permita ingresar valores alfanumericos',0,0,0,1,2017-03-08,null)
+values('25604',1,2,2,3,2,1,'Agregar Campos en pantalla General','Se solocita modificar el campo de patente para las compañias del exterior para que permita ingresar valores alfanumericos',0,0,0,1,convert(datetime, '2016-10-23 20:44:11.500', 121),null)
 insert into TESTS(NTicket,IDVersion,IDSistema,IDUsuario,IDPrioridad,IDCompañia,IDGrupoCompañias,Asunto,Descripcion,Borrado,Finalizado,VersionFinal,Ultimo,FechaCarga,FechaFinalizacion)
-values('25604',2,3,2,3,2,1,'Agregar Campos en pantalla General','Se solocita modificar el campo de patente para las compañias del exterior para que permita ingresar valores alfanumericos',0,0,0,1,2019-04-24,null)
+values('25604',2,3,2,3,2,1,'Agregar Campos en pantalla General','Se solocita modificar el campo de patente para las compañias del exterior para que permita ingresar valores alfanumericos',0,0,0,1,convert(datetime, '2016-10-23 20:44:11.500', 121),null)
 insert into TESTS(NTicket,IDVersion,IDSistema,IDUsuario,IDPrioridad,IDCompañia,IDGrupoCompañias,Asunto,Descripcion,Borrado,Finalizado,VersionFinal,Ultimo,FechaCarga,FechaFinalizacion)
-values('25604',3,3,2,3,2,1,'Agregar Campos en pantalla General','Se solocita modificar el campo de patente para las compañias del exterior para que permita ingresar valores alfanumericos',0,0,0,1,2019-07-22,null)
+values('25604',3,3,2,3,2,1,'Agregar Campos en pantalla General','Se solocita modificar el campo de patente para las compañias del exterior para que permita ingresar valores alfanumericos',0,0,0,1,convert(datetime, '2016-10-23 20:44:11.500', 121),null)
 insert into TESTS(NTicket,IDVersion,IDSistema,IDUsuario,IDPrioridad,IDCompañia,IDGrupoCompañias,Asunto,Descripcion,Borrado,Finalizado,VersionFinal,Ultimo,FechaCarga,FechaFinalizacion)
-values('25604',3,4,2,3,2,1,'Agregar Campos en pantalla General','Se solocita modificar el campo de patente para las compañias del exterior para que permita ingresar valores alfanumericos',0,0,0,1,2018-06-11,null)
+values('25604',3,4,2,3,2,1,'Agregar Campos en pantalla General','Se solocita modificar el campo de patente para las compañias del exterior para que permita ingresar valores alfanumericos',0,0,0,1,convert(datetime, '2016-10-23 20:44:11.500', 121),null)
 insert into TESTS(NTicket,IDVersion,IDSistema,IDUsuario,IDPrioridad,IDCompañia,IDGrupoCompañias,Asunto,Descripcion,Borrado,Finalizado,VersionFinal,Ultimo,FechaCarga,FechaFinalizacion)
-values('25604',3,5,3,2,4,2,'Agregar Campos en pantalla General','Se solocita modificar el campo de patente para las compañias del exterior para que permita ingresar valores alfanumericos',0,0,0,1,2019-12-21,null)
+values('25604',3,5,3,2,4,2,'Agregar Campos en pantalla General','Se solocita modificar el campo de patente para las compañias del exterior para que permita ingresar valores alfanumericos',0,0,0,1,convert(datetime, '2016-10-23 20:44:11.500', 121),null)
 insert into TESTS(NTicket,IDVersion,IDSistema,IDUsuario,IDPrioridad,IDCompañia,IDGrupoCompañias,Asunto,Descripcion,Borrado,Finalizado,VersionFinal,Ultimo,FechaCarga,FechaFinalizacion)
-values('25604',3,2,4,4,5,2,'Agregar Campos en pantalla General','Se solocita modificar el campo de patente para las compañias del exterior para que permita ingresar valores alfanumericos',0,0,0,1,2019-11-12,null)
+values('25604',3,2,4,4,5,2,'Agregar Campos en pantalla General','Se solocita modificar el campo de patente para las compañias del exterior para que permita ingresar valores alfanumericos',0,0,0,1,convert(datetime, '2016-10-23 20:44:11.500', 121),null)
 insert into TESTS(NTicket,IDVersion,IDSistema,IDUsuario,IDPrioridad,IDCompañia,IDGrupoCompañias,Asunto,Descripcion,Borrado,Finalizado,VersionFinal,Ultimo,FechaCarga,FechaFinalizacion)
-values('25604',3,3,4,4,3,2,'Agregar Campos en pantalla General','Se solocita modificar el campo de patente para las compañias del exterior para que permita ingresar valores alfanumericos',0,0,0,1,2019-08-06,null)
+values('25604',3,3,4,4,3,2,'Agregar Campos en pantalla General','Se solocita modificar el campo de patente para las compañias del exterior para que permita ingresar valores alfanumericos',0,0,0,1,convert(datetime, '2016-10-23 20:44:11.500', 121),null)
 insert into TESTS(NTicket,IDVersion,IDSistema,IDUsuario,IDPrioridad,IDCompañia,IDGrupoCompañias,Asunto,Descripcion,Borrado,Finalizado,VersionFinal,Ultimo,FechaCarga,FechaFinalizacion)
-values('25604',3,3,4,4,3,2,'Agregar Campos en pantalla General','Se solocita modificar el campo de patente para las compañias del exterior para que permita ingresar valores alfanumericos',0,1,0,1,2019-08-06,null)
+values('25604',3,3,4,4,3,2,'Agregar Campos en pantalla General','Se solocita modificar el campo de patente para las compañias del exterior para que permita ingresar valores alfanumericos',0,1,0,1,convert(datetime, '2016-10-23 20:44:11.500', 121),null)
+
+insert into TESTS(NTicket,IDVersion,IDSistema,IDUsuario,IDPrioridad,IDCompañia,IDGrupoCompañias,Asunto,Descripcion,Borrado,Finalizado,VersionFinal,Ultimo,FechaCarga,FechaFinalizacion)
+values('12333',3,3,4,4,3,2,'Agregar Campos en pantalla General','Se solocita modificar el campo de patente para las compañias del exterior para que permita ingresar valores alfanumericos',0,1,0,1,convert(datetime, '2016-10-23 20:44:11.500', 121),null)
+
 
 insert into USUARIOSPRUEBA(IDTest,IDVersionTest,Nombre,Apellido,Documento,Contraseña,IDPerfil,Compañia)
 values (1,2,'Jose','Sanchez','34235654','cesvi123',2,3)
@@ -259,71 +265,80 @@ insert into CASOSPRUEBA(IDTest,IDVersionTest,Descripcion,Resultado,Observaciones
 values (1,2,'Envio de Orden de Trabajo',0,'Se realizo el envio de la Orden de Trabajo al taller KAPPA, 
 15 piezas a reparacion con daño leve','Fallo el envio, arroja mensaje de error',1,1,1)
 
-insert into ESTADOSTICKET(Descricion) values ('Pendiente de Analisis')
-insert into ESTADOSTICKET(Descricion) values ('En Analisis')
-insert into ESTADOSTICKET(Descricion) values ('En Proceso')
-insert into ESTADOSTICKET(Descricion) values ('En Testing')
-insert into ESTADOSTICKET(Descricion) values ('Testing con Problemas')
-insert into ESTADOSTICKET(Descricion) values ('Testing OK')
-insert into ESTADOSTICKET(Descricion) values ('En Correccion')
-insert into ESTADOSTICKET(Descricion) values ('Finalizado')
-insert into ESTADOSTICKET(Descricion) values ('Detenido')
-insert into ESTADOSTICKET(Descricion) values ('Inviable')
-insert into ESTADOSTICKET(Descricion) values ('En Produccion')
-insert into ESTADOSTICKET(Descricion) values ('Anulado por Solicitante')
+insert into ESTADOSTICKET(Descripcion) values ('Pendiente de Analisis')
+insert into ESTADOSTICKET(Descripcion) values ('En Analisis')
+insert into ESTADOSTICKET(Descripcion) values ('En Proceso')
+insert into ESTADOSTICKET(Descripcion) values ('En Testing')
+insert into ESTADOSTICKET(Descripcion) values ('Testing con Problemas')
+insert into ESTADOSTICKET(Descripcion) values ('Testing OK')
+insert into ESTADOSTICKET(Descripcion) values ('En Correccion')
+insert into ESTADOSTICKET(Descripcion) values ('Finalizado')
+insert into ESTADOSTICKET(Descripcion) values ('Detenido')
+insert into ESTADOSTICKET(Descripcion) values ('Inviable')
+insert into ESTADOSTICKET(Descripcion) values ('En Produccion')
+insert into ESTADOSTICKET(Descripcion) values ('Anulado por Solicitante')
 
-insert into ESTADOSPLANILLA(Descricion) values ('En Curso')
-insert into ESTADOSPLANILLA(Descricion) values ('Priorizadas')
-insert into ESTADOSPLANILLA(Descricion) values ('Finalizadas')
+insert into ESTADOSPLANILLA(Descripcion) values ('En Curso')
+insert into ESTADOSPLANILLA(Descripcion) values ('Priorizadas')
+insert into ESTADOSPLANILLA(Descripcion) values ('Finalizadas')
 
-insert into CATEGORIAS(Descricion) values ('')
-insert into CATEGORIAS(Descricion) values ('Contingencia')
-insert into CATEGORIAS(Descricion) values ('Modificacion')
-insert into CATEGORIAS(Descricion) values ('Nuevo Desarrollo')
-insert into CATEGORIAS(Descricion) values ('Trabajo Especial')
+insert into CATEGORIAS(Descripcion) values ('')
+insert into CATEGORIAS(Descripcion) values ('Contingencia')
+insert into CATEGORIAS(Descripcion) values ('Modificacion')
+insert into CATEGORIAS(Descripcion) values ('Nuevo Desarrollo')
+insert into CATEGORIAS(Descripcion) values ('Trabajo Especial')
 
 SET IDENTITY_INSERT TICKETS ON
-insert into TICKETS(NTicket,Asunto,Descripcion,IDUsuario,IDPrioridad,IDSistema,IDEstadoPlanilla,IDEstado,ER,Categoria,PosicionPlanilla)
-values (23434,'Agregar Campos en pantalla INFO','Se solocita modificar el campo INFO para las compañias del exterior para que permita ingresar valores alfanumericos',2,3,2,3,1,'url',4,3)
-insert into TICKETS(NTicket,Asunto,Descripcion,IDUsuario,IDPrioridad,IDSistema,IDEstadoPlanilla,IDEstado,ER,Categoria,PosicionPlanilla)
-values (23267,'Agregar Campos en pantalla INFO','Se solocita modificar el campo INFO para las compañias del exterior para que permita ingresar valores alfanumericos',2,1,2,3,1,'url',3,1)
-insert into TICKETS(NTicket,Asunto,Descripcion,IDUsuario,IDPrioridad,IDSistema,IDEstadoPlanilla,IDEstado,ER,Categoria,PosicionPlanilla)
-values (21124,'Agregar Campos en pantalla INFO','Se solocita modificar el campo INFO para las compañias del exterior para que permita ingresar valores alfanumericos',2,1,2,3,1,'url',3,2)
-insert into TICKETS(NTicket,Asunto,Descripcion,IDUsuario,IDPrioridad,IDSistema,IDEstadoPlanilla,IDEstado,ER,Categoria,PosicionPlanilla)
-values (25604,'Agregar Campos en pantalla INFO','Se solocita modificar el campo INFO para las compañias del exterior para que permita ingresar valores alfanumericos',2,3,2,3,1,'url',3,4)
+insert into TICKETS(NTicket,Asunto,Descripcion,IDUsuario,IDPrioridad,IDSistema,IDEstadoPlanilla,FechaCarga,ER,Categoria,PosicionPlanilla)
+values (23434,'Agregar Campos en pantalla INFO','Se solocita modificar el campo INFO para las compañias del exterior para que permita ingresar valores alfanumericos',2,3,2,3,convert(datetime, '2016-10-23 20:44:11.500', 121),'url',4,3)
+insert into TICKETS(NTicket,Asunto,Descripcion,IDUsuario,IDPrioridad,IDSistema,IDEstadoPlanilla,FechaCarga,ER,Categoria,PosicionPlanilla)
+values (23267,'Agregar Campos en pantalla INFO','Se solocita modificar el campo INFO para las compañias del exterior para que permita ingresar valores alfanumericos',2,1,2,3,convert(datetime, '2016-10-23 20:44:11.500', 121),'url',3,1)
+insert into TICKETS(NTicket,Asunto,Descripcion,IDUsuario,IDPrioridad,IDSistema,IDEstadoPlanilla,FechaCarga,ER,Categoria,PosicionPlanilla)
+values (21124,'Agregar Campos en pantalla INFO','Se solocita modificar el campo INFO para las compañias del exterior para que permita ingresar valores alfanumericos',2,1,2,3,convert(datetime, '2016-10-23 20:44:11.500', 121),'url',3,2)
+insert into TICKETS(NTicket,Asunto,Descripcion,IDUsuario,IDPrioridad,IDSistema,IDEstadoPlanilla,FechaCarga,ER,Categoria,PosicionPlanilla)
+values (25604,'Agregar Campos en pantalla INFO','Se solocita modificar el campo INFO para las compañias del exterior para que permita ingresar valores alfanumericos',2,3,2,3,convert(datetime, '2016-10-23 20:44:11.500', 121),'url',3,4)
 SET IDENTITY_INSERT TICKETS OFF
 
 
 insert into ESTADOS_X_TICKETS(IDEstado,IDTicket,FechaEstado)
-values (1,23434,2019-11-12)
+values (1,23434,convert(datetime, '2016-10-23 20:44:11.500', 121))
 insert into ESTADOS_X_TICKETS(IDEstado,IDTicket,FechaEstado)
-values (2,23434,2019-11-13)
+values (2,23434,convert(datetime, '2016-10-23 20:44:11.500', 121))
 insert into ESTADOS_X_TICKETS(IDEstado,IDTicket,FechaEstado)
-values (3,23434,2019-11-14)
+values (3,23434,convert(datetime, '2017-11-13 20:44:11.500', 121))
 insert into ESTADOS_X_TICKETS(IDEstado,IDTicket,FechaEstado)
-values (1,25604,2019-11-13)
+values (1,25604,convert(datetime, '2016-10-23 20:44:11.500', 121))
 insert into ESTADOS_X_TICKETS(IDEstado,IDTicket,FechaEstado)
-values (4,25604,2019-11-15)
+values (4,25604,convert(datetime, '2017-10-23 20:44:11.500', 121))
 insert into ESTADOS_X_TICKETS(IDEstado,IDTicket,FechaEstado)
-values (5,25604,2019-11-19)
-
+values (5,25604,convert(datetime, '2016-10-23 20:44:11.500', 121))
+insert into ESTADOS_X_TICKETS(IDEstado,IDTicket,FechaEstado)
+values (5,23267,convert(datetime, '2016-10-23 20:44:11.500', 121))
+insert into ESTADOS_X_TICKETS(IDEstado,IDTicket,FechaEstado)
+values (3,21124,convert(datetime, '2018-06-19 20:44:11.500', 121))
+insert into ESTADOS_X_TICKETS(IDEstado,IDTicket,FechaEstado)
+values (3,25604,convert(datetime, '2017-01-20 20:44:11.500', 121))
+insert into ESTADOS_X_TICKETS(IDEstado,IDTicket,FechaEstado)
+values (3,23267,convert(datetime, '2016-11-23 20:44:11.500', 121))
 
 
 --_____________________________PRUEBAS_______________________________
 
-select t.NTicket,t.Asunto,t.Descripcion,t.ER,t.PosicionPlanilla,u.Nombre+' '+u.Apellido as nombre,p.Nombre,s.Nombre,ep.Descripcion,c.Descripcion from TICKETS as t
+
+select as estado_actual, t.NTicket, t.Asunto, t.Descripcion, t.ER, t.PosicionPlanilla, u.Nombre, u.Apellido, p.Nombre,
+ s.Nombre, ep.Descripcion, c.Descripcion ,t.FechaCarga from TICKETS as t 
+ inner join USUARIOS as u on u.ID = t.IDUsuario 
+ inner join PRIORIDADES as p on p.ID = t.IDPrioridad 
+ inner join SISTEMAS as s on s.ID = t.IDSistema 
+ inner join ESTADOSPLANILLA as ep on ep.ID = t.IDEstadoPlanilla
+inner join CATEGORIAS as c on c.ID = t.Categoria 
+
+------------------------------Select para PLANILLA DE PRIORIDADES-------------------------------------------
+select t.PosicionPlanilla,t.NTicket,t.Asunto,t.Descripcion,t.FechaCarga,u.Nombre+''+u.Apellido as nombre,
+p.Nombre,s.Nombre,ep.Descripcion from tickets as t
 inner join USUARIOS as u on u.ID=t.IDUsuario
 inner join PRIORIDADES as p on p.ID=t.IDPrioridad
 inner join SISTEMAS as s on s.ID=t.IDSistema
 inner join ESTADOSPLANILLA as ep on ep.ID=t.IDEstadoPlanilla
-inner join CATEGORIAS as c on c.ID=t.Categoria
-
-
-
-
-select * from tests
-
-SET IDENTITY_INSERT TESTS ON
-insert into TESTS(NTicket,ID,IDVersion,IDSistema,IDUsuario,IDPrioridad,IDCompañia,IDGrupoCompañias,Asunto,Descripcion,Borrado,Finalizado,VersionFinal,Ultimo,FechaCarga,FechaFinalizacion)
-values('23434',1,1,2,2,3,2,1,'Agregar Campos en pantalla INFO','Se solocita modificar el campo INFO para las compañias del exterior para que permita ingresar valores alfanumericos',0,0,0,1,GETDATE(),null)
-SET IDENTITY_INSERT TESTS OFF
+order by PosicionPlanilla asc
+------------------------------------------------------------------------------------------------------------

@@ -68,6 +68,7 @@
             this.btnBuscar.TabIndex = 40;
             this.btnBuscar.Text = "BUSCAR";
             this.btnBuscar.UseVisualStyleBackColor = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // cmbEstadoTicket
             // 
@@ -246,6 +247,7 @@
             this.Controls.Add(this.lblTicket);
             this.Name = "Buscar_Ticket";
             this.Text = "Buscar_Ticket";
+            this.Load += new System.EventHandler(this.Buscar_Ticket_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvResultadoBusqueda)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

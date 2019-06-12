@@ -19,7 +19,7 @@ namespace Negocio
             {
                 if(sFiltro=="")
                 {
-                    accesoDatos.setearConsulta("select t.ID,t.IDVersion,t.NTicket,s.Nombre,u.Nombre,u.Apellido,p.Nombre,c.Nombre,gc.Descripcion,t.Asunto,t.Descripcion,s.ID,u.ID,c.ID,gc.ID,p.ID,t.Finalizado,t.VersionFinal,t.Ultimo from TESTS t inner join SISTEMAS s on t.IDSistema=s.ID inner join USUARIOS u on t.IDUsuario=u.ID inner join PRIORIDADES p on p.ID=t.IDPrioridad inner join COMPAÑIAS c on c.ID=t.IDCompañia inner join GRUPOSCOMPAÑIAS gc on gc.ID=t.IDGrupoCompañias");
+                    accesoDatos.setearConsulta("select t.ID,t.IDVersion,t.NTicket,s.Nombre,u.Nombre,u.Apellido,p.Nombre,c.Nombre,gc.Descripcion,t.Asunto,t.Descripcion,s.ID,u.ID,c.ID,gc.ID,p.ID,t.Finalizado,t.VersionFinal,t.Ultimo,t.FechaCarga,t.fechaFinalizacion from TESTS t inner join SISTEMAS s on t.IDSistema=s.ID inner join USUARIOS u on t.IDUsuario=u.ID inner join PRIORIDADES p on p.ID=t.IDPrioridad inner join COMPAÑIAS c on c.ID=t.IDCompañia inner join GRUPOSCOMPAÑIAS gc on gc.ID=t.IDGrupoCompañias");
                 }
                 else
                 {
@@ -38,13 +38,11 @@ namespace Negocio
                     test.Finalizado = accesoDatos.Lector.GetBoolean(16);
                     test.VersionFinal = accesoDatos.Lector.GetBoolean(17);
                     test.Ultimo = accesoDatos.Lector.GetBoolean(18);
+                    test.FechaCarga = accesoDatos.Lector.GetDateTime(19);
 
-                    //test.Estado = new EstadoTest();
-                    //test.Estado.Version = accesoDatos.Lector.GetInt16(1);
-                    //test.Ticket = new Ticket();
-                    //test.Ticket.IDTicket= accesoDatos.Lector.GetInt16(2);
-                    //test.Ticket.Asunto = accesoDatos.Lector.GetString(9);
-                    //test.Ticket.Descripcion = accesoDatos.Lector.GetString(10);
+                    //fecha de finalizacion acepta nullos
+                    if (!Convert.IsDBNull(accesoDatos.Lector["fechaFinalizacion"]))
+                        test.FechaFinalizacion = accesoDatos.Lector.GetDateTime(20);
 
                     test.Prioridad = new Prioridad();
                     test.Prioridad.TipoPrioridad = accesoDatos.Lector.GetString(6);
@@ -68,7 +66,6 @@ namespace Negocio
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
             finally
@@ -132,7 +129,7 @@ namespace Negocio
             AccesoDatosManager accesoDatos = new AccesoDatosManager();
             try
             {
-                accesoDatos.setearConsulta("SET IDENTITY_INSERT TESTS ON insert into TESTS(ID,IDVersion,NTicket,IDSistema,IDUsuario,IDPrioridad,IDCompañia,IDGrupoCompañias,Asunto,Descripcion,Borrado,Finalizado,VersionFinal,Ultimo,FechaCarga,FechaFinalizacion) values(" + test.ID.ToString()+","+(test.Version+1).ToString()+",'" + test.NTicket.ToString() + "'," + test.Sistema.id.ToString() + "," + test.UsuarioT.ID.ToString() + "," + test.Prioridad.ID.ToString() + "," + test.CiaSolicitante.ID.ToString() + "," + test.GrupoCia.id.ToString() + ",'" + test.Asunto + "','" + test.Descripcion + "',0,0,0,1,GETDATE(),null)SET IDENTITY_INSERT TESTS OFF");
+                accesoDatos.setearConsulta("update TESTS set Ultimo=0 where ID=" + test.ID.ToString() + " AND IDVersion=" + test.Version.ToString() +" SET IDENTITY_INSERT TESTS ON insert into TESTS(ID,IDVersion,NTicket,IDSistema,IDUsuario,IDPrioridad,IDCompañia,IDGrupoCompañias,Asunto,Descripcion,Borrado,Finalizado,VersionFinal,Ultimo,FechaCarga,FechaFinalizacion) values(" + test.ID.ToString()+","+(test.Version+1).ToString()+",'" + test.NTicket.ToString() + "'," + test.Sistema.id.ToString() + "," + test.UsuarioT.ID.ToString() + "," + test.Prioridad.ID.ToString() + "," + test.CiaSolicitante.ID.ToString() + "," + test.GrupoCia.id.ToString() + ",'" + test.Asunto + "','" + test.Descripcion + "',0,0,0,1,GETDATE(),null)SET IDENTITY_INSERT TESTS OFF");
                 accesoDatos.abrirConexion();
                 accesoDatos.ejecutarConsulta();
             }
@@ -151,7 +148,7 @@ namespace Negocio
             AccesoDatosManager accesoDatos = new AccesoDatosManager();
             try
             {
-                accesoDatos.setearConsulta("update TESTS set Finalizado=1 where ID=" + test.ID.ToString() + " AND IDVersion=" + test.Version.ToString());
+                accesoDatos.setearConsulta("update TESTS set Finalizado=1,fechaFinalizacion=GETDATE() where ID=" + test.ID.ToString() + " AND IDVersion=" + test.Version.ToString());
                 accesoDatos.abrirConexion();
                 accesoDatos.ejecutarConsulta();
             }
@@ -170,7 +167,7 @@ namespace Negocio
             AccesoDatosManager accesoDatos = new AccesoDatosManager();
             try
             {
-                accesoDatos.setearConsulta("update TESTS set Finalizado=1 ,VersionFinal=1 where ID=" + test.ID.ToString() + " AND IDVersion=" + test.Version.ToString());
+                accesoDatos.setearConsulta("update TESTS set Finalizado=1 ,VersionFinal=1,fechaFinalizacion=GETDATE() where ID=" + test.ID.ToString() + " AND IDVersion=" + test.Version.ToString());
                 accesoDatos.abrirConexion();
                 accesoDatos.ejecutarConsulta();
             }

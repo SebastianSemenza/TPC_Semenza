@@ -8,7 +8,12 @@ namespace Dominio
 {
     public class EstadoTicket
     {
-        int ID { get; set; }
-        DateTime FechaEstado { get; set; }
+        public int ID { get; set; }
+        public DateTime FechaEstado { get; set; }
+        public string Nombre { get; set; }
+        public override string ToString()
+        {
+            return Nombre;
+        }
     }
 }

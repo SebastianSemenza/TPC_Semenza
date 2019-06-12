@@ -18,16 +18,39 @@ namespace PresentacionWebForm
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+            string sFiltro = "";
+            if (!(txbTicket.Text.Equals("")))
+            {
+                sFiltro += " t.NTicket = " + txbTicket.Text.ToString();
+            }
+            //if (cmbSistema.SelectedIndex != 0)
+            //{
+            //    sFiltro += sFiltro.Equals("") ? " s.Nombre = " + "'" + cmbSistema.Text + "'" : " and s.Nombre = " + "'" + cmbSistema.Text + "'";
+            //}
+            //if (cmbUsuario.SelectedIndex != 0)
+            //{
+            //    sFiltro += sFiltro.Equals("") ? " u.Nombre+' '+u.Apellido= " + "'" + cmbUsuario.Text + "'" : " and u.Nombre+' '+u.Apellido= " + "'" + cmbUsuario.Text + "'";
+            //}
+            ////hacerlo no case sensitive
+            //if (!(txtAsunto.Text.Equals("")))
+            //{
+            //    sFiltro += sFiltro.Equals("") ? " t.Asunto= " + txtAsunto.Text.ToString() : " and t.Asunto= " + txtAsunto.Text.ToString();
+            //}
+            ////filtro prioridad
+            //if (cmbPrioridad.SelectedIndex != 0)
+            //{
+            //    sFiltro += sFiltro.Equals("") ? " p.Nombre = " + "'" + cmbPrioridad.Text + "'" : " and p.Nombre = " + "'" + cmbPrioridad.Text + "'";
+            //}
+            ////filtro estado
+            //if (cmbEstadoTicket.SelectedIndex != 0)
+            //{
+            //    sFiltro += sFiltro.Equals("") ? " p.Nombre = " + "'" + cmbEstadoTicket.Text + "'" : " and p.Nombre = " + "'" + cmbEstadoTicket.Text + "'";
+            //}
             TicketNegocio ticketNegocio = new TicketNegocio();
-            List<Ticket> listado = ticketNegocio.listarTickets();
+            List<Ticket> listado = ticketNegocio.filtrarTickets(sFiltro);
+            //List<Ticket> listado = ticketNegocio.listarTickets();
             dgvResultadoBusqueda.DataSource = listado;
             dgvResultadoBusqueda.DataBind();
-        }
-
-        protected void dgvResultadoBusqueda_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            //TicketNegocio ticketNegocio = new TicketNegocio();
-            //e.Row.Cells(7).text = Convert.ToString(ticketNegocio.calcularTiempoAnalisis((Ticket)dgvResultadoBusqueda.CurrentRow.DataBoundItem));
         }
 
     }

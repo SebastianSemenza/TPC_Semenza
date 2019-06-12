@@ -74,19 +74,7 @@ namespace TPC_Semenza
                 }
                 else
                 {
-                    btnGuardar.Visible = false;
-                    btnFinalizarVersion.Visible = false;
-                    btnTestingOK.Visible = false;
-                    txtTicket.ReadOnly = true;
-                    txtIDTest.ReadOnly = true;
-                    txtVersion.ReadOnly = true;
-                    txtAsunto.ReadOnly = true;
-                    txtDescripcion.ReadOnly = true;
-                    cmbSistema.Enabled = false;
-                    cmbPrioridad.Enabled = false;
-                    cmbUsuarioTester.Enabled = false;
-                    cmbSolicitante.Enabled = false;
-                    cmbAplica.Enabled = false;
+                    bloquearCampos();
                 }
             }
             catch (Exception ex)
@@ -147,10 +135,19 @@ namespace TPC_Semenza
             }
             else
             {
-                testLocal = new Test();
-                cargarTest(testLocal);
-                frmAgregarDatos frmAD = new frmAgregarDatos(testLocal);
-                frmAD.Show();
+                //verifica si entro por nueva o por busqueda
+                if (testLocal == null)
+                {
+                    testLocal = new Test();
+                    cargarTest(testLocal);
+                    frmAgregarDatos frmAD = new frmAgregarDatos(testLocal);
+                    frmAD.Show();
+                }
+                else
+                {
+                    frmAgregarDatos frmAD = new frmAgregarDatos(testLocal);
+                    frmAD.Show();
+                }
             }
         }
 
@@ -162,10 +159,19 @@ namespace TPC_Semenza
             }
             else
             {
-                testLocal = new Test();
-                cargarTest(testLocal);
-                frmAgregarCasoPrueba frmACP = new frmAgregarCasoPrueba(testLocal);
-                frmACP.Show();
+                //verifica si entro por nueva o por busqueda
+                if (testLocal == null)
+                {
+                    testLocal = new Test();
+                    cargarTest(testLocal);
+                    frmAgregarCasoPrueba frmACP = new frmAgregarCasoPrueba(testLocal);
+                    frmACP.Show();
+                }
+                else
+                {
+                    frmAgregarCasoPrueba frmACP = new frmAgregarCasoPrueba(testLocal);
+                    frmACP.Show();
+                }
             }
         }
 
@@ -173,6 +179,10 @@ namespace TPC_Semenza
         {
             TestNegocio testNegocio = new TestNegocio();
             testNegocio.agregarVersion(testLocal);
+            this.Close();
+            testLocal.Version++;
+            Nuevo_Test frmNT = new Nuevo_Test(testLocal);
+            frmNT.Show();
             //ver como agregarle los casos de prueba usuarios y datos a la nueva version
 
         }
@@ -182,10 +192,9 @@ namespace TPC_Semenza
             TestNegocio testNegocio = new TestNegocio();
             testNegocio.finalizarVersion(testLocal);
             MessageBox.Show("La version se finalizo");
-            //ver la forma de actualizar y para frizar los campos
-            this.Close();
-            Nuevo_Test frmTest = new Nuevo_Test(testLocal);
-            frmTest.Show();
+            bloquearCampos();
+            testLocal.Finalizado = true;
+            btnGenerarVersion.Visible = true;
         }
 
         private void btnTestingOK_Click(object sender, EventArgs e)
@@ -193,7 +202,25 @@ namespace TPC_Semenza
             TestNegocio testNegocio = new TestNegocio();
             testNegocio.generarVersionFinal(testLocal);
             MessageBox.Show("Se finalizo el test, TESTING OK!!!");
-            //ver la forma de actualizar y para frizar los campos
+            bloquearCampos();
+            testLocal.Finalizado = true;
+        }
+
+        private void bloquearCampos()
+        {
+            btnGuardar.Visible = false;
+            btnFinalizarVersion.Visible = false;
+            btnTestingOK.Visible = false;
+            txtTicket.ReadOnly = true;
+            txtIDTest.ReadOnly = true;
+            txtVersion.ReadOnly = true;
+            txtAsunto.ReadOnly = true;
+            txtDescripcion.ReadOnly = true;
+            cmbSistema.Enabled = false;
+            cmbPrioridad.Enabled = false;
+            cmbUsuarioTester.Enabled = false;
+            cmbSolicitante.Enabled = false;
+            cmbAplica.Enabled = false;
         }
     }
 }

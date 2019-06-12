@@ -31,6 +31,10 @@ namespace TPC_Semenza
                 cmbSistema.DataSource = sistemaNegocio.listarSistemas();
                 cmbPrioridad.DataSource = prioridadNegocio.listarPrioridades();
                 cmbUsuarioTester.DataSource = testerNegocio.listarUsuariosT();
+                cmbTipoGrabado.Items.Add("Todos");
+                cmbTipoGrabado.Items.Add("Parcial");
+                cmbTipoGrabado.Items.Add("Final");
+                cmbTipoGrabado.SelectedIndex = 0;
             }
             catch (Exception ex)
             {
@@ -70,16 +74,24 @@ namespace TPC_Semenza
                 sFiltro += sFiltro.Equals("") ? " t.Asunto= " + txtAsunto.Text.ToString() : " and t.Asunto= " + txtAsunto.Text.ToString();
             }
 
-            //if (!(txtIDTest.Text.Equals("")))
-            //{
-            //    sFiltro += sFiltro.Equals("") ? " t.ID= " + txtIDTest.Text.ToString() : " and t.ID= " + txtIDTest.Text.ToString();
-            //}
+            //filtro prioridad
+            if (cmbPrioridad.SelectedIndex != 0)
+            {
+                sFiltro += sFiltro.Equals("") ? " p.Nombre = " + "'" + cmbPrioridad.Text + "'" : " and p.Nombre = " + "'" + cmbPrioridad.Text + "'";
+            }
 
-            //if (!(txtIDTest.Text.Equals("")))
-            //{
-            //    sFiltro += sFiltro.Equals("") ? " t.ID= " + txtIDTest.Text.ToString() : " and t.ID= " + txtIDTest.Text.ToString();
-            //}
-            //unica llamada al metodo cargargrilla
+            //filtro prioridad
+            if (cmbTipoGrabado.SelectedIndex != 0)
+            {
+                if(cmbTipoGrabado.SelectedIndex==1)
+                {
+                    sFiltro += sFiltro.Equals("") ? " t.Finalizado = 0" : " and p.Nombre = 0";
+                }
+                else
+                {
+                    sFiltro += sFiltro.Equals("") ? " t.Finalizado = 1" : " and p.Nombre = 1";
+                }
+            }
 
             cargarGrillaTests(sFiltro);
         }
@@ -89,9 +101,15 @@ namespace TPC_Semenza
             TestNegocio testNegocio = new TestNegocio();
             try
             {
+                DataGridViewButtonColumn botonAbrir = new DataGridViewButtonColumn();
+                botonAbrir.Name = "Abrir";
+                botonAbrir.HeaderText = "Abrir";
                 //DATAGRIDVIEW RESULTADO BUSQUEDA
                 listadoTests = testNegocio.listarTests(sFiltro);
                 dgvResultadoBusqueda.DataSource = listadoTests;
+                dgvResultadoBusqueda.Columns.Add(botonAbrir);
+                dgvResultadoBusqueda.Columns["Abrir"].DisplayIndex = 0;
+                dgvResultadoBusqueda.Columns["Abrir"].Width = 35;
                 dgvResultadoBusqueda.Columns["Duracion"].Visible = false;
                 dgvResultadoBusqueda.Columns["UsuarioP"].Visible = false;
                 dgvResultadoBusqueda.Columns["SiniestroP"].Visible = false;
@@ -103,13 +121,15 @@ namespace TPC_Semenza
                 dgvResultadoBusqueda.Columns["Informe"].Visible = false;
                 dgvResultadoBusqueda.Columns["Descripcion"].Visible = false;
                 dgvResultadoBusqueda.Columns["ID"].Width = 30;
-                dgvResultadoBusqueda.Columns["ID"].DisplayIndex = 0;
+                dgvResultadoBusqueda.Columns["ID"].DisplayIndex = 1;
                 dgvResultadoBusqueda.Columns["Version"].Width = 40;
                 dgvResultadoBusqueda.Columns["Ticket"].Width = 70;
                 dgvResultadoBusqueda.Columns["Asunto"].Width = 150;
                 dgvResultadoBusqueda.Columns["Finalizado"].Width = 50;
                 dgvResultadoBusqueda.Columns["VersionFinal"].Width = 50;
                 dgvResultadoBusqueda.Columns["Ultimo"].Width = 50;
+                dgvResultadoBusqueda.Columns["Prioridad"].Width = 100;
+                dgvResultadoBusqueda.ReadOnly = true;
             }
             catch (Exception ex)
             {
@@ -117,11 +137,15 @@ namespace TPC_Semenza
             }
         }
 
-        private void dgvResultadoBusqueda_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvResultadoBusqueda_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            Nuevo_Test frmTest = new Nuevo_Test((Test)dgvResultadoBusqueda.CurrentRow.DataBoundItem);
-            this.Close();
-            frmTest.Show();
+            if (this.dgvResultadoBusqueda.Columns[e.ColumnIndex].Name == "Abrir")
+            {
+                Nuevo_Test frmTest = new Nuevo_Test((Test)dgvResultadoBusqueda.CurrentRow.DataBoundItem);
+                this.Close();
+                frmTest.Show();
+            }
+            
         }
     }
 }
