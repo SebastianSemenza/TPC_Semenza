@@ -57,6 +57,7 @@
     <Compile Include="Test.cs" />
     <Compile Include="Ticket.cs" />
     <Compile Include="TipoGrabado.cs" />
+    <Compile Include="TotalTiemposTickets.cs" />
     <Compile Include="UsuarioPrueba.cs" />
     <Compile Include="UsuarioTester.cs" />
   </ItemGroup>

@@ -172,7 +172,7 @@
     <Content Include="Gruntfile.js" />
     <Content Include="index.html" />
     <Content Include="index2.html" />
-    <Content Include="Modulo1_Tiempo_Analisis.aspx" />
+    <Content Include="Modulo1_Tiempo_Tickets.aspx" />
     <Content Include="Modulo2_Planilla_Prioridades.aspx" />
     <Content Include="pages\calendar.html" />
     <Content Include="pages\charts\chartjs.html" />
@@ -707,12 +707,12 @@
     <Compile Include="Modulo1_FechasXTickets.aspx.designer.cs">
       <DependentUpon>Modulo1_FechasXTickets.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Modulo1_Tiempo_Analisis.aspx.cs">
-      <DependentUpon>Modulo1_Tiempo_Analisis.aspx</DependentUpon>
+    <Compile Include="Modulo1_Tiempo_Tickets.aspx.cs">
+      <DependentUpon>Modulo1_Tiempo_Tickets.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Modulo1_Tiempo_Analisis.aspx.designer.cs">
-      <DependentUpon>Modulo1_Tiempo_Analisis.aspx</DependentUpon>
+    <Compile Include="Modulo1_Tiempo_Tickets.aspx.designer.cs">
+      <DependentUpon>Modulo1_Tiempo_Tickets.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modulo2_Planilla_Prioridades.aspx.cs">
       <DependentUpon>Modulo2_Planilla_Prioridades.aspx</DependentUpon>

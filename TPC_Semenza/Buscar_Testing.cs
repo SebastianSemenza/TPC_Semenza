@@ -35,13 +35,13 @@ namespace TPC_Semenza
                 cmbTipoGrabado.Items.Add("Parcial");
                 cmbTipoGrabado.Items.Add("Final");
                 cmbTipoGrabado.SelectedIndex = 0;
+                dtpFechaGrabadoDesde.Value = DateTime.Now.AddMonths(-24);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
         }
-
         
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -52,49 +52,40 @@ namespace TPC_Semenza
             {
                 sFiltro += " t.NTicket = " + txtTicket.Text.ToString();
             }
-
             if (!(txtIDTest.Text.Equals("")))
             {
                 sFiltro += sFiltro.Equals("") ? " t.ID= " + txtIDTest.Text.ToString() : " and t.ID= " + txtIDTest.Text.ToString();
             }
-
             if (cmbSistema.SelectedIndex != 0)
             {
                 sFiltro += sFiltro.Equals("") ? " s.Nombre = " + "'" + cmbSistema.Text + "'" : " and s.Nombre = " + "'" + cmbSistema.Text + "'";
             }
-
             if (cmbUsuarioTester.SelectedIndex != 0)
             {
                 sFiltro += sFiltro.Equals("") ? " u.Nombre+' '+u.Apellido= " + "'" + cmbUsuarioTester.Text + "'" : " and u.Nombre+' '+u.Apellido= " + "'" + cmbUsuarioTester.Text + "'";
             }
-
-            //hacerlo no case sensitive
-            if (!(txtAsunto.Text.Equals("")))
+            if (!(txtAsunto.Text.Equals("")))//hacerlo no case sensitive
             {
                 sFiltro += sFiltro.Equals("") ? " t.Asunto= " + txtAsunto.Text.ToString() : " and t.Asunto= " + txtAsunto.Text.ToString();
             }
-
-            //filtro prioridad
             if (cmbPrioridad.SelectedIndex != 0)
             {
                 sFiltro += sFiltro.Equals("") ? " p.Nombre = " + "'" + cmbPrioridad.Text + "'" : " and p.Nombre = " + "'" + cmbPrioridad.Text + "'";
             }
-
-            //filtro prioridad
             if (cmbTipoGrabado.SelectedIndex != 0)
             {
                 if(cmbTipoGrabado.SelectedIndex==1)
                 {
-                    sFiltro += sFiltro.Equals("") ? " t.Finalizado = 0" : " and p.Nombre = 0";
+                    sFiltro += sFiltro.Equals("") ? " t.Finalizado = 0" : " and p.Finalizado = 0";
                 }
                 else
                 {
-                    sFiltro += sFiltro.Equals("") ? " t.Finalizado = 1" : " and p.Nombre = 1";
+                    sFiltro += sFiltro.Equals("") ? " t.Finalizado = 1" : " and p.Finalizado = 1";
                 }
             }
-
+            sFiltro += sFiltro.Equals("") ? " t.FechaCarga between '" + dtpFechaGrabadoDesde.Value + "' and '" + dtpFechaGrabadoHasta.Value+ "'" : " and t.FechaCarga between '" + dtpFechaGrabadoDesde.Value+ "' and '" + dtpFechaGrabadoHasta.Value + "'";
             cargarGrillaTests(sFiltro);
-        }
+        }   
 
         private void cargarGrillaTests(string sFiltro)
         {

@@ -18,10 +18,7 @@ namespace PresentacionWebForm
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            TicketNegocio ticketNegocio = new TicketNegocio();
-            List<Ticket> listado = ticketNegocio.listarTickets();
-            dgvResultadoBusqueda.DataSource = listado;
-            dgvResultadoBusqueda.DataBind();
+           
         }
     }
 }

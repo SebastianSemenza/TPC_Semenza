@@ -10,13 +10,13 @@ namespace Negocio
 {
     public class TicketNegocio
     {
-        public List<Ticket>listarTickets()
+        public List<Ticket>listarPlanillaPrioridades()//PLANILLA DE PRIORIDADES
         {
             List<Ticket> listado = new List<Ticket>();
             AccesoDatosManager accesoDatos = new AccesoDatosManager();
             try
             {
-                accesoDatos.setearConsulta("select t.NTicket, t.Asunto, t.Descripcion, t.ER, t.PosicionPlanilla, u.Nombre, u.Apellido, p.Nombre, s.Nombre, ep.Descripcion, c.Descripcion ,t.FechaCarga from TICKETS as t inner join USUARIOS as u on u.ID = t.IDUsuario inner join PRIORIDADES as p on p.ID = t.IDPrioridad inner join SISTEMAS as s on s.ID = t.IDSistema inner join ESTADOSPLANILLA as ep on ep.ID = t.IDEstadoPlanilla inner join CATEGORIAS as c on c.ID = t.Categoria ");
+                accesoDatos.setearConsulta("select t.NTicket, t.Asunto, t.Descripcion, t.ER, t.PosicionPlanilla, u.Nombre+' '+ u.Apellido, p.Nombre, s.Nombre, ep.Descripcion, c.Descripcion ,t.FechaCarga from TICKETS as t inner join USUARIOS as u on u.ID = t.IDUsuario inner join PRIORIDADES as p on p.ID = t.IDPrioridad inner join SISTEMAS as s on s.ID = t.IDSistema inner join ESTADOSPLANILLA as ep on ep.ID = t.IDEstadoPlanilla inner join CATEGORIAS as c on c.ID = t.Categoria order by PosicionPlanilla asc");
                 accesoDatos.abrirConexion();
                 accesoDatos.ejecutarConsulta();
                 while(accesoDatos.Lector.Read())
@@ -26,24 +26,18 @@ namespace Negocio
                     ticket.Asunto = accesoDatos.Lector.GetString(1);
                     ticket.Descripcion = accesoDatos.Lector.GetString(2);
                     ticket.ER = accesoDatos.Lector.GetString(3);
-                    ticket.PosicionPlanilla = accesoDatos.Lector.GetInt32(4);
+                    if (!Convert.IsDBNull(accesoDatos.Lector["PosicionPlanilla"]))
+                        ticket.PosicionPlanilla = accesoDatos.Lector.GetInt32(4);
                     ticket.UsuarioTicket = new UsuarioTester();
                     ticket.UsuarioTicket.Nombre = accesoDatos.Lector.GetString(5);
-                    ticket.UsuarioTicket.Apellido = accesoDatos.Lector.GetString(6);
                     ticket.Prioridad = new Prioridad();
-                    ticket.Prioridad.TipoPrioridad = accesoDatos.Lector.GetString(7);
+                    ticket.Prioridad.TipoPrioridad = accesoDatos.Lector.GetString(6);
                     ticket.Sistema = new Sistema();
-                    ticket.Sistema.Nombre = accesoDatos.Lector.GetString(8);
+                    ticket.Sistema.Nombre = accesoDatos.Lector.GetString(7);
                     ticket.estadoPlanilla = new EstadoPlanillaP();
-                    ticket.estadoPlanilla.descripcion = accesoDatos.Lector.GetString(9);
-                    ticket.Categoria = accesoDatos.Lector.GetString(10);
-                    ticket.FechaCarga = accesoDatos.Lector.GetDateTime(11);
-                    ticket.HistoricoEstados = new List<EstadoTicket>();
-                    listarHistoricosEstados(ticket);
-                    ticket.TiempoAnalisis = calcularTiempoAnalisis(ticket);
-                    ticket.TiempoDesarrollo = calcularTiempoDesarrollo(ticket);
-                    ticket.TiempoTesteo = calcularTiempoTesteo(ticket);
-                    ticket.TiempoPuestaProduccion = calcularTiempoPuestaProduccion(ticket);
+                    ticket.estadoPlanilla.descripcion = accesoDatos.Lector.GetString(8);
+                    ticket.Categoria = accesoDatos.Lector.GetString(9);
+                    ticket.FechaCarga = accesoDatos.Lector.GetDateTime(10);
                     listado.Add(ticket);
                 }
                 return listado;
@@ -58,7 +52,7 @@ namespace Negocio
             }
         }
 
-        public List<Ticket> filtrarTickets(string sFiltro)
+        public List<Ticket> filtrarTickets(string sFiltro)//MOLUDO TIEMPOS 
         {
             List<Ticket> listado = new List<Ticket>();
             AccesoDatosManager accesoDatos = new AccesoDatosManager();
@@ -81,7 +75,8 @@ namespace Negocio
                     ticket.Asunto = accesoDatos.Lector.GetString(1);
                     ticket.Descripcion = accesoDatos.Lector.GetString(2);
                     ticket.ER = accesoDatos.Lector.GetString(3);
-                    ticket.PosicionPlanilla = accesoDatos.Lector.GetInt32(4);
+                    if (!Convert.IsDBNull(accesoDatos.Lector["PosicionPlanilla"]))
+                        ticket.PosicionPlanilla = accesoDatos.Lector.GetInt32(4);
                     ticket.UsuarioTicket = new UsuarioTester();
                     ticket.UsuarioTicket.Nombre = accesoDatos.Lector.GetString(5);
                     ticket.UsuarioTicket.Apellido = accesoDatos.Lector.GetString(6);
@@ -275,6 +270,29 @@ namespace Negocio
             {
                 throw ex;
             }
+        }
+
+        public List<TotalTiemposTickets> calcularTotales(List<Ticket> listado)
+        {
+            List<TotalTiemposTickets> Totales = new List<TotalTiemposTickets>();
+            try
+            {
+                TotalTiemposTickets total = new TotalTiemposTickets();
+                foreach (var tiempos in listado)
+                {
+                    total.TotalAnalisis += Convert.ToInt32(tiempos.TiempoAnalisis);
+                    total.TotalDesarrollo += Convert.ToInt32(tiempos.TiempoDesarrollo);
+                    total.TotalTesting += Convert.ToInt32(tiempos.TiempoTesteo);
+                    total.TotalProduccion += Convert.ToInt32(tiempos.TiempoPuestaProduccion);
+                }
+                Totales.Add(total);
+                return Totales;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
         }
     }
 }

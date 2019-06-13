@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>AdminLTE 2 | Dashboard</title>
+    <title>CESVI TESTER</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 3.3.2 -->
     <link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -118,58 +118,37 @@
                             <p>Sebastian Semenza</p>
                         </div>
                     </div>
-                    <!-- MENU PRINCIPAL -->
+
+
+                    <!--            -------                 MENU PRINCIPAL              ---------                  -->
+
+
                     <ul class="sidebar-menu">
                         <li class="header">MENU PRINCIPAL</li>
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-dashboard"></i><span>Modulo 1 TIEMPOS</span> <i class="fa fa-angle-left pull-right"></i>
+                                <i class="fa fa-dashboard"></i><span>Modulo 1 TICKETS</span> <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="Modulo1_Tiempo_Analisis.aspx"><i class="fa fa-circle-o"></i>Tiempo de analisis</a></li>
-                                <li><a href="Modulo1_FechasXTickets.aspx"><i class="fa fa-circle-o"></i>Fechas por Tickets</a></li>
-                                <li><a href="../../index2.html"><i class="fa fa-circle-o"></i>Tiempo de testeo</a></li>
-                                <li><a href="../../index2.html"><i class="fa fa-circle-o"></i>Tiempo de puesta en produccion</a></li>
+                                <li><a href="Modulo1_Tiempo_Tickets.aspx"><i class="fa fa-circle-o"></i>Tiempos por Ticket</a></li>
+                                <li><a href="Modulo1_FechasXTickets.aspx"><i class="fa fa-circle-o"></i>Fechas por Ticket</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-dashboard"></i><span>Modulo 2 PLANILLA DE PRIORIDADES</span> <i class="fa fa-angle-left pull-right"></i>
+                                <i class="fa fa-dashboard"></i><span>Modulo 2 TESTS</span> <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="Modulo1_Tiempo_Tickets.aspx"><i class="fa fa-circle-o"></i>Cantidad de errores</a></li>
+                                <li><a href="Modulo1_Tiempo_Tickets.aspx"><i class="fa fa-circle-o"></i>Cantidad de retrabajo</a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-dashboard"></i><span>Modulo 3 PLANILLA DE PRIORIDADES</span> <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href="Modulo2_Planilla_Prioridades.aspx"><i class="fa fa-circle-o"></i>Planilla</a></li>
-                                <li><a href="../../index2.html"><i class="fa fa-circle-o"></i>Indice de retrabajo</a></li>
-                                <li><a href="../../index2.html"><i class="fa fa-circle-o"></i>Indice de Riesgo</a></li>
-                            </ul>
-                        </li>
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-dashboard"></i><span>Modulo 3 Tickets cargados vs Finalizados</span> <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="../../index.html"><i class="fa fa-circle-o"></i>Planilla</a></li>
-                                <li><a href="../../index2.html"><i class="fa fa-circle-o"></i>Indice de retrabajo</a></li>
-                                <li><a href="../../index2.html"><i class="fa fa-circle-o"></i>Indice de Riesgo</a></li>
-                            </ul>
-                        </li>
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-dashboard"></i><span>Modulo 4 Cantidades</span> <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="../../index.html"><i class="fa fa-circle-o"></i>Planilla</a></li>
-                                <li><a href="../../index2.html"><i class="fa fa-circle-o"></i>Indice de retrabajo</a></li>
-                                <li><a href="../../index2.html"><i class="fa fa-circle-o"></i>Indice de Riesgo</a></li>
-                            </ul>
-                        </li>
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-dashboard"></i><span>Modulo 5 Calcular BONO</span> <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="../../index.html"><i class="fa fa-circle-o"></i>Planilla</a></li>
-                                <li><a href="../../index2.html"><i class="fa fa-circle-o"></i>Indice de retrabajo</a></li>
-                                <li><a href="../../index2.html"><i class="fa fa-circle-o"></i>Indice de Riesgo</a></li>
                             </ul>
                         </li>
                     </ul>

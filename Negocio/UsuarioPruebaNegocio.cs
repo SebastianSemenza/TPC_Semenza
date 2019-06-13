@@ -69,5 +69,50 @@ namespace Negocio
                 accesodatos.cerrarConexion();
             }
         }
+
+        public void modificarUsuarioP(Test testMod,UsuarioPrueba usuMod)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            try
+            {
+                accesoDatos.setearConsulta("update USUARIOSPRUEBA set Nombre=@Nombre,Apellido=@Apellido,Documento=@Documento,Contraseña=@Contraseña,IDPerfil=@IDPerfil,Compañia=@Compañia where IDTest="+testMod.ID+" and IDVersionTest="+testMod.Version);
+                accesoDatos.Comando.Parameters.Clear();
+                accesoDatos.Comando.Parameters.AddWithValue("@Nombre", usuMod.Nombre);
+                accesoDatos.Comando.Parameters.AddWithValue("@Apellido", usuMod.Apellido);
+                accesoDatos.Comando.Parameters.AddWithValue("@Documento", usuMod.Documento);
+                accesoDatos.Comando.Parameters.AddWithValue("@Contraseña", usuMod.Contraseña);
+                accesoDatos.Comando.Parameters.AddWithValue("@IDPerfil", usuMod.Perfil.id);
+                accesoDatos.Comando.Parameters.AddWithValue("@Compañia", usuMod.Compañia.ID);
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarConsulta();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
+        public void eliminarUsuarioP(UsuarioPrueba usuMod)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            try
+            {
+                accesoDatos.setearConsulta("delete from USUARIOSPRUEBA where id= "+usuMod.ID);
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarConsulta();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
     }
 }

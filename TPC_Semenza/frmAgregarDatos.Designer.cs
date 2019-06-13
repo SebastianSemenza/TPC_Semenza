@@ -90,6 +90,7 @@
             this.btnEliminarUP.TabIndex = 37;
             this.btnEliminarUP.Text = "Eliminar";
             this.btnEliminarUP.UseVisualStyleBackColor = false;
+            this.btnEliminarUP.Click += new System.EventHandler(this.btnEliminarUP_Click);
             // 
             // btnModificarUP
             // 
@@ -101,6 +102,7 @@
             this.btnModificarUP.TabIndex = 36;
             this.btnModificarUP.Text = "Modificar";
             this.btnModificarUP.UseVisualStyleBackColor = false;
+            this.btnModificarUP.Click += new System.EventHandler(this.btnModificarUP_Click);
             // 
             // btnAgregarUP
             // 

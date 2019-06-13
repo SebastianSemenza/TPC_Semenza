@@ -23,7 +23,7 @@ namespace Negocio
                 }
                 else
                 {
-                    accesoDatos.setearConsulta("select t.ID,t.IDVersion,t.NTicket,s.Nombre,u.Nombre,u.Apellido,p.Nombre,c.Nombre,gc.Descripcion,t.Asunto,t.Descripcion,s.ID,u.ID,c.ID,gc.ID,p.ID,t.Finalizado,t.VersionFinal,t.Ultimo from TESTS t inner join SISTEMAS s on t.IDSistema=s.ID inner join USUARIOS u on t.IDUsuario=u.ID inner join PRIORIDADES p on p.ID=t.IDPrioridad inner join COMPAÑIAS c on c.ID=t.IDCompañia inner join GRUPOSCOMPAÑIAS gc on gc.ID=t.IDGrupoCompañias where " + sFiltro);
+                    accesoDatos.setearConsulta("select t.ID,t.IDVersion,t.NTicket,s.Nombre,u.Nombre,u.Apellido,p.Nombre,c.Nombre,gc.Descripcion,t.Asunto,t.Descripcion,s.ID,u.ID,c.ID,gc.ID,p.ID,t.Finalizado,t.VersionFinal,t.Ultimo,t.FechaCarga,t.fechaFinalizacion from TESTS t inner join SISTEMAS s on t.IDSistema=s.ID inner join USUARIOS u on t.IDUsuario=u.ID inner join PRIORIDADES p on p.ID=t.IDPrioridad inner join COMPAÑIAS c on c.ID=t.IDCompañia inner join GRUPOSCOMPAÑIAS gc on gc.ID=t.IDGrupoCompañias where " + sFiltro);
                 }
                 accesoDatos.abrirConexion();
                 accesoDatos.ejecutarConsulta();

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Modulo1_Tiempo_Analisis.aspx.cs" Inherits="PresentacionWebForm.Modulo1_Tiempos" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Modulo1_Tiempo_Tickets.aspx.cs" Inherits="PresentacionWebForm.Modulo1_Tiempos" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolderTITULO" runat="server">
     <link href="../../bootstrap/css/styleTester.css" rel="stylesheet" type="text/css" />
@@ -95,6 +95,16 @@
                         <asp:BoundField HeaderText="Tiempo de Producción" DataField="TiempoPuestaProduccion" />
                     </columns>
                 </asp:GridView>
+
+                <asp:GridView ID="dgvTotales" runat="server" class="table table-striped" AutoGenerateColumns="false">
+                    <columns>
+                        <asp:BoundField HeaderText="TOTAL Tiempo de Análisis" DataField="TotalAnalisis" />
+                        <asp:BoundField HeaderText="TOTAL Tiempo de Desarrollo" DataField="TotalDesarrollo" />
+                        <asp:BoundField HeaderText="TOTAL Tiempo de Testeo" DataField="TotalTesting" />
+                        <asp:BoundField HeaderText="TOTAL Tiempo de Producción" DataField="TotalProduccion" />
+                    </columns>
+                </asp:GridView>
+
             </td>
         </tr>
     </table>

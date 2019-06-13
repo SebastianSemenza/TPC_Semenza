@@ -48,9 +48,12 @@ namespace PresentacionWebForm
             //}
             TicketNegocio ticketNegocio = new TicketNegocio();
             List<Ticket> listado = ticketNegocio.filtrarTickets(sFiltro);
-            //List<Ticket> listado = ticketNegocio.listarTickets();
             dgvResultadoBusqueda.DataSource = listado;
             dgvResultadoBusqueda.DataBind();
+
+            //List<TotalTiemposTickets> listadoTotales = ticketNegocio.calcularTotales(listado);
+            //dgvTotales.DataSource = listadoTotales;
+            //dgvTotales.DataBind();
         }
 
     }
