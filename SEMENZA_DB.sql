@@ -394,7 +394,7 @@ values (11,77889,convert(datetime, '2019-04-11 20:44:11.500', 121))
 
 --_____________________________PRUEBAS_______________________________
 
-
+/*
 
 ------------------------------Select para PLANILLA DE PRIORIDADES-------------------------------------------
 select (select top 1 IDVersion from TESTS where NTicket=t.NTicket order by IDVersion desc), ep.Descripcion as Estado,t.PosicionPlanilla,p.Nombre as Prioridad,t.NTicket,t.Asunto,t.Descripcion,t.FechaCarga,
@@ -423,3 +423,5 @@ inner join ESTADOSPLANILLA as ep on ep.ID=t.IDEstadoPlanilla
 inner join CATEGORIAS as cat on cat.ID=t.IDPrioridad
 order by PosicionPlanilla asc
 ------------------------------------------------------------------------------------------------------------
+
+*/
