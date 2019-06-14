@@ -139,6 +139,21 @@ create table ESTADOS_X_TICKETS(
 	--ver si generar primary
 )
 
+-------------------------------SP PARA CONTAR LOS ERRORES----------------------------------------------
+create procedure sp_contar_errores(
+	@NTicket int
+)
+as
+begin
+select
+(select COUNT(*) from CASOSPRUEBA as cp
+inner join TESTS as t on t.ID=cp.IDTest and t.IDVersion=cp.IDVersionTest
+where NTicket=@NTicket and Resultado=1)+
+(select COUNT(*) from CASOSPRUEBA as cp
+inner join TESTS as t on t.ID=cp.IDTest and t.IDVersion=cp.IDVersionTest
+where NTicket=@NTicket and Resultado=0 and Ultimo=1)
+end
+--------------------------------------------------------------------------------------------------
 
 --------------------------------------------DATOS---------------------------------------------------------
 
@@ -218,12 +233,15 @@ insert into TESTS(NTicket,IDVersion,IDSistema,IDUsuario,IDPrioridad,IDCompañia,I
 values('99222',1,5,3,2,4,2,'Agregar Campos en pantalla General','Se solocita modificar el campo de patente para las compañias del exterior para que permita ingresar valores alfanumericos',0,0,0,1,convert(datetime, '2018-09-09 20:44:11.500', 121),null)
 insert into TESTS(NTicket,IDVersion,IDSistema,IDUsuario,IDPrioridad,IDCompañia,IDGrupoCompañias,Asunto,Descripcion,Borrado,Finalizado,VersionFinal,Ultimo,FechaCarga,FechaFinalizacion)
 values('29999',1,2,4,4,5,2,'Agregar Campos en pantalla General','Se solocita modificar el campo de patente para las compañias del exterior para que permita ingresar valores alfanumericos',1,0,0,1,convert(datetime, '2018-02-21 20:44:11.500', 121),null)
-insert into TESTS(NTicket,IDVersion,IDSistema,IDUsuario,IDPrioridad,IDCompañia,IDGrupoCompañias,Asunto,Descripcion,Borrado,Finalizado,VersionFinal,Ultimo,FechaCarga,FechaFinalizacion)
-values('25604',1,3,4,4,3,2,'Agregar Campos en pantalla General','Se solocita modificar el campo de patente para las compañias del exterior para que permita ingresar valores alfanumericos',0,1,0,0,convert(datetime, '2019-01-23 20:44:11.500', 121),null)
-insert into TESTS(NTicket,IDVersion,IDSistema,IDUsuario,IDPrioridad,IDCompañia,IDGrupoCompañias,Asunto,Descripcion,Borrado,Finalizado,VersionFinal,Ultimo,FechaCarga,FechaFinalizacion)
-values('25604',2,3,4,4,3,2,'Agregar Campos en pantalla General','Se solocita modificar el campo de patente para las compañias del exterior para que permita ingresar valores alfanumericos',0,1,0,0,convert(datetime, '2019-02-23 20:44:11.500', 121),null)
-insert into TESTS(NTicket,IDVersion,IDSistema,IDUsuario,IDPrioridad,IDCompañia,IDGrupoCompañias,Asunto,Descripcion,Borrado,Finalizado,VersionFinal,Ultimo,FechaCarga,FechaFinalizacion)
-values('25604',3,3,4,4,3,2,'Agregar Campos en pantalla General','Se solocita modificar el campo de patente para las compañias del exterior para que permita ingresar valores alfanumericos',0,0,0,1,convert(datetime, '2019-03-23 20:44:11.500', 121),null)
+SET IDENTITY_INSERT TESTS ON
+insert into TESTS(ID,NTicket,IDVersion,IDSistema,IDUsuario,IDPrioridad,IDCompañia,IDGrupoCompañias,Asunto,Descripcion,Borrado,Finalizado,VersionFinal,Ultimo,FechaCarga,FechaFinalizacion)
+values(12,'25605',1,3,4,4,3,2,'Agregar Campos en pantalla General','Se solocita modificar el campo de patente para las compañias del exterior para que permita ingresar valores alfanumericos',0,1,0,0,convert(datetime, '2019-01-23 20:44:11.500', 121),null)
+insert into TESTS(ID,NTicket,IDVersion,IDSistema,IDUsuario,IDPrioridad,IDCompañia,IDGrupoCompañias,Asunto,Descripcion,Borrado,Finalizado,VersionFinal,Ultimo,FechaCarga,FechaFinalizacion)
+values(12,'25605',2,3,4,4,3,2,'Agregar Campos en pantalla General','Se solocita modificar el campo de patente para las compañias del exterior para que permita ingresar valores alfanumericos',0,1,0,0,convert(datetime, '2019-02-23 20:44:11.500', 121),null)
+insert into TESTS(ID,NTicket,IDVersion,IDSistema,IDUsuario,IDPrioridad,IDCompañia,IDGrupoCompañias,Asunto,Descripcion,Borrado,Finalizado,VersionFinal,Ultimo,FechaCarga,FechaFinalizacion)
+values(12,'25605',3,3,4,4,3,2,'Agregar Campos en pantalla General','Se solocita modificar el campo de patente para las compañias del exterior para que permita ingresar valores alfanumericos',0,1,1,1,convert(datetime, '2019-03-23 20:44:11.500', 121),null)
+SET IDENTITY_INSERT TESTS OFF
+
 
 
 insert into USUARIOSPRUEBA(IDTest,IDVersionTest,Nombre,Apellido,Documento,Contraseña,IDPerfil,Compañia)
@@ -262,6 +280,27 @@ enviando a cotizar a la provincia de buenos aires','Fallo el envio, arroja mensa
 insert into CASOSPRUEBA(IDTest,IDVersionTest,Descripcion,Resultado,Observaciones,DetalleFalla,IDUsuario,IDDatoPrueba,Automatico)
 values (1,1,'Envio de Orden de Trabajo',0,'Se realizo el envio de la Orden de Trabajo al taller KAPPA, 
 15 piezas a reparacion con daño leve','Fallo el envio, arroja mensaje de error',1,1,1)
+insert into CASOSPRUEBA(IDTest,IDVersionTest,Descripcion,Resultado,Observaciones,DetalleFalla,IDUsuario,IDDatoPrueba,Automatico)
+values (12,1,'Envio de Orden de Trabajo',0,'Se realizo el envio de la Orden de Trabajo al taller KAPPA, 
+15 piezas a reparacion con daño leve','Fallo el envio, arroja mensaje de error',1,1,1)
+insert into CASOSPRUEBA(IDTest,IDVersionTest,Descripcion,Resultado,Observaciones,DetalleFalla,IDUsuario,IDDatoPrueba,Automatico)
+values (12,1,'Envio de Orden de Trabajo',0,'Se realizo el envio de la Orden de Trabajo al taller KAPPA, 
+15 piezas a reparacion con daño leve','Fallo el envio, arroja mensaje de error',1,1,1)
+insert into CASOSPRUEBA(IDTest,IDVersionTest,Descripcion,Resultado,Observaciones,DetalleFalla,IDUsuario,IDDatoPrueba,Automatico)
+values (12,1,'Envio de Orden de Trabajo',1,'Se realizo el envio de la Orden de Trabajo al taller KAPPA, 
+15 piezas a reparacion con daño leve','Fallo el envio, arroja mensaje de error',1,1,1)
+insert into CASOSPRUEBA(IDTest,IDVersionTest,Descripcion,Resultado,Observaciones,DetalleFalla,IDUsuario,IDDatoPrueba,Automatico)
+values (12,2,'Envio de Orden de Trabajo',1,'Se realizo el envio de la Orden de Trabajo al taller KAPPA, 
+15 piezas a reparacion con daño leve','Fallo el envio, arroja mensaje de error',1,1,1)
+insert into CASOSPRUEBA(IDTest,IDVersionTest,Descripcion,Resultado,Observaciones,DetalleFalla,IDUsuario,IDDatoPrueba,Automatico)
+values (12,2,'Envio de Orden de Trabajo',0,'Se realizo el envio de la Orden de Trabajo al taller KAPPA, 
+15 piezas a reparacion con daño leve','Fallo el envio, arroja mensaje de error',1,1,1)
+insert into CASOSPRUEBA(IDTest,IDVersionTest,Descripcion,Resultado,Observaciones,DetalleFalla,IDUsuario,IDDatoPrueba,Automatico)
+values (12,3,'Envio de Orden de Trabajo',1,'Se realizo el envio de la Orden de Trabajo al taller KAPPA, 
+15 piezas a reparacion con daño leve','Fallo el envio, arroja mensaje de error',1,1,1)
+
+
+
 
 insert into ESTADOSTICKET(Descripcion) values ('Pendiente de Analisis')
 insert into ESTADOSTICKET(Descripcion) values ('En Analisis')
@@ -304,7 +343,7 @@ values (55660,'nuevo ticket 1','nuevo nuevo nuenvo nuevo nuevo nuenvo nuevo nuev
 nuenvo nuevo nuevo nuenvo nuevo nuevo nuenvo nuevo nuevo nuenvo nuevo nuevo nuenvo nuevo nuevo nuenvo nuevo nuevo nuenvo nuevo nuevo nuenvo
  nuevo nuevo nuenvo nuevo nuevo nuenvo nuevo nuevo nuenvonuevo nuevo nuenvonuevo nuevo nuenvo nuevo nuevo nuenvo nuevo nuevo nuenvo nuevo 
  nuevo nuenvo dificar el campo INFO para las compañias del exterior para 
-que permita ingresar valores alfanumericos',2,1,2,2,convert(datetime, '2018-10-23 20:44:11.500', 121),'url',3,2)
+que permita ingresar valores alfanumericos',2,1,2,2,convert(datetime, '2018-10-23 20:44:11.500', 121),'url',3,6)
 insert into TICKETS(NTicket,Asunto,Descripcion,IDUsuario,IDPrioridad,IDSistema,IDEstadoPlanilla,FechaCarga,ER,Categoria,PosicionPlanilla)
 values (77889,'nuevo ticket 1','nuevo nuevo nuenvo nuevo nuevo nuenvo nuevo nuevo nuenvo nuevo nuevo nuenvo nuevo nuevo nuenvo Se solocita 
 modificar el campo INFO para las compañias del exterior para que permita ingresar valores
@@ -373,14 +412,14 @@ left join TESTS as ts on ts.NTicket=t.NTicket
 left join COMPAÑIAS as com on com.ID=ts.IDCompañia
 left join GRUPOSCOMPAÑIAS as gc on gc.ID=ts.IDGrupoCompañias
 order by PosicionPlanilla asc
+
+------------------------------PROVISORIA PLANILLA DE PRIORIDADES-------------------------------------------
+select ep.Descripcion as Estado,t.PosicionPlanilla,p.Nombre as Prioridad,t.NTicket,t.Asunto,t.Descripcion,t.FechaCarga,
+cat.Descripcion as Categoria,s.Nombre as Sistema,u.Nombre,u.Apellido from TICKETS as t
+inner join USUARIOS as u on u.ID=t.IDUsuario
+inner join PRIORIDADES as p on p.ID=t.IDPrioridad
+inner join SISTEMAS as s on s.ID=t.IDSistema
+inner join ESTADOSPLANILLA as ep on ep.ID=t.IDEstadoPlanilla
+inner join CATEGORIAS as cat on cat.ID=t.IDPrioridad
+order by PosicionPlanilla asc
 ------------------------------------------------------------------------------------------------------------
-
-
-select * from TESTS where NTicket=25604
-
-select NTicket, FechaCarga, fechaFinalizacion, IDCompañia, IDGrupoCompañias from TESTS 
-group by NTicket, FechaCarga, fechaFinalizacion, IDCompañia, IDGrupoCompañias 
-
-select top 1 IDVersion from TESTS as t 
-inner join TICKETS as tik on tik.NTicket=t.NTicket
-order by IDVersion desc

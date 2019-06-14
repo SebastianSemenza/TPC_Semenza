@@ -66,5 +66,65 @@ namespace Negocio
                 accesoDatos.cerrarConexion();
             }
         }
+
+        public List<SiniestroPrueba> obtenerSiniestroVersion(Test test)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            List<SiniestroPrueba> listado = new List<SiniestroPrueba>();
+            SiniestroPrueba siniestro;
+            try
+            {
+                accesoDatos.setearConsulta("select IDTest,IDVersionTest,Dato,Patente,IDCompañia,IDSistema from DATOSPRUEBA where IDTest=" + test.ID + " and IDVersionTest=" + test.Version);
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarConsulta();
+                while (accesoDatos.Lector.Read())
+                {
+                    siniestro = new SiniestroPrueba();
+                    siniestro.Test = new Test();
+                    siniestro.Test.ID = accesoDatos.Lector.GetInt32(0);
+                    siniestro.Test.Version = accesoDatos.Lector.GetInt32(1) + 1;
+                    siniestro.NroSiniestro = accesoDatos.Lector.GetString(2);
+                    siniestro.Patente = accesoDatos.Lector.GetString(3);
+                    siniestro.Compañia=new Compañia();
+                    siniestro.Compañia.ID= accesoDatos.Lector.GetInt32(4);
+                    siniestro.Sistema = new Sistema();
+                    siniestro.Sistema.id = accesoDatos.Lector.GetInt32(5);
+                    listado.Add(siniestro);
+                }
+                return listado;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
+        public void pasarSiniestrosVersion(List<SiniestroPrueba> listado)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            try
+            {
+                foreach (var siniestro in listado)
+                {
+                    accesoDatos.setearConsulta("insert into DATOSPRUEBA(IDTest,IDVersionTest,Dato,Patente,IDCompañia,IDSistema) values ("+siniestro.Test.ID+","+siniestro.Test.Version+",'"+siniestro.NroSiniestro.ToString()+"','"+siniestro.Patente.ToString()+"',"+siniestro.Compañia.ID+","+siniestro.Sistema.id+")");
+                    accesoDatos.abrirConexion();
+                    accesoDatos.ejecutarConsulta();
+                    accesoDatos.cerrarConexion();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
     }
 }

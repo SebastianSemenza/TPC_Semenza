@@ -50,7 +50,7 @@ namespace TPC_Semenza
                     txbApellido.Text = UPLocal.Apellido;
                     txbDocumento.Text = UPLocal.Documento;
                     txbContraseña.Text = UPLocal.Contraseña;
-                    cmbPerfil.SelectedItem = cmbPerfil.FindString(UPLocal.Perfil.Nombre);
+                    cmbPerfil.SelectedIndex = cmbPerfil.FindString(UPLocal.Perfil.Nombre);
                     cmbCompañia.SelectedIndex = cmbCompañia.FindString(UPLocal.Compañia.Nombre);
                 }
             }

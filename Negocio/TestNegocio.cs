@@ -60,6 +60,10 @@ namespace Negocio
                     test.GrupoCia = new GrupoCompañias();
                     test.GrupoCia.Nombre = accesoDatos.Lector.GetString(8);
                     test.GrupoCia.id = accesoDatos.Lector.GetInt32(14);
+
+                    test.CantErrores = ContarErrores(test.NTicket);
+                    test.CantVersiones = ContarVersiones(test.NTicket);
+
                     listado.Add(test);
                 }
                 return listado;
@@ -170,6 +174,52 @@ namespace Negocio
                 accesoDatos.setearConsulta("update TESTS set Finalizado=1 ,VersionFinal=1,fechaFinalizacion=GETDATE() where ID=" + test.ID.ToString() + " AND IDVersion=" + test.Version.ToString());
                 accesoDatos.abrirConexion();
                 accesoDatos.ejecutarConsulta();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
+        public int ContarErrores(int ticket)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            int resultado;
+            try
+            {
+                accesoDatos.setearSP("sp_contar_errores");
+                accesoDatos.Comando.Parameters.Clear();
+                accesoDatos.Comando.Parameters.AddWithValue("@NTicket", ticket);
+                accesoDatos.abrirConexion();
+                resultado = accesoDatos.ejecutarAccionReturn();
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
+        public int ContarVersiones(int ticket)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            int resultado;
+            try
+            {
+                accesoDatos.setearConsulta("select COUNT(*) from TESTS where NTicket=@NTicket");
+                accesoDatos.Comando.Parameters.Clear();
+                accesoDatos.Comando.Parameters.AddWithValue("@NTicket", ticket);
+                accesoDatos.abrirConexion();
+                resultado = accesoDatos.ejecutarAccionReturn();
+                return resultado;
             }
             catch (Exception ex)
             {

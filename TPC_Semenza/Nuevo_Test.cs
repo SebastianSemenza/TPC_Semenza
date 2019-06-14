@@ -179,11 +179,27 @@ namespace TPC_Semenza
         {
             TestNegocio testNegocio = new TestNegocio();
             testNegocio.agregarVersion(testLocal);
+
+            List<UsuarioPrueba> listadoUP = new List<UsuarioPrueba>();
+            UsuarioPruebaNegocio upNegocio = new UsuarioPruebaNegocio();
+            listadoUP=upNegocio.obtenerUsuarioVersion(testLocal);
+            upNegocio.pasarUsuariosVersion(listadoUP);
+
+            List<SiniestroPrueba> listadoSP = new List<SiniestroPrueba>();
+            SiniestroPruebaNegocio spNegocio = new SiniestroPruebaNegocio();
+            listadoSP = spNegocio.obtenerSiniestroVersion(testLocal);
+            spNegocio.pasarSiniestrosVersion(listadoSP);
+            
+            List<CasoPrueba> listadoCP = new List<CasoPrueba>();
+            CasoPruebaNegocio cpNegocio = new CasoPruebaNegocio();
+            listadoCP = cpNegocio.obtenerCasoVersion(testLocal);
+            cpNegocio.pasarCasosVersion(listadoCP);
+
             this.Close();
             testLocal.Version++;
+            testLocal.Finalizado = false;
             Nuevo_Test frmNT = new Nuevo_Test(testLocal);
             frmNT.Show();
-            //ver como agregarle los casos de prueba usuarios y datos a la nueva version
 
         }
 

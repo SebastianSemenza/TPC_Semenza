@@ -75,7 +75,7 @@ namespace Negocio
             AccesoDatosManager accesoDatos = new AccesoDatosManager();
             try
             {
-                accesoDatos.setearConsulta("update USUARIOSPRUEBA set Nombre=@Nombre,Apellido=@Apellido,Documento=@Documento,Contraseña=@Contraseña,IDPerfil=@IDPerfil,Compañia=@Compañia where IDTest="+testMod.ID+" and IDVersionTest="+testMod.Version);
+                accesoDatos.setearConsulta("update USUARIOSPRUEBA set Nombre=@Nombre,Apellido=@Apellido,Documento=@Documento,Contraseña=@Contraseña,IDPerfil=@IDPerfil,Compañia=@Compañia where IDTest="+testMod.ID+" and IDVersionTest="+testMod.Version+" and ID="+usuMod.ID);
                 accesoDatos.Comando.Parameters.Clear();
                 accesoDatos.Comando.Parameters.AddWithValue("@Nombre", usuMod.Nombre);
                 accesoDatos.Comando.Parameters.AddWithValue("@Apellido", usuMod.Apellido);
@@ -104,6 +104,67 @@ namespace Negocio
                 accesoDatos.setearConsulta("delete from USUARIOSPRUEBA where id= "+usuMod.ID);
                 accesoDatos.abrirConexion();
                 accesoDatos.ejecutarConsulta();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
+        public List<UsuarioPrueba>obtenerUsuarioVersion(Test test)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            List<UsuarioPrueba> listado = new List<UsuarioPrueba>();
+            UsuarioPrueba usuario;
+            try
+            {
+                accesoDatos.setearConsulta("select IDTest,IDVersionTest,Nombre,Apellido,Documento,Contraseña,IDPerfil,Compañia from USUARIOSPRUEBA where IDTest="+test.ID+" and IDVersionTest="+test.Version);
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarConsulta();
+                while(accesoDatos.Lector.Read())
+                {
+                    usuario = new UsuarioPrueba();
+                    usuario.Test = new Test();
+                    usuario.Test.ID = accesoDatos.Lector.GetInt32(0);
+                    usuario.Test.Version = accesoDatos.Lector.GetInt32(1) + 1;
+                    usuario.Nombre = accesoDatos.Lector.GetString(2);
+                    usuario.Apellido = accesoDatos.Lector.GetString(3);
+                    usuario.Documento = accesoDatos.Lector.GetString(4);
+                    usuario.Contraseña = accesoDatos.Lector.GetString(5);
+                    usuario.Perfil = new Perfil();
+                    usuario.Perfil.id = accesoDatos.Lector.GetInt32(6);
+                    usuario.Compañia = new Compañia();
+                    usuario.Compañia.ID = accesoDatos.Lector.GetInt32(7);
+                    listado.Add(usuario);
+                }
+                return listado;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
+        public void pasarUsuariosVersion(List<UsuarioPrueba> listado)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            try
+            {
+                foreach(var up in listado)
+                {
+                    accesoDatos.setearConsulta("insert into USUARIOSPRUEBA(IDTest,IDVersionTest,Nombre,Apellido,Documento,Contraseña,IDPerfil,Compañia) values ("+up.Test.ID+","+up.Test.Version+",'"+up.Nombre.ToString()+"','"+up.Apellido.ToString()+"','"+up.Documento.ToString()+"','"+up.Contraseña.ToString()+"',"+up.Perfil.id+","+up.Compañia.ID+")");
+                    accesoDatos.abrirConexion();
+                    accesoDatos.ejecutarConsulta();
+                    accesoDatos.cerrarConexion();
+                }
             }
             catch (Exception ex)
             {

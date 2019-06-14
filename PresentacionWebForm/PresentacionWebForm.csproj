@@ -151,6 +151,9 @@
     <Content Include="dist\img\credit\visa.png" />
     <Content Include="dist\img\default-50x50.gif" />
     <Content Include="dist\img\icons.png" />
+    <Content Include="dist\img\LogoCESVI Circular-2017.jpg" />
+    <Content Include="dist\img\LogoCESVI-1color-2017.jpg" />
+    <Content Include="dist\img\LOGOCESVI2017-Blanco.png" />
     <Content Include="dist\img\photo1.png" />
     <Content Include="dist\img\photo2.png" />
     <Content Include="dist\img\sprite-skin-flat.png" />
@@ -173,7 +176,8 @@
     <Content Include="index.html" />
     <Content Include="index2.html" />
     <Content Include="Modulo1_Tiempo_Tickets.aspx" />
-    <Content Include="Modulo2_Planilla_Prioridades.aspx" />
+    <Content Include="Modulo2_CantidadesXTest.aspx" />
+    <Content Include="Modulo3_Planilla_Prioridades.aspx" />
     <Content Include="pages\calendar.html" />
     <Content Include="pages\charts\chartjs.html" />
     <Content Include="pages\charts\flot.html" />
@@ -714,12 +718,19 @@
     <Compile Include="Modulo1_Tiempo_Tickets.aspx.designer.cs">
       <DependentUpon>Modulo1_Tiempo_Tickets.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Modulo2_Planilla_Prioridades.aspx.cs">
-      <DependentUpon>Modulo2_Planilla_Prioridades.aspx</DependentUpon>
+    <Compile Include="Modulo2_CantidadesXTest.aspx.cs">
+      <DependentUpon>Modulo2_CantidadesXTest.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Modulo2_Planilla_Prioridades.aspx.designer.cs">
-      <DependentUpon>Modulo2_Planilla_Prioridades.aspx</DependentUpon>
+    <Compile Include="Modulo2_CantidadesXTest.aspx.designer.cs">
+      <DependentUpon>Modulo2_CantidadesXTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo3_Planilla_Prioridades.aspx.cs">
+      <DependentUpon>Modulo3_Planilla_Prioridades.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulo3_Planilla_Prioridades.aspx.designer.cs">
+      <DependentUpon>Modulo3_Planilla_Prioridades.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">

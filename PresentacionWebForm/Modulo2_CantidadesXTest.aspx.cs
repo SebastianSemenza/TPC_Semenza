@@ -9,7 +9,7 @@ using Negocio;
 
 namespace PresentacionWebForm
 {
-    public partial class Modulo1_Tiempos : System.Web.UI.Page
+    public partial class Modulo2_CantidadErroresXTest : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -46,15 +46,13 @@ namespace PresentacionWebForm
             {
                 sFiltro += sFiltro.Equals("") ? " u.Nombre+' '+u.Apellido= " + "'" + cmbUsuarios.Text + "'" : " and u.Nombre+' '+u.Apellido= " + "'" + cmbUsuarios.Text + "'";
             }
-            TicketNegocio ticketNegocio = new TicketNegocio();
-            List<Ticket> listado = ticketNegocio.filtrarTickets(sFiltro);
+            sFiltro += sFiltro.Equals("") ? " t.Ultimo = 1 " : " and t.Ultimo = 1 ";
+            TestNegocio testNegocio = new TestNegocio();
+            List<Test> listado = testNegocio.listarTests(sFiltro);
             dgvResultadoBusqueda.DataSource = listado;
             dgvResultadoBusqueda.DataBind();
-
-            List<TotalTiemposTickets> listadoTotales = ticketNegocio.calcularTotales(listado);
-            dgvTotales.DataSource = listadoTotales;
-            dgvTotales.DataBind();
         }
-
     }
+
+
 }

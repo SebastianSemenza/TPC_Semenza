@@ -280,10 +280,15 @@ namespace Negocio
                 TotalTiemposTickets total = new TotalTiemposTickets();
                 foreach (var tiempos in listado)
                 {
-                    total.TotalAnalisis += Convert.ToInt32(tiempos.TiempoAnalisis);
-                    total.TotalDesarrollo += Convert.ToInt32(tiempos.TiempoDesarrollo);
-                    total.TotalTesting += Convert.ToInt32(tiempos.TiempoTesteo);
-                    total.TotalProduccion += Convert.ToInt32(tiempos.TiempoPuestaProduccion);
+                    int numero = 0;
+                    if (int.TryParse(tiempos.TiempoAnalisis, out numero))
+                        total.TotalAnalisis += numero;
+                    if (int.TryParse(tiempos.TiempoDesarrollo, out numero))
+                        total.TotalDesarrollo += numero;
+                    if (int.TryParse(tiempos.TiempoTesteo, out numero))
+                        total.TotalTesting += numero;
+                    if (int.TryParse(tiempos.TiempoPuestaProduccion, out numero))
+                        total.TotalProduccion += numero;
                 }
                 Totales.Add(total);
                 return Totales;

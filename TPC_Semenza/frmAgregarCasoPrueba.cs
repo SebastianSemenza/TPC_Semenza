@@ -103,5 +103,18 @@ namespace TPC_Semenza
             }
         }
 
+        private void btnModificarCaso_Click(object sender, EventArgs e)
+        {
+            frm_ModificarCasoPrueba frmModCaso = new frm_ModificarCasoPrueba(testLocal,(CasoPrueba)dgvCasosPrueba.CurrentRow.DataBoundItem);
+            frmModCaso.ShowDialog();
+            cargarGrillaCasosP();
+        }
+
+        private void btnEliminarCaso_Click(object sender, EventArgs e)
+        {
+            CasoPruebaNegocio cpNegocio = new CasoPruebaNegocio();
+            cpNegocio.eliminarDatoPrueba((CasoPrueba)dgvCasosPrueba.CurrentRow.DataBoundItem);
+            cargarGrillaCasosP();
+        }
     }
 }

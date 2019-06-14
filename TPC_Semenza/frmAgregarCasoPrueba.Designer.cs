@@ -121,6 +121,7 @@
             this.btnEliminarCaso.TabIndex = 45;
             this.btnEliminarCaso.Text = "Eliminar";
             this.btnEliminarCaso.UseVisualStyleBackColor = false;
+            this.btnEliminarCaso.Click += new System.EventHandler(this.btnEliminarCaso_Click);
             // 
             // btnModificarCaso
             // 
@@ -132,6 +133,7 @@
             this.btnModificarCaso.TabIndex = 44;
             this.btnModificarCaso.Text = "Modificar";
             this.btnModificarCaso.UseVisualStyleBackColor = false;
+            this.btnModificarCaso.Click += new System.EventHandler(this.btnModificarCaso_Click);
             // 
             // btnAgregarCaso
             // 

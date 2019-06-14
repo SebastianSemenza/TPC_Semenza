@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>CESVI TESTER</title>
+    <title>CESVI TESTER Estadisticas</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 3.3.2 -->
     <link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -44,7 +44,7 @@
         <div class="wrapper">
 
             <header class="main-header">
-                <a href="../../index2.html" class="logo"><b>CESVI </b>TESTER</a>
+                <a href="Modulo1_Tiempo_Tickets.aspx" class="logo"><img src="dist/img/LOGOCESVI2017-Blanco.png" width="180" height="45" /></a>
                 <!-- NAV VAR HEADER     LA DE ARRIBA DE TODO-->
                 <nav class="pos-f-t" role="navigation" style="height:50px">
                     <!-- BOTON PARA OCULTAR EL MENU DE LA IZQUIERDA-->
@@ -130,8 +130,8 @@
                                 <i class="fa fa-dashboard"></i><span>Modulo 1 TICKETS</span> <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="Modulo1_Tiempo_Tickets.aspx"><i class="fa fa-circle-o"></i>Tiempos por Ticket</a></li>
-                                <li><a href="Modulo1_FechasXTickets.aspx"><i class="fa fa-circle-o"></i>Fechas por Ticket</a></li>
+                                <li><a href="Modulo1_Tiempo_Tickets.aspx"><i class="fa fa-circle-o"></i>Tiempos</a></li>
+                                <li><a href="Modulo1_FechasXTickets.aspx"><i class="fa fa-circle-o"></i>Fechas (coming soon)</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
@@ -139,8 +139,7 @@
                                 <i class="fa fa-dashboard"></i><span>Modulo 2 TESTS</span> <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="Modulo1_Tiempo_Tickets.aspx"><i class="fa fa-circle-o"></i>Cantidad de errores</a></li>
-                                <li><a href="Modulo1_Tiempo_Tickets.aspx"><i class="fa fa-circle-o"></i>Cantidad de retrabajo</a></li>
+                                <li><a href="Modulo2_CantidadesXTest.aspx"><i class="fa fa-circle-o"></i>Cantidades</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
@@ -148,7 +147,7 @@
                                 <i class="fa fa-dashboard"></i><span>Modulo 3 PLANILLA DE PRIORIDADES</span> <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="Modulo2_Planilla_Prioridades.aspx"><i class="fa fa-circle-o"></i>Planilla</a></li>
+                                <li><a href="Modulo3_Planilla_Prioridades.aspx"><i class="fa fa-circle-o"></i>Planilla</a></li>
                             </ul>
                         </li>
                     </ul>

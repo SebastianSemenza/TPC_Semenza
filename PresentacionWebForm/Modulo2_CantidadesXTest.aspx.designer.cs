@@ -10,7 +10,7 @@
 namespace PresentacionWebForm {
     
     
-    public partial class Modulo1_Tiempos {
+    public partial class Modulo2_CantidadErroresXTest {
         
         /// <summary>
         /// Control lblTicket.
@@ -112,13 +112,13 @@ namespace PresentacionWebForm {
         protected global::System.Web.UI.WebControls.TextBox txbHasta;
         
         /// <summary>
-        /// Control Button1.
+        /// Control btnBuscar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button btnBuscar;
         
         /// <summary>
         /// Control dgvResultadoBusqueda.
@@ -128,14 +128,5 @@ namespace PresentacionWebForm {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView dgvResultadoBusqueda;
-        
-        /// <summary>
-        /// Control dgvTotales.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView dgvTotales;
     }
 }

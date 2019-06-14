@@ -8,7 +8,6 @@ namespace Dominio
 {
     public class Test
     {
-        //atributos creados para mostrarlos en el dgv
         public int Version { get; set; }
         public int NTicket{ get; set; }
         public string Asunto { get; set; }
@@ -17,8 +16,6 @@ namespace Dominio
         public bool Finalizado { get; set; }
         public bool VersionFinal { get; set; }
         public bool Ultimo { get; set; }
-
-        //atributos iniciales
         public int ID { get; set; }
         public int Duracion { get; set; }
         public EstadoTest Estado { get; set; }
@@ -35,5 +32,8 @@ namespace Dominio
         public Sistema Sistema { get; set; }
         public DateTime FechaCarga { get; set; }
         public DateTime FechaFinalizacion { get; set; }
+
+        public int CantErrores { get; set; }
+        public int CantVersiones { get; set; }
     }
 }
