@@ -126,6 +126,7 @@
             this.btnEliminarDato.TabIndex = 40;
             this.btnEliminarDato.Text = "Eliminar";
             this.btnEliminarDato.UseVisualStyleBackColor = false;
+            this.btnEliminarDato.Click += new System.EventHandler(this.btnEliminarDato_Click);
             // 
             // btnModificarDato
             // 
@@ -137,6 +138,7 @@
             this.btnModificarDato.TabIndex = 39;
             this.btnModificarDato.Text = "Modificar";
             this.btnModificarDato.UseVisualStyleBackColor = false;
+            this.btnModificarDato.Click += new System.EventHandler(this.btnModificarDato_Click);
             // 
             // btnAgregarDato
             // 

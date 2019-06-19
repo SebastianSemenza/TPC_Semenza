@@ -14,7 +14,8 @@ namespace TPC_Semenza
 {
     public partial class frmAgregarDatoPrueba : Form
     {
-        Test testLocal;
+        Test testLocal = null;
+        SiniestroPrueba SPLocal = null;
 
         public frmAgregarDatoPrueba()
         {
@@ -27,6 +28,13 @@ namespace TPC_Semenza
             testLocal = test;
         }
 
+        public frmAgregarDatoPrueba(Test test,SiniestroPrueba sp)
+        {
+            InitializeComponent();
+            testLocal = test;
+            SPLocal = sp;
+        }
+
         private void frmAgregarDatoPrueba_Load(object sender, EventArgs e)
         {
             SistemaNegocio sistema = new SistemaNegocio();
@@ -35,6 +43,13 @@ namespace TPC_Semenza
             {
                 cmbSistema.DataSource = sistema.listarSistemas();
                 cmbCompañia.DataSource = compañia.listarCompañias();
+                if(SPLocal!=null)
+                {
+                    txbNroSiniestro.Text = SPLocal.NroSiniestro;
+                    txbPatente.Text = SPLocal.Patente;
+                    cmbCompañia.SelectedIndex = cmbCompañia.FindString(SPLocal.Compañia.Nombre);
+                    cmbSistema.SelectedIndex = cmbSistema.FindString(SPLocal.Sistema.Nombre);
+                }
             }
             catch (Exception)
             {
@@ -48,12 +63,23 @@ namespace TPC_Semenza
             SiniestroPruebaNegocio SPNegocio = new SiniestroPruebaNegocio();
             try
             {
-                SiniestroPrueba siniestroPrueba = new SiniestroPrueba();
-                siniestroPrueba.NroSiniestro = txbNroSiniestro.Text;
-                siniestroPrueba.Patente = txbPatente.Text;
-                siniestroPrueba.Compañia = (Compañia)cmbCompañia.SelectedItem;
-                siniestroPrueba.Sistema = (Sistema)cmbSistema.SelectedItem;
-                SPNegocio.agregarSiniestroPrueba(testLocal,siniestroPrueba);
+                if(SPLocal==null)
+                {
+                    SPLocal = new SiniestroPrueba();
+                    SPLocal.NroSiniestro = txbNroSiniestro.Text;
+                    SPLocal.Patente = txbPatente.Text;
+                    SPLocal.Compañia = (Compañia)cmbCompañia.SelectedItem;
+                    SPLocal.Sistema = (Sistema)cmbSistema.SelectedItem;
+                    SPNegocio.agregarSiniestroPrueba(testLocal, SPLocal);
+                }
+                else
+                {
+                    SPLocal.NroSiniestro = txbNroSiniestro.Text;
+                    SPLocal.Patente = txbPatente.Text;
+                    SPLocal.Compañia = (Compañia)cmbCompañia.SelectedItem;
+                    SPLocal.Sistema = (Sistema)cmbSistema.SelectedItem;
+                    SPNegocio.modificarSiniestroPrueba(testLocal, SPLocal);
+                }
 
                 this.Close();
             }

@@ -119,5 +119,26 @@ namespace TPC_Semenza
                 throw ex;
             }
         }
+
+        private void btnModificarDato_Click(object sender, EventArgs e)
+        {
+            frmAgregarDatoPrueba frmAgregarSP = new frmAgregarDatoPrueba(testLocal, (SiniestroPrueba)dgvDatosPrueba.CurrentRow.DataBoundItem);
+            frmAgregarSP.ShowDialog();
+            cargarGrillaSiniestrosP();
+        }
+
+        private void btnEliminarDato_Click(object sender, EventArgs e)
+        {
+            SiniestroPruebaNegocio SPNegocio = new SiniestroPruebaNegocio();
+            try
+            {
+                SPNegocio.eliminarSiniestroPrueba((SiniestroPrueba)dgvDatosPrueba.CurrentRow.DataBoundItem);
+                cargarGrillaSiniestrosP();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

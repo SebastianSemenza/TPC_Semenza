@@ -85,13 +85,13 @@ namespace PresentacionWebForm {
         protected global::System.Web.UI.WebControls.Label lblDesde;
         
         /// <summary>
-        /// Control txbDesde.
+        /// Control dtpDesde.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txbDesde;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText dtpDesde;
         
         /// <summary>
         /// Control lblHasta.
@@ -103,13 +103,13 @@ namespace PresentacionWebForm {
         protected global::System.Web.UI.WebControls.Label lblHasta;
         
         /// <summary>
-        /// Control txbHasta.
+        /// Control dtpHasta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txbHasta;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText dtpHasta;
         
         /// <summary>
         /// Control btnBuscar.

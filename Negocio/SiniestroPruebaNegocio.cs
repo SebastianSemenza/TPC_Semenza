@@ -67,6 +67,50 @@ namespace Negocio
             }
         }
 
+        public void modificarSiniestroPrueba(Test test, SiniestroPrueba SP)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            try
+            {
+                accesoDatos.setearConsulta("update DATOSPRUEBA set Dato=@Dato, Patente=@Patente, IDCompañia=@IDCompañia, IDSistema=@IDSistema where IDTest=" + test.ID + " and IDVersionTest=" + test.Version + " and ID=" + SP.ID);
+                accesoDatos.Comando.Parameters.Clear();
+                accesoDatos.Comando.Parameters.AddWithValue("@Dato", SP.NroSiniestro);
+                accesoDatos.Comando.Parameters.AddWithValue("@Patente", SP.Patente);
+                accesoDatos.Comando.Parameters.AddWithValue("@IDCompañia", SP.Compañia.ID);
+                accesoDatos.Comando.Parameters.AddWithValue("@IDSistema", SP.Sistema.id);
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarConsulta();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
+        public void eliminarSiniestroPrueba(SiniestroPrueba SP)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            try
+            {
+                accesoDatos.setearConsulta("delete from DATOSPRUEBA where id= " + SP.ID);
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarConsulta();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
+
         public List<SiniestroPrueba> obtenerSiniestroVersion(Test test)
         {
             AccesoDatosManager accesoDatos = new AccesoDatosManager();

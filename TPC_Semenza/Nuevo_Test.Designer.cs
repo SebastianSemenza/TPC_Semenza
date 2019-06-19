@@ -162,7 +162,7 @@
             this.txtTicket.Location = new System.Drawing.Point(164, 27);
             this.txtTicket.Name = "txtTicket";
             this.txtTicket.Size = new System.Drawing.Size(116, 20);
-            this.txtTicket.TabIndex = 9;
+            this.txtTicket.TabIndex = 1;
             // 
             // txtIDTest
             // 
@@ -183,7 +183,7 @@
             this.txtAsunto.Location = new System.Drawing.Point(518, 29);
             this.txtAsunto.Name = "txtAsunto";
             this.txtAsunto.Size = new System.Drawing.Size(314, 20);
-            this.txtAsunto.TabIndex = 12;
+            this.txtAsunto.TabIndex = 7;
             // 
             // cmbSistema
             // 
@@ -191,7 +191,7 @@
             this.cmbSistema.Location = new System.Drawing.Point(164, 63);
             this.cmbSistema.Name = "cmbSistema";
             this.cmbSistema.Size = new System.Drawing.Size(221, 21);
-            this.cmbSistema.TabIndex = 13;
+            this.cmbSistema.TabIndex = 2;
             // 
             // cmbUsuarioTester
             // 
@@ -199,7 +199,7 @@
             this.cmbUsuarioTester.Location = new System.Drawing.Point(164, 102);
             this.cmbUsuarioTester.Name = "cmbUsuarioTester";
             this.cmbUsuarioTester.Size = new System.Drawing.Size(221, 21);
-            this.cmbUsuarioTester.TabIndex = 14;
+            this.cmbUsuarioTester.TabIndex = 3;
             // 
             // cmbPrioridad
             // 
@@ -207,7 +207,7 @@
             this.cmbPrioridad.Location = new System.Drawing.Point(164, 141);
             this.cmbPrioridad.Name = "cmbPrioridad";
             this.cmbPrioridad.Size = new System.Drawing.Size(221, 21);
-            this.cmbPrioridad.TabIndex = 15;
+            this.cmbPrioridad.TabIndex = 4;
             // 
             // btnGuardar
             // 
@@ -217,7 +217,7 @@
             this.btnGuardar.Location = new System.Drawing.Point(408, 513);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(177, 36);
-            this.btnGuardar.TabIndex = 16;
+            this.btnGuardar.TabIndex = 9;
             this.btnGuardar.Text = "GUARDAR";
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
@@ -243,7 +243,7 @@
             this.btnTestingOK.Location = new System.Drawing.Point(795, 513);
             this.btnTestingOK.Name = "btnTestingOK";
             this.btnTestingOK.Size = new System.Drawing.Size(177, 36);
-            this.btnTestingOK.TabIndex = 18;
+            this.btnTestingOK.TabIndex = 11;
             this.btnTestingOK.Text = "TESTING OK";
             this.btnTestingOK.UseVisualStyleBackColor = false;
             this.btnTestingOK.Click += new System.EventHandler(this.btnTestingOK_Click);
@@ -253,7 +253,7 @@
             this.txtDescripcion.Location = new System.Drawing.Point(459, 89);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(373, 195);
-            this.txtDescripcion.TabIndex = 19;
+            this.txtDescripcion.TabIndex = 8;
             this.txtDescripcion.Text = "";
             // 
             // d
@@ -292,7 +292,7 @@
             this.cmbSolicitante.Location = new System.Drawing.Point(164, 263);
             this.cmbSolicitante.Name = "cmbSolicitante";
             this.cmbSolicitante.Size = new System.Drawing.Size(221, 21);
-            this.cmbSolicitante.TabIndex = 30;
+            this.cmbSolicitante.TabIndex = 5;
             // 
             // cmbAplica
             // 
@@ -300,14 +300,14 @@
             this.cmbAplica.Location = new System.Drawing.Point(164, 304);
             this.cmbAplica.Name = "cmbAplica";
             this.cmbAplica.Size = new System.Drawing.Size(221, 21);
-            this.cmbAplica.TabIndex = 31;
+            this.cmbAplica.TabIndex = 6;
             // 
             // btnAgregarDatos
             // 
             this.btnAgregarDatos.Location = new System.Drawing.Point(164, 408);
             this.btnAgregarDatos.Name = "btnAgregarDatos";
             this.btnAgregarDatos.Size = new System.Drawing.Size(188, 65);
-            this.btnAgregarDatos.TabIndex = 32;
+            this.btnAgregarDatos.TabIndex = 10;
             this.btnAgregarDatos.Text = "Agregar Datos";
             this.btnAgregarDatos.UseVisualStyleBackColor = true;
             this.btnAgregarDatos.Click += new System.EventHandler(this.btnAgregarDatos_Click);
@@ -330,7 +330,7 @@
             this.btnFinalizarVersion.Location = new System.Drawing.Point(601, 513);
             this.btnFinalizarVersion.Name = "btnFinalizarVersion";
             this.btnFinalizarVersion.Size = new System.Drawing.Size(177, 36);
-            this.btnFinalizarVersion.TabIndex = 34;
+            this.btnFinalizarVersion.TabIndex = 10;
             this.btnFinalizarVersion.Text = "FINALIZAR VERSION";
             this.btnFinalizarVersion.UseVisualStyleBackColor = false;
             this.btnFinalizarVersion.Click += new System.EventHandler(this.btnFinalizarVersion_Click);

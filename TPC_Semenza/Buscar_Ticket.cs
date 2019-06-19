@@ -58,7 +58,7 @@ namespace TPC_Semenza
             //hacerlo no case sensitive
             if (!(txtAsunto.Text.Equals("")))
             {
-                sFiltro += sFiltro.Equals("") ? " t.Asunto= " + txtAsunto.Text.ToString() : " and t.Asunto= " + txtAsunto.Text.ToString();
+                sFiltro += sFiltro.Equals("") ? " t.Asunto= '" + txtAsunto.Text.ToString() + "'" : " and t.Asunto= '" + txtAsunto.Text.ToString() +"'";
             }
             //filtro prioridad
             if (cmbPrioridad.SelectedIndex != 0)

@@ -23,6 +23,9 @@ namespace PresentacionWebForm
                     cmbSistemas.DataBind();
                     cmbUsuarios.DataSource = usuarioNegocio.listarUsuariosT();
                     cmbUsuarios.DataBind();
+                    dtpDesde.Value = DateTime.Today.AddMonths(-48).ToShortDateString();
+                    dtpHasta.Value = DateTime.Today.ToShortDateString();
+                   
                 }
             }
             catch (Exception ex)
@@ -46,6 +49,8 @@ namespace PresentacionWebForm
             {
                 sFiltro += sFiltro.Equals("") ? " u.Nombre+' '+u.Apellido= " + "'" + cmbUsuarios.Text + "'" : " and u.Nombre+' '+u.Apellido= " + "'" + cmbUsuarios.Text + "'";
             }
+            sFiltro += sFiltro.Equals("") ? " t.FechaCarga between '" + dtpDesde.Value.ToString() + "' and '" + dtpHasta.Value.ToString() + "'" : " and t.FechaCarga between '" + dtpDesde.Value.ToString() + "' and '" + dtpHasta.Value.ToString() + "'";
+
             TicketNegocio ticketNegocio = new TicketNegocio();
             List<Ticket> listado = ticketNegocio.filtrarTickets(sFiltro);
             dgvResultadoBusqueda.DataSource = listado;

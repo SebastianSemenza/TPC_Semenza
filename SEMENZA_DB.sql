@@ -6,12 +6,12 @@ create table PRIORIDADES(
 	ID int not null identity(1,1) primary key,
 	Nombre varchar(50) not null
 )
-
+go
 create table SISTEMAS(
 	ID int not null identity(1,1) primary key,
 	Nombre varchar(50) not null
 )
-
+go
 create table COMPAÑIAS(
 	ID int not null identity(1,1) primary key,
 	Nombre varchar(50) not null,
@@ -20,7 +20,7 @@ create table COMPAÑIAS(
 	Provincia varchar(50) not null,
 	Localidad varchar(50) not null,
 )
-
+go
 create table USUARIOS(
 	ID int not null identity(1,1) primary key,
 	Nombre varchar(50) not null,
@@ -29,18 +29,18 @@ create table USUARIOS(
 	Contraseña varchar(50) not null,
 	Mail varchar(50) null,
 )
-
+go
 create table PERFILES(
 	ID int not null identity(1,1) primary key,
 	Descripcion varchar(50) not null,
 	IDSistema int not null foreign key references SISTEMAS(ID)
 )
-
+go
 create table GRUPOSCOMPAÑIAS(
 	ID int not null primary key identity(1,1),
 	Descripcion  varchar(50) not null
 )
-
+go
 create table TESTS(
 	ID int not null identity(1,1),
 	IDVersion int not null,
@@ -60,7 +60,7 @@ create table TESTS(
 	fechaFinalizacion datetime null,
 	primary key (ID,IDVersion)
 )
-
+go
 create table DATOSPRUEBA(
 	ID int not null identity(1,1) primary key,
 	IDTest int not null ,
@@ -71,8 +71,7 @@ create table DATOSPRUEBA(
 	IDSistema int not null foreign key references SISTEMAS(ID),
 	foreign key (IDTest,IDVersionTest) references TESTS (ID,IDVersion)
 )
-
-
+go
 create table USUARIOSPRUEBA(
 	ID int not null identity(1,1) primary key,
 	IDTest int not null,
@@ -85,7 +84,7 @@ create table USUARIOSPRUEBA(
 	Compañia int foreign key references COMPAÑIAS(ID),
 	foreign key (IDTest,IDVersionTest)references TESTS(ID,IDVersion)
 )
-
+go
 create table CASOSPRUEBA(
 	ID int not null identity(1,1),
 	IDVersionTest int not null,
@@ -99,25 +98,23 @@ create table CASOSPRUEBA(
 	foreign key (IDTest,IDVersionTest)references TESTS(ID,IDVersion),
 	Automatico bit null
 )
-
---ULTIMAS TABLAS
-
+go
 create table ESTADOSTICKET(
 	ID int not null primary key identity(1,1),
 	Descripcion varchar(30)
 )
 select * from ESTADOSTICKET
-
+go
 create table ESTADOSPLANILLA(
 	ID int not null primary key identity(1,1),
 	Descripcion varchar(30)
 )
-
+go
 create table CATEGORIAS(
 	ID int not null primary key identity(1,1),
 	Descripcion varchar(30)
 )
-
+go
 create table TICKETS(
 	NTicket int not null identity(1,1) primary key,
 	Asunto varchar(50) not null,
@@ -131,14 +128,14 @@ create table TICKETS(
 	Categoria int not null foreign key references CATEGORIAS(ID),
 	PosicionPlanilla int null
 )
-
+go
 create table ESTADOS_X_TICKETS(
 	IDEstado int not null foreign key references ESTADOSTICKET(ID),
 	IDTicket int not null foreign key references TICKETS(NTicket),
 	FechaEstado datetime not null
 	--ver si generar primary
 )
-
+go
 -------------------------------SP PARA CONTAR LOS ERRORES----------------------------------------------
 create procedure sp_contar_errores(
 	@NTicket int
@@ -154,7 +151,7 @@ inner join TESTS as t on t.ID=cp.IDTest and t.IDVersion=cp.IDVersionTest
 where NTicket=@NTicket and Resultado=0 and Ultimo=1)
 end
 --------------------------------------------------------------------------------------------------
-
+go
 --------------------------------------------DATOS---------------------------------------------------------
 
 
@@ -298,8 +295,6 @@ values (12,2,'Envio de Orden de Trabajo',0,'Se realizo el envio de la Orden de T
 insert into CASOSPRUEBA(IDTest,IDVersionTest,Descripcion,Resultado,Observaciones,DetalleFalla,IDUsuario,IDDatoPrueba,Automatico)
 values (12,3,'Envio de Orden de Trabajo',1,'Se realizo el envio de la Orden de Trabajo al taller KAPPA, 
 15 piezas a reparacion con daño leve','Fallo el envio, arroja mensaje de error',1,1,1)
-
-
 
 
 insert into ESTADOSTICKET(Descripcion) values ('Pendiente de Analisis')

@@ -1,20 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Modulo1_Tiempo_Tickets.aspx.cs" Inherits="PresentacionWebForm.Modulo1_Tiempos" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolderTITULO" runat="server">
-    <link href="../../bootstrap/css/styleTester.css" rel="stylesheet" type="text/css" />
-
-    <h2>MODULO 1</h2>
-</asp:Content>
-
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h3>Tiempos</h3>
-    <h4>Busqueda:</h4>
+    <h4>MODULO 1: Tiempos</h4>
+    <h5>Busqueda:</h5>
 
     <table style="width: 100%">
         <tr>
             <td style="width: 10%">
-                <asp:Label ID="lblTicket" runat="server" Text="Ticket: "></asp:Label>
+                <asp:Label ID="lblTicket" runat="server" Text="Ticket: " Height="40px"></asp:Label>
             </td>
             <td style="width: 40%">
                 <asp:TextBox ID="txbTicket" runat="server"></asp:TextBox>
@@ -29,14 +23,14 @@
 
         <tr>
             <td colspan="2">
-                <asp:Label ID="lblFecha" runat="server" Text="Fecha de Carga: "></asp:Label>
+                <asp:Label ID="lblFecha" runat="server" Text="Fecha de Carga: " Height="40px"></asp:Label>
             </td>
 
             <td style="width: 10%">
                 <asp:Label ID="lblUsuario" runat="server" Text="Usuario: "></asp:Label>
             </td>
             <td style="width: 40%">
-                <asp:DropDownList ID="cmbUsuarios" runat="server"  Width="160px"></asp:DropDownList>
+                <asp:DropDownList ID="cmbUsuarios" runat="server" Width="160px"></asp:DropDownList>
             </td>
         </tr>
 
@@ -46,7 +40,13 @@
             </td>
 
             <td style="width: 40%">
-                <asp:TextBox ID="txbDesde" runat="server"></asp:TextBox>
+                <input id="dtpDesde" runat="server" width="200" />
+                <script>
+                    $("#<%=dtpDesde.ClientID%>").datepicker({
+                        uiLibrary: 'bootstrap4',
+                        format: 'dd/mm/yyyy'
+                    });
+                </script>
             </td>
         </tr>
 
@@ -56,7 +56,13 @@
             </td>
 
             <td style="width: 40%">
-                <asp:TextBox ID="txbHasta" runat="server"></asp:TextBox>
+                <input id="dtpHasta" runat="server" width="200" />
+                <script>
+                    $("#<%=dtpHasta.ClientID%>").datepicker({
+                        uiLibrary: 'bootstrap4',
+                        format: 'dd/mm/yyyy'
+                    });
+                </script>
             </td>
         </tr>
 
@@ -85,7 +91,7 @@
         <tr>
             <td colspan="4">
                 <asp:GridView ID="dgvResultadoBusqueda" runat="server" class="table table-striped" AutoGenerateColumns="false">
-                    <columns>
+                    <Columns>
                         <asp:BoundField HeaderText="Ticket" DataField="Nticket" />
                         <asp:BoundField HeaderText="Asunto" DataField="Asunto" />
                         <asp:BoundField HeaderText="Fecha de Carga" DataField="FechaCarga" />
@@ -93,16 +99,16 @@
                         <asp:BoundField HeaderText="Tiempo de Desarrollo" DataField="TiempoDesarrollo" />
                         <asp:BoundField HeaderText="Tiempo de Testeo" DataField="TiempoTesteo" />
                         <asp:BoundField HeaderText="Tiempo de Producción" DataField="TiempoPuestaProduccion" />
-                    </columns>
+                    </Columns>
                 </asp:GridView>
 
                 <asp:GridView ID="dgvTotales" runat="server" class="table table-striped" AutoGenerateColumns="false">
-                    <columns>
+                    <Columns>
                         <asp:BoundField HeaderText="TOTAL Tiempo de Análisis" DataField="TotalAnalisis" />
                         <asp:BoundField HeaderText="TOTAL Tiempo de Desarrollo" DataField="TotalDesarrollo" />
                         <asp:BoundField HeaderText="TOTAL Tiempo de Testeo" DataField="TotalTesting" />
                         <asp:BoundField HeaderText="TOTAL Tiempo de Producción" DataField="TotalProduccion" />
-                    </columns>
+                    </Columns>
                 </asp:GridView>
 
             </td>

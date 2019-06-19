@@ -15,6 +15,7 @@ namespace TPC_Semenza
     public partial class Buscar_Testing : Form
     {
         private List<Test> listadoTests;
+        DataGridViewButtonColumn botonAbrir = null;
 
         public Buscar_Testing()
         {
@@ -66,7 +67,7 @@ namespace TPC_Semenza
             }
             if (!(txtAsunto.Text.Equals("")))//hacerlo no case sensitive
             {
-                sFiltro += sFiltro.Equals("") ? " t.Asunto= " + txtAsunto.Text.ToString() : " and t.Asunto= " + txtAsunto.Text.ToString();
+                sFiltro += sFiltro.Equals("") ? " t.Asunto= '" + txtAsunto.Text.ToString() +"'": " and t.Asunto= '" + txtAsunto.Text.ToString() +"'";
             }
             if (cmbPrioridad.SelectedIndex != 0)
             {
@@ -92,13 +93,16 @@ namespace TPC_Semenza
             TestNegocio testNegocio = new TestNegocio();
             try
             {
-                DataGridViewButtonColumn botonAbrir = new DataGridViewButtonColumn();
-                botonAbrir.Name = "Abrir";
-                botonAbrir.HeaderText = "Abrir";
+                if(botonAbrir == null)
+                {
+                    botonAbrir = new DataGridViewButtonColumn();
+                    dgvResultadoBusqueda.Columns.Add(botonAbrir);
+                    botonAbrir.Name = "Abrir";
+                    botonAbrir.HeaderText = "Abrir";
+                }
                 //DATAGRIDVIEW RESULTADO BUSQUEDA
                 listadoTests = testNegocio.listarTests(sFiltro);
                 dgvResultadoBusqueda.DataSource = listadoTests;
-                dgvResultadoBusqueda.Columns.Add(botonAbrir);
                 dgvResultadoBusqueda.Columns["Abrir"].DisplayIndex = 0;
                 dgvResultadoBusqueda.Columns["Abrir"].Width = 35;
                 dgvResultadoBusqueda.Columns["Duracion"].Visible = false;

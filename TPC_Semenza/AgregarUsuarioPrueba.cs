@@ -67,7 +67,7 @@ namespace TPC_Semenza
             {
                 if(UPLocal==null)
                 {
-                    UsuarioPrueba UPLocal = new UsuarioPrueba();
+                    UPLocal = new UsuarioPrueba();
                     UPLocal.Nombre = txbNombre.Text;
                     UPLocal.Apellido = txbApellido.Text;
                     UPLocal.Documento = txbDocumento.Text;
