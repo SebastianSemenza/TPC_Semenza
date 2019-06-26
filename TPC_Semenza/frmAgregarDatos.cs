@@ -75,6 +75,9 @@ namespace TPC_Semenza
                 dgvUsuariosPrueba.Columns["Apellido"].DisplayIndex = 1;
                 dgvUsuariosPrueba.Columns["Documento"].DisplayIndex = 2;
                 dgvUsuariosPrueba.Columns["Documento"].Width = 80;
+                dgvUsuariosPrueba.ReadOnly = true;
+                dgvUsuariosPrueba.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                dgvUsuariosPrueba.MultiSelect = false;
             }
             catch (Exception ex)
             {
@@ -92,6 +95,9 @@ namespace TPC_Semenza
                 dgvDatosPrueba.DataSource = listadoSP;
                 dgvDatosPrueba.Columns["ID"].Visible = false;
                 dgvDatosPrueba.Columns["Test"].Visible = false;
+                dgvDatosPrueba.ReadOnly = true;
+                dgvDatosPrueba.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                dgvDatosPrueba.MultiSelect = false;
             }
             catch (Exception ex)
             {
@@ -101,9 +107,16 @@ namespace TPC_Semenza
 
         private void btnModificarUP_Click(object sender, EventArgs e)
         {
-            AgregarUsuarioPrueba frmAgregarUP = new AgregarUsuarioPrueba(testLocal,(UsuarioPrueba)dgvUsuariosPrueba.CurrentRow.DataBoundItem);
-            frmAgregarUP.ShowDialog();
-            cargarGrillaUsuariosP();
+            if (dgvUsuariosPrueba.SelectedRows.Count == 1)
+            {
+                AgregarUsuarioPrueba frmAgregarUP = new AgregarUsuarioPrueba(testLocal, (UsuarioPrueba)dgvUsuariosPrueba.CurrentRow.DataBoundItem);
+                frmAgregarUP.ShowDialog();
+                cargarGrillaUsuariosP();
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una fila!");
+            }
         }
 
         private void btnEliminarUP_Click(object sender, EventArgs e)
@@ -111,8 +124,15 @@ namespace TPC_Semenza
             UsuarioPruebaNegocio UPNegocio = new UsuarioPruebaNegocio();
             try
             {
-                UPNegocio.eliminarUsuarioP((UsuarioPrueba)dgvUsuariosPrueba.CurrentRow.DataBoundItem);
-                cargarGrillaUsuariosP();
+                if(dgvUsuariosPrueba.SelectedRows.Count==1)
+                {
+                    UPNegocio.eliminarUsuarioP((UsuarioPrueba)dgvUsuariosPrueba.CurrentRow.DataBoundItem);
+                    cargarGrillaUsuariosP();
+                }
+                else
+                {
+                    MessageBox.Show("Debe seleccionar una fila!");
+                }
             }
             catch (Exception ex)
             {
@@ -122,9 +142,16 @@ namespace TPC_Semenza
 
         private void btnModificarDato_Click(object sender, EventArgs e)
         {
-            frmAgregarDatoPrueba frmAgregarSP = new frmAgregarDatoPrueba(testLocal, (SiniestroPrueba)dgvDatosPrueba.CurrentRow.DataBoundItem);
-            frmAgregarSP.ShowDialog();
-            cargarGrillaSiniestrosP();
+            if (dgvDatosPrueba.SelectedRows.Count == 1)
+            {
+                frmAgregarDatoPrueba frmAgregarSP = new frmAgregarDatoPrueba(testLocal, (SiniestroPrueba)dgvDatosPrueba.CurrentRow.DataBoundItem);
+                frmAgregarSP.ShowDialog();
+                cargarGrillaSiniestrosP();
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una fila!");
+            }
         }
 
         private void btnEliminarDato_Click(object sender, EventArgs e)
@@ -132,8 +159,15 @@ namespace TPC_Semenza
             SiniestroPruebaNegocio SPNegocio = new SiniestroPruebaNegocio();
             try
             {
-                SPNegocio.eliminarSiniestroPrueba((SiniestroPrueba)dgvDatosPrueba.CurrentRow.DataBoundItem);
-                cargarGrillaSiniestrosP();
+                if (dgvDatosPrueba.SelectedRows.Count == 1)
+                {
+                    SPNegocio.eliminarSiniestroPrueba((SiniestroPrueba)dgvDatosPrueba.CurrentRow.DataBoundItem);
+                    cargarGrillaSiniestrosP();
+                }
+                else
+                {
+                    MessageBox.Show("Debe seleccionar una fila!");
+                }
             }
             catch (Exception ex)
             {

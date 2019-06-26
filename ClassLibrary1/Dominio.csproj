@@ -48,6 +48,7 @@
     <Compile Include="EstadoTest.cs" />
     <Compile Include="EstadoTicket.cs" />
     <Compile Include="GrupoCompañias.cs" />
+    <Compile Include="ImagenCaso.cs" />
     <Compile Include="Perfil.cs" />
     <Compile Include="Persona.cs" />
     <Compile Include="Prioridad.cs" />

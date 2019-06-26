@@ -58,8 +58,6 @@ namespace TPC_Semenza
         private void Menu_Principal_Load(object sender, EventArgs e)
         {
             btnVolver.Visible = false;
-            btnAgregarDatos.Visible = false;
-            btnAgregarCasoPrueba.Visible = false;
         }
 
         //BOTONES
@@ -68,8 +66,6 @@ namespace TPC_Semenza
             abrirForm<Nuevo_Test>();
             btnBuscarTest.Visible = false;
             btnBuscarTicket.Visible = false;
-            btnAgregarDatos.Visible = true;
-            btnAgregarCasoPrueba.Visible = true;
             btnVolver.Visible = true;
         }
 
@@ -93,19 +89,7 @@ namespace TPC_Semenza
             
             btnBuscarTest.Visible = true;
             btnBuscarTicket.Visible = true;
-            btnAgregarDatos.Visible = false;
-            btnAgregarCasoPrueba.Visible = false;
             btnVolver.Visible = false;
-        }
-
-        private void btnAgregarDatos_Click(object sender, EventArgs e)
-        {
-            abrirForm<frmAgregarDatos>();
-        }
-
-        private void btnAgregarCasoPrueba_Click(object sender, EventArgs e)
-        {
-            abrirForm<frmAgregarCasoPrueba>();
         }
         
     }

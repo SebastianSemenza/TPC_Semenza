@@ -94,6 +94,7 @@ namespace Negocio
                     ticket.TiempoDesarrollo = calcularTiempoDesarrollo(ticket);
                     ticket.TiempoTesteo = calcularTiempoTesteo(ticket);
                     ticket.TiempoPuestaProduccion = calcularTiempoPuestaProduccion(ticket);
+                    ticket.EstadoActual = buscarEstadoActual(ticket);
                     listado.Add(ticket);
                 }
                 return listado;
@@ -296,6 +297,34 @@ namespace Negocio
             catch (Exception ex)
             {
                 throw ex;
+            }
+
+        }
+
+        public EstadoTicket buscarEstadoActual (Ticket ticket)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            EstadoTicket estado = new EstadoTicket(); ;
+            try
+            {
+                accesoDatos.setearConsulta("select top 1 et.IDEstado,e.Descripcion,et.FechaEstado from ESTADOS_X_TICKETS as et inner join ESTADOSTICKET as e on e.ID=et.IDEstado where et.IDTicket="+ ticket.NTicket +" order by FechaEstado desc");
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarConsulta();
+                while(accesoDatos.Lector.Read())
+                {
+                    estado.ID = accesoDatos.Lector.GetInt32(0);
+                    estado.Nombre = accesoDatos.Lector.GetString(1);
+                    estado.FechaEstado = accesoDatos.Lector.GetDateTime(2);
+                }
+                return estado;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
             }
 
         }

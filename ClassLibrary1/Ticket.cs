@@ -16,7 +16,6 @@ namespace Dominio
         public Prioridad Prioridad { get; set; }
         public Sistema Sistema { get; set; }
         public EstadoPlanillaP estadoPlanilla { get; set; }
-        public string EstadoActual { get; set; }
         public string ER { get; set; }
         public string Categoria { get; set; }
         public int PosicionPlanilla { get; set; }
@@ -26,5 +25,6 @@ namespace Dominio
         public string TiempoDesarrollo { get; set; }
         public string TiempoTesteo { get; set; }
         public string TiempoPuestaProduccion { get; set; }
+        public EstadoTicket EstadoActual { get; set; }
     }
 }

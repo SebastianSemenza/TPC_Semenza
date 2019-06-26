@@ -213,6 +213,7 @@
             // 
             this.btnGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(90)))), ((int)(((byte)(120)))));
+            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.btnGuardar.ForeColor = System.Drawing.SystemColors.Control;
             this.btnGuardar.Location = new System.Drawing.Point(408, 513);
             this.btnGuardar.Name = "btnGuardar";
@@ -224,12 +225,13 @@
             // 
             // btnGenerarVersion
             // 
-            this.btnGenerarVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGenerarVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnGenerarVersion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(90)))), ((int)(((byte)(120)))));
+            this.btnGenerarVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.btnGenerarVersion.ForeColor = System.Drawing.SystemColors.Control;
             this.btnGenerarVersion.Location = new System.Drawing.Point(12, 513);
             this.btnGenerarVersion.Name = "btnGenerarVersion";
-            this.btnGenerarVersion.Size = new System.Drawing.Size(177, 36);
+            this.btnGenerarVersion.Size = new System.Drawing.Size(208, 36);
             this.btnGenerarVersion.TabIndex = 17;
             this.btnGenerarVersion.Text = "GENERAR NUEVA VERSION";
             this.btnGenerarVersion.UseVisualStyleBackColor = false;
@@ -239,6 +241,7 @@
             // 
             this.btnTestingOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnTestingOK.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(90)))), ((int)(((byte)(120)))));
+            this.btnTestingOK.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.btnTestingOK.ForeColor = System.Drawing.SystemColors.Control;
             this.btnTestingOK.Location = new System.Drawing.Point(795, 513);
             this.btnTestingOK.Name = "btnTestingOK";
@@ -304,28 +307,35 @@
             // 
             // btnAgregarDatos
             // 
-            this.btnAgregarDatos.Location = new System.Drawing.Point(164, 408);
+            this.btnAgregarDatos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(90)))), ((int)(((byte)(120)))));
+            this.btnAgregarDatos.Font = new System.Drawing.Font("Verdana", 10F);
+            this.btnAgregarDatos.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnAgregarDatos.Location = new System.Drawing.Point(33, 369);
             this.btnAgregarDatos.Name = "btnAgregarDatos";
-            this.btnAgregarDatos.Size = new System.Drawing.Size(188, 65);
+            this.btnAgregarDatos.Size = new System.Drawing.Size(352, 39);
             this.btnAgregarDatos.TabIndex = 10;
-            this.btnAgregarDatos.Text = "Agregar Datos";
-            this.btnAgregarDatos.UseVisualStyleBackColor = true;
+            this.btnAgregarDatos.Text = "AGREGAR DATOS";
+            this.btnAgregarDatos.UseVisualStyleBackColor = false;
             this.btnAgregarDatos.Click += new System.EventHandler(this.btnAgregarDatos_Click);
             // 
             // btnAgregarCasosPrueba
             // 
-            this.btnAgregarCasosPrueba.Location = new System.Drawing.Point(531, 408);
+            this.btnAgregarCasosPrueba.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(90)))), ((int)(((byte)(120)))));
+            this.btnAgregarCasosPrueba.Font = new System.Drawing.Font("Verdana", 10F);
+            this.btnAgregarCasosPrueba.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnAgregarCasosPrueba.Location = new System.Drawing.Point(459, 369);
             this.btnAgregarCasosPrueba.Name = "btnAgregarCasosPrueba";
-            this.btnAgregarCasosPrueba.Size = new System.Drawing.Size(188, 65);
+            this.btnAgregarCasosPrueba.Size = new System.Drawing.Size(367, 39);
             this.btnAgregarCasosPrueba.TabIndex = 33;
-            this.btnAgregarCasosPrueba.Text = "Agregar Casos de Prueba";
-            this.btnAgregarCasosPrueba.UseVisualStyleBackColor = true;
+            this.btnAgregarCasosPrueba.Text = "AGREGAR CASOS DE PRUEBA";
+            this.btnAgregarCasosPrueba.UseVisualStyleBackColor = false;
             this.btnAgregarCasosPrueba.Click += new System.EventHandler(this.btnAgregarCasosPrueba_Click);
             // 
             // btnFinalizarVersion
             // 
             this.btnFinalizarVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFinalizarVersion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(90)))), ((int)(((byte)(120)))));
+            this.btnFinalizarVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.btnFinalizarVersion.ForeColor = System.Drawing.SystemColors.Control;
             this.btnFinalizarVersion.Location = new System.Drawing.Point(601, 513);
             this.btnFinalizarVersion.Name = "btnFinalizarVersion";

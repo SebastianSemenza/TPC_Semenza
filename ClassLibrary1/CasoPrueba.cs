@@ -15,7 +15,9 @@ namespace Dominio
         public string TextoFalla { get; set; }
         public UsuarioPrueba Usuario { get; set; }
         public SiniestroPrueba Siniestro { get; set; }
+        public List<ImagenCaso> Imagenes { get; set; }
         public Test Test { get; set; }
+        //para mas adelante
         public string Adjunto { get; set; }
         public bool Automatico { get; set; }
     }

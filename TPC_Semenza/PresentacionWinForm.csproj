@@ -82,6 +82,18 @@
     <Compile Include="frmAgregarDatos.Designer.cs">
       <DependentUpon>frmAgregarDatos.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmImagenesCasos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmImagenesCasos.Designer.cs">
+      <DependentUpon>frmImagenesCasos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMenu_Principal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMenu_Principal.Designer.cs">
+      <DependentUpon>frmMenu_Principal.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_ModificarCasoPrueba.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +131,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmAgregarDatos.resx">
       <DependentUpon>frmAgregarDatos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImagenesCasos.resx">
+      <DependentUpon>frmImagenesCasos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMenu_Principal.resx">
+      <DependentUpon>frmMenu_Principal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_ModificarCasoPrueba.resx">
       <DependentUpon>frm_ModificarCasoPrueba.cs</DependentUpon>

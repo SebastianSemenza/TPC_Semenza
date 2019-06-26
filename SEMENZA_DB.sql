@@ -86,7 +86,7 @@ create table USUARIOSPRUEBA(
 )
 go
 create table CASOSPRUEBA(
-	ID int not null identity(1,1),
+	ID int not null identity(1,1) primary key,
 	IDVersionTest int not null,
 	IDTest int not null,
 	Descripcion varchar(80) not null,
@@ -103,7 +103,6 @@ create table ESTADOSTICKET(
 	ID int not null primary key identity(1,1),
 	Descripcion varchar(30)
 )
-select * from ESTADOSTICKET
 go
 create table ESTADOSPLANILLA(
 	ID int not null primary key identity(1,1),
@@ -133,7 +132,13 @@ create table ESTADOS_X_TICKETS(
 	IDEstado int not null foreign key references ESTADOSTICKET(ID),
 	IDTicket int not null foreign key references TICKETS(NTicket),
 	FechaEstado datetime not null
-	--ver si generar primary
+)
+go
+create table IMAGENES_PRUEBAS(
+	ID int primary key identity(1,1),
+	descripcion varchar(30),
+	Imagen image,
+	IDCaso int foreign key references CASOSPRUEBA(ID)
 )
 go
 -------------------------------SP PARA CONTAR LOS ERRORES----------------------------------------------
@@ -207,12 +212,11 @@ insert into GRUPOSCOMPAÑIAS (Descripcion) values ('Cias. Socias')
 insert into PERFILES(Descripcion,IDSistema) values ('',1)
 insert into PERFILES(Descripcion,IDSistema) values ('Perito',1)
 insert into PERFILES(Descripcion,IDSistema) values ('Jefe de Peritos',1)
-insert into PERFILES(Descripcion,IDSistema) values ('Perito',1)
 insert into PERFILES(Descripcion,IDSistema) values ('Tramitador Simple',1)
 insert into PERFILES(Descripcion,IDSistema) values ('Tramitador de Repuestos',1)
 insert into PERFILES(Descripcion,IDSistema) values ('Jefe de Tramitadores',1)
 insert into PERFILES(Descripcion,IDSistema) values ('Consultas',1)
-select * from tests
+
 
 insert into TESTS(NTicket,IDVersion,IDSistema,IDUsuario,IDPrioridad,IDCompañia,IDGrupoCompañias,Asunto,Descripcion,Borrado,Finalizado,VersionFinal,Ultimo,FechaCarga,FechaFinalizacion)
 values('23434',1,2,2,3,2,1,'Agregar Campos en pantalla INFO','Se solocita modificar el campo INFO para las compañias del exterior para que permita ingresar valores alfanumericos',0,0,0,1,convert(datetime, '2019-02-23 20:44:11.500', 121),null)
@@ -326,10 +330,10 @@ values (23434,'Agregar Campos en pantalla INFO','Se solocita modificar el campo 
 valores alfanumericos',2,3,2,2,convert(datetime, '2016-10-23 20:44:11.500', 121),'url',3,1)
 insert into TICKETS(NTicket,Asunto,Descripcion,IDUsuario,IDPrioridad,IDSistema,IDEstadoPlanilla,FechaCarga,ER,Categoria,PosicionPlanilla)
 values (23267,'Agregar Campos en pantalla INFO','Se solocita modificar el campo INFO para las compañias del exterior para que permita ingresar 
-valores alfanumericos',2,1,2,2,convert(datetime, '2016-10-23 20:44:11.500', 121),'url',3,2)
+valores alfanumericos',2,4,2,2,convert(datetime, '2016-10-23 20:44:11.500', 121),'url',3,2)
 insert into TICKETS(NTicket,Asunto,Descripcion,IDUsuario,IDPrioridad,IDSistema,IDEstadoPlanilla,FechaCarga,ER,Categoria,PosicionPlanilla)
 values (21124,'Agregar Campos en pantalla INFO','Se solocita modificar el campo INFO para las compañias del exterior para que permita ingresar 
-valores alfanumericos',2,1,2,2,convert(datetime, '2016-10-23 20:44:11.500', 121),'url',3,3)
+valores alfanumericos',2,4,2,2,convert(datetime, '2016-10-23 20:44:11.500', 121),'url',3,3)
 insert into TICKETS(NTicket,Asunto,Descripcion,IDUsuario,IDPrioridad,IDSistema,IDEstadoPlanilla,FechaCarga,ER,Categoria,PosicionPlanilla)
 values (25604,'Agregar Campos en pantalla INFO','Se solocita modificar el campo INFO para las compañias del exterior para que permita ingresar 
 valores alfanumericos',2,3,2,2,convert(datetime, '2016-10-23 20:44:11.500', 121),'url',3,4)
@@ -338,7 +342,7 @@ values (55660,'nuevo ticket 1','nuevo nuevo nuenvo nuevo nuevo nuenvo nuevo nuev
 nuenvo nuevo nuevo nuenvo nuevo nuevo nuenvo nuevo nuevo nuenvo nuevo nuevo nuenvo nuevo nuevo nuenvo nuevo nuevo nuenvo nuevo nuevo nuenvo
  nuevo nuevo nuenvo nuevo nuevo nuenvo nuevo nuevo nuenvonuevo nuevo nuenvonuevo nuevo nuenvo nuevo nuevo nuenvo nuevo nuevo nuenvo nuevo 
  nuevo nuenvo dificar el campo INFO para las compañias del exterior para 
-que permita ingresar valores alfanumericos',2,1,2,2,convert(datetime, '2018-10-23 20:44:11.500', 121),'url',3,6)
+que permita ingresar valores alfanumericos',2,4,2,2,convert(datetime, '2018-10-23 20:44:11.500', 121),'url',3,6)
 insert into TICKETS(NTicket,Asunto,Descripcion,IDUsuario,IDPrioridad,IDSistema,IDEstadoPlanilla,FechaCarga,ER,Categoria,PosicionPlanilla)
 values (77889,'nuevo ticket 1','nuevo nuevo nuenvo nuevo nuevo nuenvo nuevo nuevo nuenvo nuevo nuevo nuenvo nuevo nuevo nuenvo Se solocita 
 modificar el campo INFO para las compañias del exterior para que permita ingresar valores
@@ -386,6 +390,8 @@ insert into ESTADOS_X_TICKETS(IDEstado,IDTicket,FechaEstado)
 values (6,77889,convert(datetime, '2019-02-23 20:44:11.500', 121))
 insert into ESTADOS_X_TICKETS(IDEstado,IDTicket,FechaEstado)
 values (11,77889,convert(datetime, '2019-04-11 20:44:11.500', 121))
+insert into ESTADOS_X_TICKETS(IDEstado,IDTicket,FechaEstado)
+values (1,54342,convert(datetime, '2018-10-23 20:44:11.500', 121))
 
 --_____________________________PRUEBAS_______________________________
 

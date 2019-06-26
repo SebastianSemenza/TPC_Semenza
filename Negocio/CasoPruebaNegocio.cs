@@ -122,14 +122,16 @@ namespace Negocio
             AccesoDatosManager accesoDatos = new AccesoDatosManager();
             List<CasoPrueba> listado = new List<CasoPrueba>();
             CasoPrueba Caso;
+            ImagenCasoNegocio imagenNegocio = new ImagenCasoNegocio();
             try
             {
-                accesoDatos.setearConsulta("select IDTest,IDVersionTest,Descripcion,Resultado,Observaciones,DetalleFalla,IDUsuario,IDDatoPrueba,Automatico from CASOSPRUEBA where IDTest=" + test.ID + " and IDVersionTest=" + test.Version + " and Resultado=0");
+                accesoDatos.setearConsulta("select IDTest,IDVersionTest,Descripcion,Resultado,Observaciones,DetalleFalla,IDUsuario,IDDatoPrueba,Automatico,ID from CASOSPRUEBA where IDTest=" + test.ID + " and IDVersionTest=" + test.Version + " and Resultado=0");
                 accesoDatos.abrirConexion();
                 accesoDatos.ejecutarConsulta();
                 while (accesoDatos.Lector.Read())
                 {
                     Caso = new CasoPrueba();
+                    Caso.ID = accesoDatos.Lector.GetInt32(9);
                     Caso.Test = new Test();
                     Caso.Test.ID = accesoDatos.Lector.GetInt32(0);
                     Caso.Test.Version = accesoDatos.Lector.GetInt32(1) + 1;
@@ -142,6 +144,7 @@ namespace Negocio
                     Caso.Siniestro = new SiniestroPrueba();
                     Caso.Siniestro.ID = accesoDatos.Lector.GetInt32(7);
                     Caso.Automatico = accesoDatos.Lector.GetBoolean(8);
+                    //Caso.Imagenes = imagenNegocio.obtenerImagenes(Caso.ID);
                     listado.Add(Caso);
                 }
                 return listado;

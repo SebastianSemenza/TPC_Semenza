@@ -56,30 +56,42 @@ namespace TPC_Semenza
             CasoPruebaNegocio CPNegocio = new CasoPruebaNegocio();
             try
             {
-                if (txbDetalle.Text == "" || txbDescripcion.Text == "" || cmbDatoPrueba.SelectedIndex == 0 || cmbUsuario.SelectedIndex == 0 || (ckbResultado.Checked == false && txbDetalleFalla.Text == ""))
+                if (txbDetalle.Text == "" || txbDescripcion.Text == "" )
                 {
                     MessageBox.Show("Debe completar todos los campos");
                 }
                 else
                 {
-                    CasoPrueba casoPrueba = new CasoPrueba();
-                    casoPrueba.Descripcion = txbDescripcion.Text;
-                    casoPrueba.Resultado = ckbResultado.Checked;
-                    casoPrueba.Observaciones = txbDetalle.Text;
-                    casoPrueba.TextoFalla = txbDetalleFalla.Text;
-                    casoPrueba.Usuario = (UsuarioPrueba)cmbUsuario.SelectedItem;
-                    casoPrueba.Siniestro = (SiniestroPrueba)cmbDatoPrueba.SelectedItem;
-                    casoPrueba.Automatico = false;
-                    CPNegocio.agregarDatoPrueba(testLocal, casoPrueba);
-                    cargarGrillaCasosP();
+                    if(ckbResultado.Checked == false && txbDetalleFalla.Text == "")
+                    {
+                        MessageBox.Show("Si el caso no esta aprobado debe indicar la falla");
+                    }
+                    else
+                    {
+                        if(cmbDatoPrueba.SelectedValue==null||cmbUsuario.SelectedValue==null)
+                        {
+                            MessageBox.Show("Debe seleccionar alguna opcion");
+                        }
+                        else
+                        {
+                            CasoPrueba casoPrueba = new CasoPrueba();
+                            casoPrueba.Descripcion = txbDescripcion.Text;
+                            casoPrueba.Resultado = ckbResultado.Checked;
+                            casoPrueba.Observaciones = txbDetalle.Text;
+                            casoPrueba.TextoFalla = txbDetalleFalla.Text;
+                            casoPrueba.Usuario = (UsuarioPrueba)cmbUsuario.SelectedItem;
+                            casoPrueba.Siniestro = (SiniestroPrueba)cmbDatoPrueba.SelectedItem;
+                            casoPrueba.Automatico = false;
+                            CPNegocio.agregarDatoPrueba(testLocal, casoPrueba);
+                            cargarGrillaCasosP();
+                        }
+                    }
                 }
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-            
-
         }
 
         private void cargarGrillaCasosP()
@@ -91,11 +103,14 @@ namespace TPC_Semenza
                 listadoCP = CPNegocio.ListarCasosPrueba(testLocal);
                 dgvCasosPrueba.DataSource = listadoCP;
                 dgvCasosPrueba.Columns["ID"].Visible = false;
+                dgvCasosPrueba.Columns["Adjunto"].Visible = false;
+                dgvCasosPrueba.Columns["Automatico"].Visible = false;
+                dgvCasosPrueba.Columns["Test"].Visible = false;
                 dgvCasosPrueba.Columns["Descripcion"].Width = 180;
-                dgvCasosPrueba.Columns["Adjunto"].Width = 50;
-                dgvCasosPrueba.Columns["Automatico"].Width = 50;
                 dgvCasosPrueba.Columns["Resultado"].Width = 50;
-
+                dgvCasosPrueba.ReadOnly = true;
+                dgvCasosPrueba.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                dgvCasosPrueba.MultiSelect = false;
             }
             catch (Exception ex)
             {
@@ -105,16 +120,43 @@ namespace TPC_Semenza
 
         private void btnModificarCaso_Click(object sender, EventArgs e)
         {
-            frm_ModificarCasoPrueba frmModCaso = new frm_ModificarCasoPrueba(testLocal,(CasoPrueba)dgvCasosPrueba.CurrentRow.DataBoundItem);
-            frmModCaso.ShowDialog();
-            cargarGrillaCasosP();
+            if (dgvCasosPrueba.SelectedRows.Count == 1)
+            {
+                frm_ModificarCasoPrueba frmModCaso = new frm_ModificarCasoPrueba(testLocal, (CasoPrueba)dgvCasosPrueba.CurrentRow.DataBoundItem);
+                frmModCaso.ShowDialog();
+                cargarGrillaCasosP();
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una fila!");
+            }
         }
 
         private void btnEliminarCaso_Click(object sender, EventArgs e)
         {
-            CasoPruebaNegocio cpNegocio = new CasoPruebaNegocio();
-            cpNegocio.eliminarDatoPrueba((CasoPrueba)dgvCasosPrueba.CurrentRow.DataBoundItem);
-            cargarGrillaCasosP();
+            if (dgvCasosPrueba.SelectedRows.Count == 1)
+            {
+                CasoPruebaNegocio cpNegocio = new CasoPruebaNegocio();
+                cpNegocio.eliminarDatoPrueba((CasoPrueba)dgvCasosPrueba.CurrentRow.DataBoundItem);
+                cargarGrillaCasosP();
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una fila!");
+            }
+        }
+
+        private void btnImagenes_Click(object sender, EventArgs e)
+        {
+            if (dgvCasosPrueba.SelectedRows.Count == 1)
+            {
+                frmImagenesCasos frmImg = new frmImagenesCasos((CasoPrueba)dgvCasosPrueba.CurrentRow.DataBoundItem);
+                frmImg.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una fila!");
+            }
         }
     }
 }

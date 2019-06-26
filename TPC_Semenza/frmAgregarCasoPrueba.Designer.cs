@@ -44,6 +44,7 @@
             this.lblUsuario = new System.Windows.Forms.Label();
             this.lblDatoPrueba = new System.Windows.Forms.Label();
             this.cmbDatoPrueba = new System.Windows.Forms.ComboBox();
+            this.btnImagenes = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCasosPrueba)).BeginInit();
             this.SuspendLayout();
             // 
@@ -163,7 +164,7 @@
             this.dgvCasosPrueba.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCasosPrueba.Location = new System.Drawing.Point(12, 390);
             this.dgvCasosPrueba.Name = "dgvCasosPrueba";
-            this.dgvCasosPrueba.Size = new System.Drawing.Size(803, 311);
+            this.dgvCasosPrueba.Size = new System.Drawing.Size(816, 302);
             this.dgvCasosPrueba.TabIndex = 41;
             // 
             // cmbUsuario
@@ -202,12 +203,25 @@
             this.cmbDatoPrueba.Size = new System.Drawing.Size(183, 21);
             this.cmbDatoPrueba.TabIndex = 48;
             // 
+            // btnImagenes
+            // 
+            this.btnImagenes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(90)))), ((int)(((byte)(120)))));
+            this.btnImagenes.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnImagenes.Location = new System.Drawing.Point(721, 356);
+            this.btnImagenes.Name = "btnImagenes";
+            this.btnImagenes.Size = new System.Drawing.Size(107, 28);
+            this.btnImagenes.TabIndex = 50;
+            this.btnImagenes.Text = "Imagenes";
+            this.btnImagenes.UseVisualStyleBackColor = false;
+            this.btnImagenes.Click += new System.EventHandler(this.btnImagenes_Click);
+            // 
             // frmAgregarCasoPrueba
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(42)))), ((int)(((byte)(55)))));
-            this.ClientSize = new System.Drawing.Size(840, 749);
+            this.ClientSize = new System.Drawing.Size(840, 704);
+            this.Controls.Add(this.btnImagenes);
             this.Controls.Add(this.lblDatoPrueba);
             this.Controls.Add(this.cmbDatoPrueba);
             this.Controls.Add(this.lblUsuario);
@@ -251,5 +265,6 @@
         private System.Windows.Forms.Label lblUsuario;
         private System.Windows.Forms.Label lblDatoPrueba;
         private System.Windows.Forms.ComboBox cmbDatoPrueba;
+        private System.Windows.Forms.Button btnImagenes;
     }
 }

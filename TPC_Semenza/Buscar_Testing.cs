@@ -65,9 +65,9 @@ namespace TPC_Semenza
             {
                 sFiltro += sFiltro.Equals("") ? " u.Nombre+' '+u.Apellido= " + "'" + cmbUsuarioTester.Text + "'" : " and u.Nombre+' '+u.Apellido= " + "'" + cmbUsuarioTester.Text + "'";
             }
-            if (!(txtAsunto.Text.Equals("")))//hacerlo no case sensitive
+            if (!(txtAsunto.Text.Equals("")))
             {
-                sFiltro += sFiltro.Equals("") ? " t.Asunto= '" + txtAsunto.Text.ToString() +"'": " and t.Asunto= '" + txtAsunto.Text.ToString() +"'";
+                sFiltro += sFiltro.Equals("") ? " t.Asunto like '%" + txtAsunto.Text.ToString() +"%'": " and t.Asunto like '%" + txtAsunto.Text.ToString() +"%'";
             }
             if (cmbPrioridad.SelectedIndex != 0)
             {
@@ -125,6 +125,7 @@ namespace TPC_Semenza
                 dgvResultadoBusqueda.Columns["Ultimo"].Width = 50;
                 dgvResultadoBusqueda.Columns["Prioridad"].Width = 100;
                 dgvResultadoBusqueda.ReadOnly = true;
+                dgvResultadoBusqueda.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             }
             catch (Exception ex)
             {
