@@ -23,6 +23,8 @@ namespace PresentacionWebForm
                     cmbSistemas.DataBind();
                     cmbUsuarios.DataSource = usuarioNegocio.listarUsuariosT();
                     cmbUsuarios.DataBind();
+                    dtpDesde.Value = DateTime.Today.AddMonths(-48).ToShortDateString();
+                    dtpHasta.Value = DateTime.Today.ToShortDateString();
                 }
             }
             catch (Exception ex)
@@ -46,6 +48,7 @@ namespace PresentacionWebForm
             {
                 sFiltro += sFiltro.Equals("") ? " u.Nombre+' '+u.Apellido= " + "'" + cmbUsuarios.Text + "'" : " and u.Nombre+' '+u.Apellido= " + "'" + cmbUsuarios.Text + "'";
             }
+            sFiltro += sFiltro.Equals("") ? " t.FechaCarga between '" + dtpDesde.Value.ToString() + "' and '" + dtpHasta.Value.ToString() + "'" : " and t.FechaCarga between '" + dtpDesde.Value.ToString() + "' and '" + dtpHasta.Value.ToString() + "'";
             sFiltro += sFiltro.Equals("") ? " t.Ultimo = 1 " : " and t.Ultimo = 1 ";
             TestNegocio testNegocio = new TestNegocio();
             List<Test> listado = testNegocio.listarTests(sFiltro);

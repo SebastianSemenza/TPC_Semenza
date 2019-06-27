@@ -144,7 +144,10 @@ namespace Negocio
                     Caso.Siniestro = new SiniestroPrueba();
                     Caso.Siniestro.ID = accesoDatos.Lector.GetInt32(7);
                     Caso.Automatico = accesoDatos.Lector.GetBoolean(8);
-                    //Caso.Imagenes = imagenNegocio.obtenerImagenes(Caso.ID);
+
+                    //OBTENER IMAGENES
+                    Caso.Imagenes = imagenNegocio.obtenerImagenes(Caso.ID);
+
                     listado.Add(Caso);
                 }
                 return listado;
@@ -162,14 +165,20 @@ namespace Negocio
         public void pasarCasosVersion(List<CasoPrueba> listado)
         {
             AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            ImagenCasoNegocio imagenNegocio = new ImagenCasoNegocio();
             try
             {
                 foreach (var caso in listado)
                 {
-                    accesoDatos.setearConsulta("insert into CASOSPRUEBA(IDTest,IDVersionTest,Descripcion,Resultado,Observaciones,DetalleFalla,IDUsuario,IDDatoPrueba,Automatico) values ("+caso.Test.ID+","+caso.Test.Version+",'"+caso.Descripcion.ToString()+"','"+caso.Resultado.ToString()+"','"+caso.Observaciones.ToString()+"','"+caso.TextoFalla.ToString()+"',"+caso.Usuario.ID+","+caso.Siniestro.ID+",'"+caso.Automatico.ToString()+"')");
+                    int ID;
+                    accesoDatos.setearConsulta("insert into CASOSPRUEBA(IDTest,IDVersionTest,Descripcion,Resultado,Observaciones,DetalleFalla,IDUsuario,IDDatoPrueba,Automatico) output inserted.ID values (" + caso.Test.ID+","+caso.Test.Version+",'"+caso.Descripcion.ToString()+"','"+caso.Resultado.ToString()+"','"+caso.Observaciones.ToString()+"','"+caso.TextoFalla.ToString()+"',"+caso.Usuario.ID+","+caso.Siniestro.ID+",'"+caso.Automatico.ToString()+"')");
                     accesoDatos.abrirConexion();
-                    accesoDatos.ejecutarConsulta();
+                    ID = accesoDatos.ejecutarAccionReturn();
                     accesoDatos.cerrarConexion();
+
+                    //INSERTAR IMAGENES
+                    imagenNegocio.abrirConexion();
+                    imagenNegocio.pasarImagenes(caso.Imagenes, ID);
                 }
             }
             catch (Exception ex)

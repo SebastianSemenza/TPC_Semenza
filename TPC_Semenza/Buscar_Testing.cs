@@ -36,6 +36,10 @@ namespace TPC_Semenza
                 cmbTipoGrabado.Items.Add("Parcial");
                 cmbTipoGrabado.Items.Add("Final");
                 cmbTipoGrabado.SelectedIndex = 0;
+                cmbSistema.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+                cmbPrioridad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+                cmbUsuarioTester.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+                cmbTipoGrabado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
                 dtpFechaGrabadoDesde.Value = DateTime.Now.AddMonths(-24);
             }
             catch (Exception ex)
@@ -115,6 +119,8 @@ namespace TPC_Semenza
                 dgvResultadoBusqueda.Columns["Estado"].Visible = false;
                 dgvResultadoBusqueda.Columns["Informe"].Visible = false;
                 dgvResultadoBusqueda.Columns["Descripcion"].Visible = false;
+                dgvResultadoBusqueda.Columns["CantErrores"].Visible = false;
+                dgvResultadoBusqueda.Columns["CantVersiones"].Visible = false;
                 dgvResultadoBusqueda.Columns["ID"].Width = 30;
                 dgvResultadoBusqueda.Columns["ID"].DisplayIndex = 1;
                 dgvResultadoBusqueda.Columns["Version"].Width = 40;

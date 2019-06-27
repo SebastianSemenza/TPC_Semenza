@@ -169,6 +169,7 @@
             this.Controls.Add(this.lblUsuariosPrueba);
             this.Controls.Add(this.dgvUsuariosPrueba);
             this.Name = "frmAgregarDatos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmAgregarDatos";
             this.Load += new System.EventHandler(this.frmAgregarDatos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatosPrueba)).EndInit();

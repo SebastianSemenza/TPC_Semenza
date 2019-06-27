@@ -36,6 +36,8 @@ namespace TPC_Semenza
             {
                 cmbUsuario.DataSource = UPNegocio.listarUsuariosP(testLocal);
                 cmbDatoPrueba.DataSource = SPNegocio.listarSiniestroP(testLocal);
+                cmbUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+                cmbDatoPrueba.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
                 cargarGrillaCasosP();
                 //VERIFICA SI ESTA FINALIZADO PARA ESCONDER BOTONES Y FRIZAR CAMPOS
                 if (testLocal.Finalizado == true)
@@ -156,6 +158,20 @@ namespace TPC_Semenza
             else
             {
                 MessageBox.Show("Debe seleccionar una fila!");
+            }
+        }
+
+        private void ckbResultado_CheckedChanged(object sender, EventArgs e)
+        {
+            if(ckbResultado.Checked==true)
+            {
+                txbDetalleFalla.Visible = false;
+                lblDetalleFalla.Visible = false;
+            }
+            else
+            {
+                txbDetalleFalla.Visible = true;
+                lblDetalleFalla.Visible = true;
             }
         }
     }

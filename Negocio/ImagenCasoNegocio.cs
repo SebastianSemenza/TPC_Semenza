@@ -99,6 +99,81 @@ namespace Negocio
             }
         }
 
-        
+        public List<ImagenCaso> obtenerImagenes(int ID)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            List<ImagenCaso> listado = new List<ImagenCaso>();
+            ImagenCaso imagen;
+            try
+            {
+                accesoDatos.setearConsulta("select ID,descripcion,Imagen from IMAGENES_PRUEBAS where IDCaso= " + ID);
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarConsulta();
+                while (accesoDatos.Lector.Read())
+                {
+                    imagen = new ImagenCaso();
+                    imagen.ID = accesoDatos.Lector.GetInt32(0);
+                    imagen.Descripcion = accesoDatos.Lector.GetString(1);
+                    imagen.Imagen = (byte[])accesoDatos.Lector["Imagen"];
+
+                    //Lo siguiente no creo que sea lo mas optimo pero es lo unico que se me ocurre por ahora
+                    //da = new SqlDataAdapter("Select Imagen from IMAGENES_PRUEBAS where IDCaso = " + ID, cn);
+                    //ds = new DataSet();
+                    //da.Fill(ds, "IMAGENES_PRUEBAS");
+                    //dr = ds.Tables["IMAGENES_PRUEBAS"].Rows[con];
+                    //imagen.Imagen = (byte[])dr["Imagen"];
+
+                    listado.Add(imagen);
+                }
+                return listado;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
+        public void pasarImagenes(List<ImagenCaso> listado, int ID)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            try
+            {
+                foreach (var imagen in listado)
+                {
+                    //accesoDatos.setearConsulta("insert into IMAGENES_PRUEBAS (descripcion,Imagen,IDCaso) values ('" + imagen.Descripcion.ToString() + "'," + imagen.Imagen.ToString() + "," + ID);
+                    //accesoDatos.abrirConexion();
+                    //accesoDatos.ejecutarConsulta();
+                    //accesoDatos.cerrarConexion();
+
+
+                    cmd = new SqlCommand("insert into IMAGENES_PRUEBAS (descripcion,Imagen,IDCaso) values (@Descripcion,@Imagen,@IDCaso)", cn);
+                    cmd.Parameters.Add("@IDCaso", SqlDbType.Int);
+                    cmd.Parameters.Add("@Imagen", SqlDbType.Image);
+                    cmd.Parameters.Add("@Descripcion", SqlDbType.VarChar);
+
+                    cmd.Parameters["@IDCaso"].Value = ID;
+                    cmd.Parameters["@Descripcion"].Value = imagen.Descripcion;
+
+                    //System.IO.MemoryStream ms = new System.IO.MemoryStream();
+                    //pbImagen.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+                    cmd.Parameters["@Imagen"].Value = imagen.Imagen;
+                    cmd.ExecuteNonQuery();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
     }
 }

@@ -32,7 +32,7 @@
             this.txbDescripcion = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblDetalleFalla = new System.Windows.Forms.Label();
             this.txbDetalle = new System.Windows.Forms.RichTextBox();
             this.txbDetalleFalla = new System.Windows.Forms.RichTextBox();
             this.btnEliminarCaso = new System.Windows.Forms.Button();
@@ -58,6 +58,7 @@
             this.ckbResultado.TabIndex = 0;
             this.ckbResultado.Text = "Funcionó correctamente";
             this.ckbResultado.UseVisualStyleBackColor = true;
+            this.ckbResultado.CheckedChanged += new System.EventHandler(this.ckbResultado_CheckedChanged);
             // 
             // txbDescripcion
             // 
@@ -86,15 +87,15 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Detalle:";
             // 
-            // label3
+            // lblDetalleFalla
             // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.SystemColors.Control;
-            this.label3.Location = new System.Drawing.Point(445, 70);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(91, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Detalle de la falla:";
+            this.lblDetalleFalla.AutoSize = true;
+            this.lblDetalleFalla.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblDetalleFalla.Location = new System.Drawing.Point(445, 70);
+            this.lblDetalleFalla.Name = "lblDetalleFalla";
+            this.lblDetalleFalla.Size = new System.Drawing.Size(91, 13);
+            this.lblDetalleFalla.TabIndex = 5;
+            this.lblDetalleFalla.Text = "Detalle de la falla:";
             // 
             // txbDetalle
             // 
@@ -233,12 +234,13 @@
             this.Controls.Add(this.dgvCasosPrueba);
             this.Controls.Add(this.txbDetalleFalla);
             this.Controls.Add(this.txbDetalle);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lblDetalleFalla);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txbDescripcion);
             this.Controls.Add(this.ckbResultado);
             this.Name = "frmAgregarCasoPrueba";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmAgregarCasoPrueba";
             this.Load += new System.EventHandler(this.frmAgregarCasoPrueba_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCasosPrueba)).EndInit();
@@ -253,7 +255,7 @@
         private System.Windows.Forms.TextBox txbDescripcion;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblDetalleFalla;
         private System.Windows.Forms.RichTextBox txbDetalle;
         private System.Windows.Forms.RichTextBox txbDetalleFalla;
         private System.Windows.Forms.Button btnEliminarCaso;

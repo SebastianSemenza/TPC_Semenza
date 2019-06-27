@@ -34,7 +34,7 @@
             this.cmbUsuario = new System.Windows.Forms.ComboBox();
             this.txbDetalleFalla = new System.Windows.Forms.RichTextBox();
             this.txbDetalle = new System.Windows.Forms.RichTextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblDetalleFalla = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txbDescripcion = new System.Windows.Forms.TextBox();
@@ -94,15 +94,15 @@
             this.txbDetalle.TabIndex = 55;
             this.txbDetalle.Text = "";
             // 
-            // label3
+            // lblDetalleFalla
             // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.SystemColors.Control;
-            this.label3.Location = new System.Drawing.Point(446, 58);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(91, 13);
-            this.label3.TabIndex = 54;
-            this.label3.Text = "Detalle de la falla:";
+            this.lblDetalleFalla.AutoSize = true;
+            this.lblDetalleFalla.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblDetalleFalla.Location = new System.Drawing.Point(446, 58);
+            this.lblDetalleFalla.Name = "lblDetalleFalla";
+            this.lblDetalleFalla.Size = new System.Drawing.Size(91, 13);
+            this.lblDetalleFalla.TabIndex = 54;
+            this.lblDetalleFalla.Text = "Detalle de la falla:";
             // 
             // label2
             // 
@@ -141,6 +141,7 @@
             this.ckbResultado.TabIndex = 50;
             this.ckbResultado.Text = "Funcionó correctamente";
             this.ckbResultado.UseVisualStyleBackColor = true;
+            this.ckbResultado.CheckedChanged += new System.EventHandler(this.ckbResultado_CheckedChanged);
             // 
             // btnAceptar
             // 
@@ -167,12 +168,13 @@
             this.Controls.Add(this.cmbUsuario);
             this.Controls.Add(this.txbDetalleFalla);
             this.Controls.Add(this.txbDetalle);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lblDetalleFalla);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txbDescripcion);
             this.Controls.Add(this.ckbResultado);
             this.Name = "frm_ModificarCasoPrueba";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frm_ModificarCasoPrueba";
             this.Load += new System.EventHandler(this.frm_ModificarCasoPrueba_Load);
             this.ResumeLayout(false);
@@ -188,7 +190,7 @@
         private System.Windows.Forms.ComboBox cmbUsuario;
         private System.Windows.Forms.RichTextBox txbDetalleFalla;
         private System.Windows.Forms.RichTextBox txbDetalle;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblDetalleFalla;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txbDescripcion;

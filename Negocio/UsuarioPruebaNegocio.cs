@@ -115,6 +115,31 @@ namespace Negocio
             }
         }
 
+        public bool verificarEnUso (UsuarioPrueba usuMod,Test test)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            bool enUso=false;
+            try
+            {
+                accesoDatos.setearConsulta("select * from CASOSPRUEBA where IDUsuario = " + usuMod.ID +" and IDTest= "+ test.ID);
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarConsulta();
+                while(accesoDatos.Lector.Read())
+                {
+                    enUso = true;
+                }
+                return enUso;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
         public List<UsuarioPrueba>obtenerUsuarioVersion(Test test)
         {
             AccesoDatosManager accesoDatos = new AccesoDatosManager();

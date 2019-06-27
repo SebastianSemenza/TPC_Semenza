@@ -132,6 +132,7 @@
             this.Controls.Add(this.cmbImagenes);
             this.Controls.Add(this.pcbImagenes);
             this.Name = "frmImagenesCasos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmImagenesCasos";
             this.Load += new System.EventHandler(this.frmImagenesCasos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pcbImagenes)).EndInit();

@@ -44,7 +44,9 @@ namespace TPC_Semenza
             {
                 cmbPerfil.DataSource = perfilNegocio.listarPerfiles();
                 cmbCompañia.DataSource = compañia.listarCompañias();
-                if(UPLocal!=null)
+                cmbPerfil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+                cmbCompañia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+                if (UPLocal!=null)
                 {
                     txbNombre.Text = UPLocal.Nombre;
                     txbApellido.Text = UPLocal.Apellido;
@@ -52,6 +54,8 @@ namespace TPC_Semenza
                     txbContraseña.Text = UPLocal.Contraseña;
                     cmbPerfil.SelectedIndex = cmbPerfil.FindString(UPLocal.Perfil.Nombre);
                     cmbCompañia.SelectedIndex = cmbCompañia.FindString(UPLocal.Compañia.Nombre);
+                    cmbPerfil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+                    cmbCompañia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
                 }
             }
             catch (Exception ex)
@@ -65,28 +69,35 @@ namespace TPC_Semenza
             UsuarioPruebaNegocio UPNegocio = new UsuarioPruebaNegocio();
             try
             {
-                if(UPLocal==null)
+                if(txbNombre.Text==""||txbDocumento.Text==""||txbContraseña.Text==""||txbApellido.Text==""||cmbCompañia.SelectedIndex==0||cmbPerfil.SelectedIndex==0)
                 {
-                    UPLocal = new UsuarioPrueba();
-                    UPLocal.Nombre = txbNombre.Text;
-                    UPLocal.Apellido = txbApellido.Text;
-                    UPLocal.Documento = txbDocumento.Text;
-                    UPLocal.Contraseña = txbContraseña.Text;
-                    UPLocal.Perfil = (Perfil)cmbPerfil.SelectedItem;
-                    UPLocal.Compañia = (Compañia)cmbCompañia.SelectedItem;
-                    UPNegocio.agregarUsuarioP(testLocal, UPLocal);
+                    MessageBox.Show("Debe completar todos los datos");
                 }
                 else
                 {
-                    UPLocal.Nombre = txbNombre.Text;
-                    UPLocal.Apellido = txbApellido.Text;
-                    UPLocal.Documento = txbDocumento.Text;
-                    UPLocal.Contraseña = txbContraseña.Text;
-                    UPLocal.Perfil = (Perfil)cmbPerfil.SelectedItem;
-                    UPLocal.Compañia = (Compañia)cmbCompañia.SelectedItem;
-                    UPNegocio.modificarUsuarioP(testLocal, UPLocal);
+                    if (UPLocal == null)
+                    {
+                        UPLocal = new UsuarioPrueba();
+                        UPLocal.Nombre = txbNombre.Text;
+                        UPLocal.Apellido = txbApellido.Text;
+                        UPLocal.Documento = txbDocumento.Text;
+                        UPLocal.Contraseña = txbContraseña.Text;
+                        UPLocal.Perfil = (Perfil)cmbPerfil.SelectedItem;
+                        UPLocal.Compañia = (Compañia)cmbCompañia.SelectedItem;
+                        UPNegocio.agregarUsuarioP(testLocal, UPLocal);
+                    }
+                    else
+                    {
+                        UPLocal.Nombre = txbNombre.Text;
+                        UPLocal.Apellido = txbApellido.Text;
+                        UPLocal.Documento = txbDocumento.Text;
+                        UPLocal.Contraseña = txbContraseña.Text;
+                        UPLocal.Perfil = (Perfil)cmbPerfil.SelectedItem;
+                        UPLocal.Compañia = (Compañia)cmbCompañia.SelectedItem;
+                        UPNegocio.modificarUsuarioP(testLocal, UPLocal);
+                    }
+                    this.Close();
                 }
-                this.Close();
             }
             catch (Exception ex)
             {

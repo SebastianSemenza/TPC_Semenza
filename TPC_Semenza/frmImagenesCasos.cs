@@ -48,6 +48,7 @@ namespace TPC_Semenza
         {
             ImagenNegocio.abrirConexion();
             ImagenNegocio.cargarImagenes(cmbImagenes,CasoLocal.ID);
+            cmbImagenes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             //cmbImagenes.SelectedIndex = 0; 
         }
 

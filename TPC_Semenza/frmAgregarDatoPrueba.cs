@@ -43,12 +43,16 @@ namespace TPC_Semenza
             {
                 cmbSistema.DataSource = sistema.listarSistemas();
                 cmbCompañia.DataSource = compañia.listarCompañias();
-                if(SPLocal!=null)
+                cmbSistema.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+                cmbCompañia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+                if (SPLocal!=null)
                 {
                     txbNroSiniestro.Text = SPLocal.NroSiniestro;
                     txbPatente.Text = SPLocal.Patente;
                     cmbCompañia.SelectedIndex = cmbCompañia.FindString(SPLocal.Compañia.Nombre);
                     cmbSistema.SelectedIndex = cmbSistema.FindString(SPLocal.Sistema.Nombre);
+                    cmbSistema.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+                    cmbCompañia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
                 }
             }
             catch (Exception)
@@ -63,25 +67,31 @@ namespace TPC_Semenza
             SiniestroPruebaNegocio SPNegocio = new SiniestroPruebaNegocio();
             try
             {
-                if(SPLocal==null)
+                if (txbNroSiniestro.Text == ""||txbPatente.Text == ""||cmbCompañia.SelectedIndex == 0 || cmbSistema.SelectedIndex == 0)
                 {
-                    SPLocal = new SiniestroPrueba();
-                    SPLocal.NroSiniestro = txbNroSiniestro.Text;
-                    SPLocal.Patente = txbPatente.Text;
-                    SPLocal.Compañia = (Compañia)cmbCompañia.SelectedItem;
-                    SPLocal.Sistema = (Sistema)cmbSistema.SelectedItem;
-                    SPNegocio.agregarSiniestroPrueba(testLocal, SPLocal);
+                    MessageBox.Show("Debe completar todos los datos");
                 }
                 else
                 {
-                    SPLocal.NroSiniestro = txbNroSiniestro.Text;
-                    SPLocal.Patente = txbPatente.Text;
-                    SPLocal.Compañia = (Compañia)cmbCompañia.SelectedItem;
-                    SPLocal.Sistema = (Sistema)cmbSistema.SelectedItem;
-                    SPNegocio.modificarSiniestroPrueba(testLocal, SPLocal);
+                    if (SPLocal == null)
+                    {
+                        SPLocal = new SiniestroPrueba();
+                        SPLocal.NroSiniestro = txbNroSiniestro.Text;
+                        SPLocal.Patente = txbPatente.Text;
+                        SPLocal.Compañia = (Compañia)cmbCompañia.SelectedItem;
+                        SPLocal.Sistema = (Sistema)cmbSistema.SelectedItem;
+                        SPNegocio.agregarSiniestroPrueba(testLocal, SPLocal);
+                    }
+                    else
+                    {
+                        SPLocal.NroSiniestro = txbNroSiniestro.Text;
+                        SPLocal.Patente = txbPatente.Text;
+                        SPLocal.Compañia = (Compañia)cmbCompañia.SelectedItem;
+                        SPLocal.Sistema = (Sistema)cmbSistema.SelectedItem;
+                        SPNegocio.modificarSiniestroPrueba(testLocal, SPLocal);
+                    }
+                    this.Close();
                 }
-
-                this.Close();
             }
             catch (Exception ex)
             {

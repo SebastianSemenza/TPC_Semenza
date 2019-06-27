@@ -126,8 +126,15 @@ namespace TPC_Semenza
             {
                 if(dgvUsuariosPrueba.SelectedRows.Count==1)
                 {
-                    UPNegocio.eliminarUsuarioP((UsuarioPrueba)dgvUsuariosPrueba.CurrentRow.DataBoundItem);
-                    cargarGrillaUsuariosP();
+                    if(UPNegocio.verificarEnUso((UsuarioPrueba)dgvUsuariosPrueba.CurrentRow.DataBoundItem,testLocal)==true)
+                    {
+                        MessageBox.Show("El usuario esta en uso en un caso de prueba!");
+                    }
+                    else
+                    {
+                        UPNegocio.eliminarUsuarioP((UsuarioPrueba)dgvUsuariosPrueba.CurrentRow.DataBoundItem);
+                        cargarGrillaUsuariosP();
+                    }
                 }
                 else
                 {
@@ -161,8 +168,15 @@ namespace TPC_Semenza
             {
                 if (dgvDatosPrueba.SelectedRows.Count == 1)
                 {
-                    SPNegocio.eliminarSiniestroPrueba((SiniestroPrueba)dgvDatosPrueba.CurrentRow.DataBoundItem);
-                    cargarGrillaSiniestrosP();
+                    if (SPNegocio.verificarEnUso((SiniestroPrueba)dgvDatosPrueba.CurrentRow.DataBoundItem, testLocal) == true)
+                    {
+                        MessageBox.Show("El dato esta en uso en un caso de prueba!");
+                    }
+                    else
+                    {
+                        SPNegocio.eliminarSiniestroPrueba((SiniestroPrueba)dgvDatosPrueba.CurrentRow.DataBoundItem);
+                        cargarGrillaSiniestrosP();
+                    }
                 }
                 else
                 {

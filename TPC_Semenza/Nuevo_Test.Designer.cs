@@ -381,6 +381,7 @@
             this.Controls.Add(this.lblSistema);
             this.Controls.Add(this.lblTicket);
             this.Name = "Nuevo_Test";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nuevo_Test";
             this.Load += new System.EventHandler(this.Nuevo_Test_Load);
             this.ResumeLayout(false);

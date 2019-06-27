@@ -34,6 +34,9 @@ namespace TPC_Semenza
                 cmbUsuario.DataSource = usuarioNegocio.listarUsuariosT();
                 cmbPrioridad.DataSource = prioridadNegocio.listarPrioridades();
                 //cmbEstadoTicket.DataSource = estadoNegocio.listarEstadosT();
+                cmbSistema.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+                cmbPrioridad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+                cmbUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
                 dtpFechaGrabadoDesde.Value = DateTime.Now.AddMonths(-24);
             }
             catch (Exception ex)

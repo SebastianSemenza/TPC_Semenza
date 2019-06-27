@@ -51,6 +51,11 @@ namespace TPC_Semenza
                 cmbUsuarioTester.DataSource = testerNegocio.listarUsuariosT();
                 cmbSolicitante.DataSource = compañiaNegocio.listarCompañias();
                 cmbAplica.DataSource = grupoCompañiasNegocio.listarGrupoCompañias();
+                cmbSistema.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+                cmbPrioridad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+                cmbUsuarioTester.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+                cmbSolicitante.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+                cmbAplica.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
                 txtIDTest.ReadOnly = true;
                 txtVersion.ReadOnly = true;
                 //RELLENAR LOS CAMPOS QUE VIENEN DE LA BUSQUEDA
@@ -64,6 +69,9 @@ namespace TPC_Semenza
                         cmbSistema.SelectedIndex = cmbSistema.FindString(testLocal.Sistema.Nombre);
                         cmbPrioridad.SelectedIndex = cmbPrioridad.FindString(testLocal.Prioridad.TipoPrioridad);
                         cmbUsuarioTester.SelectedIndex = cmbUsuarioTester.FindString(testLocal.UsuarioT.Nombre + " " + testLocal.UsuarioT.Apellido);
+                        cmbSistema.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+                        cmbPrioridad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+                        cmbUsuarioTester.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
                     }
                     else
                     {
@@ -77,6 +85,11 @@ namespace TPC_Semenza
                         cmbUsuarioTester.SelectedIndex = cmbUsuarioTester.FindString(testLocal.UsuarioT.Nombre + " " + testLocal.UsuarioT.Apellido);
                         cmbSolicitante.SelectedIndex = cmbSolicitante.FindString(testLocal.CiaSolicitante.Nombre);
                         cmbAplica.SelectedIndex = cmbAplica.FindString(testLocal.GrupoCia.Nombre);
+                        cmbSistema.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+                        cmbPrioridad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+                        cmbUsuarioTester.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+                        cmbSolicitante.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+                        cmbAplica.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
                     }
                 }
                 //VERIFICA SI ESTA FINALIZADO PARA ESCONDER BOTONES Y FRIZAR CAMPOS
@@ -86,7 +99,7 @@ namespace TPC_Semenza
                 }
                 else
                 {
-                    if (testLocal.Ultimo != true)
+                    if (testLocal.Ultimo != true || testLocal.VersionFinal == true)
                     {
                         btnGenerarVersion.Visible = false;
                     }

@@ -37,7 +37,9 @@ namespace TPC_Semenza
             {
                 cmbUsuario.DataSource = UPNegocio.listarUsuariosP(testLocal);
                 cmbDatoPrueba.DataSource = SPNegocio.listarSiniestroP(testLocal);
-                if(cpLocal!=null)
+                cmbUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+                cmbDatoPrueba.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+                if (cpLocal!=null)
                 {
                     txbDescripcion.Text = cpLocal.Descripcion;
                     txbDetalle.Text = cpLocal.Observaciones;
@@ -45,6 +47,8 @@ namespace TPC_Semenza
                     ckbResultado.Checked = cpLocal.Resultado;
                     cmbDatoPrueba.SelectedIndex = cmbDatoPrueba.FindString(cpLocal.Siniestro.NroSiniestro);
                     cmbUsuario.SelectedIndex = cmbUsuario.FindString(cpLocal.Usuario.Nombre);
+                    cmbUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+                    cmbDatoPrueba.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
                 }
             }
             catch (Exception ex)
@@ -58,32 +62,67 @@ namespace TPC_Semenza
             CasoPruebaNegocio cpNegocio = new CasoPruebaNegocio();
             try
             {
-                if(cpLocal==null)
+                if (txbDetalle.Text == "" || txbDescripcion.Text == "")
                 {
-                    CasoPrueba cpLocal = new CasoPrueba();
-                    cpLocal.Descripcion = txbDescripcion.Text;
-                    cpLocal.Observaciones = txbDetalle.Text;
-                    cpLocal.TextoFalla = txbDetalleFalla.Text;
-                    cpLocal.Resultado = ckbResultado.Checked;
-                    cpLocal.Siniestro = (SiniestroPrueba)cmbDatoPrueba.SelectedItem;
-                    cpLocal.Usuario = (UsuarioPrueba)cmbUsuario.SelectedItem;
-                    cpNegocio.modificarDatoPrueba(testLocal, cpLocal);
+                    MessageBox.Show("Debe completar todos los campos");
                 }
                 else
                 {
-                    cpLocal.Descripcion = txbDescripcion.Text;
-                    cpLocal.Observaciones = txbDetalle.Text;
-                    cpLocal.TextoFalla = txbDetalleFalla.Text;
-                    cpLocal.Resultado = ckbResultado.Checked;
-                    cpLocal.Siniestro = (SiniestroPrueba)cmbDatoPrueba.SelectedItem;
-                    cpLocal.Usuario = (UsuarioPrueba)cmbUsuario.SelectedItem;
-                    cpNegocio.modificarDatoPrueba(testLocal, cpLocal);
+                    if (ckbResultado.Checked == false && txbDetalleFalla.Text == "")
+                    {
+                        MessageBox.Show("Si el caso no esta aprobado debe indicar la falla");
+                    }
+                    else
+                    {
+                        if (cmbDatoPrueba.SelectedValue == null || cmbUsuario.SelectedValue == null)
+                        {
+                            MessageBox.Show("Debe seleccionar alguna opcion");
+                        }
+                        else
+                        {
+                            if (cpLocal == null)
+                            {
+                                CasoPrueba cpLocal = new CasoPrueba();
+                                cpLocal.Descripcion = txbDescripcion.Text;
+                                cpLocal.Observaciones = txbDetalle.Text;
+                                cpLocal.TextoFalla = txbDetalleFalla.Text;
+                                cpLocal.Resultado = ckbResultado.Checked;
+                                cpLocal.Siniestro = (SiniestroPrueba)cmbDatoPrueba.SelectedItem;
+                                cpLocal.Usuario = (UsuarioPrueba)cmbUsuario.SelectedItem;
+                                cpNegocio.modificarDatoPrueba(testLocal, cpLocal);
+                            }
+                            else
+                            {
+                                cpLocal.Descripcion = txbDescripcion.Text;
+                                cpLocal.Observaciones = txbDetalle.Text;
+                                cpLocal.TextoFalla = txbDetalleFalla.Text;
+                                cpLocal.Resultado = ckbResultado.Checked;
+                                cpLocal.Siniestro = (SiniestroPrueba)cmbDatoPrueba.SelectedItem;
+                                cpLocal.Usuario = (UsuarioPrueba)cmbUsuario.SelectedItem;
+                                cpNegocio.modificarDatoPrueba(testLocal, cpLocal);
+                            }
+                            this.Close();
+                        }
+                    }
                 }
-                this.Close();
             }
             catch (Exception ex)
             {
                 throw ex;
+            }
+        }
+
+        private void ckbResultado_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ckbResultado.Checked == true)
+            {
+                txbDetalleFalla.Visible = false;
+                lblDetalleFalla.Visible = false;
+            }
+            else
+            {
+                txbDetalleFalla.Visible = true;
+                lblDetalleFalla.Visible = true;
             }
         }
     }
