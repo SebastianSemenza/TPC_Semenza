@@ -152,7 +152,7 @@ namespace TPC_Semenza
         {
             if (dgvCasosPrueba.SelectedRows.Count == 1)
             {
-                frmImagenesCasos frmImg = new frmImagenesCasos((CasoPrueba)dgvCasosPrueba.CurrentRow.DataBoundItem);
+                frmImagenesCasos frmImg = new frmImagenesCasos((CasoPrueba)dgvCasosPrueba.CurrentRow.DataBoundItem,testLocal);
                 frmImg.ShowDialog();
             }
             else

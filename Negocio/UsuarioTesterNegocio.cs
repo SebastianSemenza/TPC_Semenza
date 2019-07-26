@@ -43,5 +43,34 @@ namespace Negocio
             }
 
         }
+
+
+        public bool Login(string usuario,string contraseña)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            bool resultado = false;
+            try
+            {
+                accesoDatos.setearConsulta("select * from USUARIOS where Documento = '"+usuario+"' and Contraseña= '"+contraseña+"'");
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarConsulta();
+                if(accesoDatos.Lector.Read())
+                {
+                    resultado = true;
+                }
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+
+        }
+
+
     }
 }

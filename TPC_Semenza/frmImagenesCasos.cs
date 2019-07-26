@@ -16,16 +16,18 @@ namespace TPC_Semenza
     {
         ImagenCasoNegocio ImagenNegocio = new ImagenCasoNegocio();
         CasoPrueba CasoLocal;
+        Test testLocal;
 
         public frmImagenesCasos()
         {
             InitializeComponent();
         }
 
-        public frmImagenesCasos(CasoPrueba caso)
+        public frmImagenesCasos(CasoPrueba caso,Test test)
         {
             InitializeComponent();
             CasoLocal = caso;
+            testLocal = test;
         }
 
         private void btnBuscarImg_Click(object sender, EventArgs e)
@@ -50,6 +52,11 @@ namespace TPC_Semenza
             ImagenNegocio.cargarImagenes(cmbImagenes,CasoLocal.ID);
             cmbImagenes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             //cmbImagenes.SelectedIndex = 0; 
+            if (testLocal.Finalizado == true)
+            {
+                btnAgregar.Visible = false;
+                btnBuscarImg.Visible = false;
+            }
         }
 
         private void cmbImagenes_SelectedIndexChanged(object sender, EventArgs e)

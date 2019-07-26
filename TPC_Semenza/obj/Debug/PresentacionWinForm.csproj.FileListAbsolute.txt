@@ -56,3 +56,4 @@ C:\Users\sebastian\Desktop\TPC_Semenza\TPC_Semenza\obj\Debug\TPC_Semenza.frmAgre
 C:\Users\sebastian\Desktop\TPC_Semenza\TPC_Semenza\obj\Debug\TPC_Semenza.frm_ModificarCasoPrueba.resources
 C:\Users\sebastian\Desktop\TPC_Semenza\TPC_Semenza\obj\Debug\TPC_Semenza.frmMenu_Principal.resources
 C:\Users\sebastian\Desktop\TPC_Semenza\TPC_Semenza\obj\Debug\TPC_Semenza.frmImagenesCasos.resources
+C:\Users\sebastian\Desktop\TPC_Semenza\TPC_Semenza\obj\Debug\TPC_Semenza.frmLogin.resources

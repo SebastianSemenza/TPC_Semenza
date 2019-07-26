@@ -9,10 +9,17 @@ namespace TPC_Semenza
     public partial class Nuevo_Test : Form
     {
         private Test testLocal = null;
+        private string usuarioLog;
 
         public Nuevo_Test()
         {
             InitializeComponent();
+        }
+
+        public Nuevo_Test(string usuario)
+        {
+            InitializeComponent();
+            usuarioLog = usuario;
         }
 
         public Nuevo_Test(Test test)
@@ -42,7 +49,7 @@ namespace TPC_Semenza
             UsuarioTesterNegocio testerNegocio = new UsuarioTesterNegocio();
             CompañiaNegocio compañiaNegocio = new CompañiaNegocio();
             GrupoCompañiasNegocio grupoCompañiasNegocio = new GrupoCompañiasNegocio();
-
+            List<UsuarioTester> listadoUsuarios = new List<UsuarioTester>();
             try
             {
                 //Cargo los combos
@@ -56,8 +63,18 @@ namespace TPC_Semenza
                 cmbUsuarioTester.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
                 cmbSolicitante.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
                 cmbAplica.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+
+                listadoUsuarios = testerNegocio.listarUsuariosT();
+                foreach (var usuario in listadoUsuarios)
+                {
+                    if (usuario.Documento == usuarioLog)
+                    {
+                        cmbUsuarioTester.SelectedIndex = cmbUsuarioTester.FindString(usuario.Nombre + " " + usuario.Apellido);
+                    }
+                }
                 txtIDTest.ReadOnly = true;
                 txtVersion.ReadOnly = true;
+                cmbUsuarioTester.Enabled = false;
                 //RELLENAR LOS CAMPOS QUE VIENEN DE LA BUSQUEDA
                 if (testLocal != null)
                 {
@@ -194,29 +211,39 @@ namespace TPC_Semenza
                     frmAgregarDatos frmAD = new frmAgregarDatos(testLocal);
                     frmAD.ShowDialog();
                 }
+
             }
         }
 
         private void btnAgregarCasosPrueba_Click(object sender, EventArgs e)
         {
+            UsuarioPruebaNegocio UPNegocio = new UsuarioPruebaNegocio();
+            SiniestroPruebaNegocio SPNegocio = new SiniestroPruebaNegocio();
             if (txtIDTest.Text == "")
             {
                 MessageBox.Show("Debe grabar para continuar");
             }
             else
             {
-                //verifica si entro por nueva o por busqueda
-                if (testLocal == null)
+                if (UPNegocio.verificarUsuarioCargado(testLocal) && SPNegocio.verificarDatoCargado(testLocal))
                 {
-                    testLocal = new Test();
-                    cargarTest(testLocal);
-                    frmAgregarCasoPrueba frmACP = new frmAgregarCasoPrueba(testLocal);
-                    frmACP.ShowDialog();
+                    //verifica si entro por nueva o por busqueda
+                    if (testLocal == null)
+                    {
+                        testLocal = new Test();
+                        cargarTest(testLocal);
+                        frmAgregarCasoPrueba frmACP = new frmAgregarCasoPrueba(testLocal);
+                        frmACP.ShowDialog();
+                    }
+                    else
+                    {
+                        frmAgregarCasoPrueba frmACP = new frmAgregarCasoPrueba(testLocal);
+                        frmACP.ShowDialog();
+                    }
                 }
                 else
                 {
-                    frmAgregarCasoPrueba frmACP = new frmAgregarCasoPrueba(testLocal);
-                    frmACP.ShowDialog();
+                    MessageBox.Show("Debe haber al menos 1 usuario y 1 dato para poder agregar Casos de Prueba!");
                 }
             }
         }
@@ -250,38 +277,62 @@ namespace TPC_Semenza
 
         private void btnFinalizarVersion_Click(object sender, EventArgs e)
         {
+            CasoPruebaNegocio CPNegocio = new CasoPruebaNegocio();
             if (txtTicket.Text == "" || txtAsunto.Text == "" || txtDescripcion.Text == "" || cmbPrioridad.SelectedIndex == 0 || cmbSistema.SelectedIndex == 0 || cmbSolicitante.SelectedIndex == 0 || cmbUsuarioTester.SelectedIndex == 0)
             {
                 MessageBox.Show("Debe completar todos los campos");
             }
             else
             {
-                TestNegocio testNegocio = new TestNegocio();
-                cargarTest(testLocal);
-                testNegocio.modificarTest(testLocal);
-                testNegocio.finalizarVersion(testLocal);
-                MessageBox.Show("La version se finalizo");
-                bloquearCampos();
-                testLocal.Finalizado = true;
-                btnGenerarVersion.Visible = true;
+                if (CPNegocio.verificarCasosCargados(testLocal))
+                {
+                    TestNegocio testNegocio = new TestNegocio();
+                    cargarTest(testLocal);
+                    testNegocio.modificarTest(testLocal);
+                    testNegocio.finalizarVersion(testLocal);
+                    MessageBox.Show("La version se finalizo");
+                    bloquearCampos();
+                    testLocal.Finalizado = true;
+                    btnGenerarVersion.Visible = true;
+                }
+                else
+                {
+                    MessageBox.Show("Debe cargar al menos 1 caso de prueba para finalizar el Testeo");
+                }
             }
         }
 
         private void btnTestingOK_Click(object sender, EventArgs e)
         {
+            CasoPruebaNegocio CPNegocio = new CasoPruebaNegocio();
             if (txtTicket.Text == "" || txtAsunto.Text == "" || txtDescripcion.Text == "" || cmbPrioridad.SelectedIndex == 0 || cmbSistema.SelectedIndex == 0 || cmbSolicitante.SelectedIndex == 0 || cmbUsuarioTester.SelectedIndex == 0)
             {
                 MessageBox.Show("Debe completar todos los campos");
             }
             else
             {
-                TestNegocio testNegocio = new TestNegocio();
-                cargarTest(testLocal);
-                testNegocio.modificarTest(testLocal);
-                testNegocio.generarVersionFinal(testLocal);
-                MessageBox.Show("Se finalizo el test, TESTING OK!!!");
-                bloquearCampos();
-                testLocal.Finalizado = true;
+                if(CPNegocio.verificarCasosCargados(testLocal))
+                {
+                    if (CPNegocio.verificarCasosConFallas(testLocal))
+                    {
+                        MessageBox.Show("No puede finalizar el Test mientras existan casos con fallas");
+                    }
+                    else
+                    {
+                        TestNegocio testNegocio = new TestNegocio();
+                        cargarTest(testLocal);
+                        testNegocio.modificarTest(testLocal);
+                        testNegocio.generarVersionFinal(testLocal);
+                        MessageBox.Show("Se finalizo el test, TESTING OK!!!");
+                        bloquearCampos();
+                        testLocal.Finalizado = true;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Debe cargar al menos 1 caso de prueba para finalizar el Testeo");
+                }
+                
             }
         }
 

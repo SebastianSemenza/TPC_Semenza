@@ -12,11 +12,17 @@ namespace TPC_Semenza
 {
     public partial class Menu_Principal : Form
     {
-        //private Test test;
+        private string usuarioLog;
 
         public Menu_Principal()
         {
             InitializeComponent();
+        }
+
+        public Menu_Principal(string usuario)
+        {
+            InitializeComponent();
+            usuarioLog = usuario;
         }
 
         //FUNCION PARA AGREGAR VENTANA A UN PANEL SIN CERRAR LAS ANTERIORES

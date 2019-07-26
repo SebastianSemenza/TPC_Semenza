@@ -16,7 +16,7 @@ namespace TPC_Semenza
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Menu_Principal());
+            Application.Run(new frmLogin());
         }
     }
 }

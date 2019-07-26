@@ -191,5 +191,53 @@ namespace Negocio
             }
         }
 
+        public bool verificarCasosConFallas(Test test)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            bool resultado = false;
+            try
+            {
+                accesoDatos.setearConsulta("select * from CASOSPRUEBA where IDTest = "+test.ID+" and IDVersionTest = "+test.Version+" and Resultado=0");
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarConsulta();
+                while (accesoDatos.Lector.Read())
+                {
+                    resultado = true;
+                }
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+        public bool verificarCasosCargados(Test test)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            bool resultado = false;
+            try
+            {
+                accesoDatos.setearConsulta("select * from CASOSPRUEBA where IDTest = " + test.ID + " and IDVersionTest = " + test.Version);
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarConsulta();
+                while (accesoDatos.Lector.Read())
+                {
+                    resultado = true;
+                }
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
     }
 }

@@ -12,14 +12,22 @@ namespace TPC_Semenza
 {
     public partial class frmMenu_Principal : Form
     {
+        private string usuarioLog;
+
         public frmMenu_Principal()
         {
             InitializeComponent();
         }
 
+        public frmMenu_Principal(string usuario)
+        {
+            InitializeComponent();
+            usuarioLog = usuario;
+        }
+
         private void nuevoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Nuevo_Test frmNuevo = new Nuevo_Test();
+            Nuevo_Test frmNuevo = new Nuevo_Test(usuarioLog);
             frmNuevo.MdiParent = this;
             frmNuevo.Show();
         }

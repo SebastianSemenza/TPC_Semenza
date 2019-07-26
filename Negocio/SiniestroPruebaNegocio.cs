@@ -195,5 +195,30 @@ namespace Negocio
             }
         }
 
+        public bool verificarDatoCargado(Test test)
+        {
+            AccesoDatosManager accesoDatos = new AccesoDatosManager();
+            bool resultado = false;
+            try
+            {
+                accesoDatos.setearConsulta("select * from DATOSPRUEBA where IDTest = " + test.ID);
+                accesoDatos.abrirConexion();
+                accesoDatos.ejecutarConsulta();
+                if (accesoDatos.Lector.Read())
+                {
+                    resultado = true;
+                }
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
     }
 }
